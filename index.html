@@ -1,110 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Module 1.1 – Symmetric vs Asymmetric Cryptography</title>
   <style>
-    body { background: #0a1128; color: #e0e0e0; font-family: Inter, sans-serif; margin:0; padding:20px; }
-    h1, h2, h3 { color: #66fcf1; }
-    p, li { line-height:1.6; }
-    img { display: block; margin: 20px auto; max-width:100%; height:auto; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.5); }
-    section { margin: 40px 0; }
-    ul { list-style-type: none; padding: 0; }
-    ul li { padding: 8px 0; }
-    table { width:100%; margin:20px 0; border-collapse: collapse;}
-    table th, table td { border:1px solid #66fcf1; padding:8px; }
-    table th { background: #1f2833; color:#c5c6c7;}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0c1e35;
+      color: #f4f4f4;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px;
+    }
+    h1, h2, h3 {
+      color: #6fc0ff;
+    }
+    img {
+      max-width: 90%;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+      border-radius: 8px;
+    }
+    .section {
+      margin-bottom: 50px;
+    }
+    pre {
+      background: #1e2f4d;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      color: #e3e3e3;
+    }
+    code {
+      font-family: monospace;
+    }
   </style>
 </head>
 <body>
-<main>
+  <h1>🌐 Module 1.1 – Symmetric vs Asymmetric Cryptography 🔐</h1>
 
-  <header>
-    <h1>🌐 Module 1.1 – Symmetric vs Asymmetric Cryptography</h1>
-    <img src="img1.png" alt="Lesson cover" />
-  </header>
-
-  <section>
+  <div class="section">
     <h2>📖 Lesson Overview</h2>
-    <p>Welcome to the first lesson of <strong>Web3 Odyssey: Architecting Decentralized Futures</strong>! In this module, you’ll dive deep into the heart of cryptography... 🚀</p>
-  </section>
+    <p>Welcome to the first lesson of <strong>Web3 Odyssey: Architecting Decentralized Futures</strong>! In this module, we embark on a journey through the fundamental building blocks of blockchain security — symmetric and asymmetric cryptography. 🌌</p>
+    <p>Cryptography is the bedrock of digital trust. Every wallet, transaction, and smart contract interaction depends on it. Let’s uncover how math transforms into the magic of unbreakable code. 🧙‍♂️</p>
+  </div>
 
-  <section>
+  <div class="section">
     <h2>🎯 Learning Objectives</h2>
     <ul>
-      <li>• Define the difference between symmetric and asymmetric cryptography.</li>
-      <li>• Explain how each approach secures data and communications.</li>
-      <li>• Identify real-world use cases for both methods in blockchain systems.</li>
-      <li>• Evaluate strengths and trade-offs when choosing a cryptographic scheme.</li>
+      <li>Understand the key differences between symmetric and asymmetric cryptography.</li>
+      <li>Explore real-world blockchain applications of each method.</li>
+      <li>Analyze the advantages and limitations of cryptographic systems.</li>
+      <li>Build foundational understanding for wallet security and private key management.</li>
     </ul>
-  </section>
+  </div>
 
-  <section>
-    <h2>🔑 What Is Symmetric Cryptography?</h2>
-    <img src="img2.png" alt="Symmetric encryption diagram" />
-    <p>Symmetric cryptography is like a shared secret handshake — both sides know the code. 🤝</p>
-    <strong>Definition:</strong> A single, shared key is used for both encryption and decryption.
+  <div class="section">
+    <h2>🔐 What is Symmetric Cryptography?</h2>
+    <p><strong>"Symmetric cryptography is like a shared secret handshake 🤝"</strong></p>
+    <p>Symmetric encryption uses <strong>the same secret key</strong> for both encryption and decryption.</p>
+    <img src="img1.png" alt="Symmetric Encryption Diagram">
+
+    <h3>🛠 How It Works</h3>
+    <ul>
+      <li>Alice and Bob agree on a secret key 🔑</li>
+      <li>Alice encrypts data using that key → ciphertext</li>
+      <li>Bob uses the same key to decrypt → plaintext</li>
+    </ul>
+
+    <h3>💡 Common Algorithms</h3>
+    <ul>
+      <li>AES (Advanced Encryption Standard)</li>
+      <li>3DES (Triple DES)</li>
+      <li>ChaCha20 (often used in modern VPNs)</li>
+    </ul>
+
+    <h3>📊 Pros & Cons</h3>
+    <pre><code>Pros:                            | Cons:
+--------------------------------|------------------------------
+✔ Fast and efficient ⚡         | ❌ Key distribution problem
+✔ Good for bulk data           | ❌ One key = one point of failure
+✔ Low computational cost       | ❌ Not scalable for large networks</code></pre>
+
+    <img src="img2.png" alt="Symmetric Use Case Examples">
+  </div>
+
+  <div class="section">
+    <h2>🗝 What is Asymmetric Cryptography?</h2>
+    <p><strong>"Asymmetric cryptography is like a locked mailbox 📬 – anyone can drop a message, but only you can open it."</strong></p>
+
+    <img src="img3.png" alt="Asymmetric Encryption Diagram">
+
+    <h3>📌 Definition</h3>
+    <p>Uses a <strong>public key</strong> (to encrypt) and a <strong>private key</strong> (to decrypt).</p>
+
     <h3>🔄 How It Works</h3>
     <ul>
-      <li>Alice and Bob agree on a secret key 🔐</li>
-      <li>Alice encrypts plaintext → ciphertext using the key</li>
-      <li>Bob uses the same key to decrypt ciphertext → original message</li>
+      <li>Bob shares his public key 📣</li>
+      <li>Alice encrypts a message with Bob’s public key</li>
+      <li>Only Bob’s private key can decrypt it 🔐</li>
     </ul>
-    <h3>Popular Algorithms</h3>
-    <img src="img3.png" alt="AES, 3DES, ChaCha20 icons" />
-    <h3>Pros &amp; Cons</h3>
-    <img src="img4.png" alt="Pros and Cons symmetric encryption" />
-  </section>
 
-  <section>
-    <h2>🗝️ What Is Asymmetric Cryptography?</h2>
-    <img src="img5.png" alt="Asymmetric encryption mailbox illustration" />
-    <p>Asymmetric cryptography is like sending a locked mailbox — anyone can drop in mail, but only the mailbox owner holds the key. 📬</p>
-    <strong>Definition:</strong> Two distinct keys: public key (shared) and private key (secret).
-    <h3>🔄 How It Works</h3>
+    <h3>💡 Common Algorithms</h3>
     <ul>
-      <li>Bob publishes his public key 📢</li>
-      <li>Alice encrypts message using Bob’s public key → ciphertext</li>
-      <li>Only Bob’s private key can decrypt ciphertext → plaintext</li>
+      <li>RSA (Rivest–Shamir–Adleman)</li>
+      <li>ECC (Elliptic Curve Cryptography – preferred in blockchain)</li>
+      <li>Diffie–Hellman (Key exchange protocol)</li>
     </ul>
-    <h3>Popular Algorithms</h3>
-    <img src="img6.png" alt="RSA, ECC, Diffie-Hellman icons" />
-    <h3>Pros &amp; Cons</h3>
-    <img src="img7.png" alt="Pros and Cons asymmetric encryption" />
-  </section>
 
-  <section>
-    <h2>🌟 Use Cases in Blockchain & Web3</h2>
-    <img src="img8.png" alt="Chart of blockchain use cases" />
-    <table>
-      <tr><th>Scenario</th><th>Symmetric Use</th><th>Asymmetric Use</th></tr>
-      <tr><td>Data-at-Rest Encryption</td><td>Encrypt database backups</td><td>Rarely used</td></tr>
-      <tr><td>Data-in-Transit Encryption</td><td>VPN tunnels, secure channels</td><td>TLS/SSL, node-to-node communication</td></tr>
-      <tr><td>Key Exchange & Wallets</td><td>N/A</td><td>Wallet transactions, signing</td></tr>
-      <tr><td>Message Confidentiality</td><td>Private messaging</td><td>Peer messaging via public keys</td></tr>
-    </table>
-  </section>
+    <h3>📊 Pros & Cons</h3>
+    <pre><code>Pros:                                | Cons:
+------------------------------------|-----------------------------
+✔ No need to share secret keys 🔓  | ❌ Slower than symmetric ⚙️
+✔ Enables digital signatures ✍️     | ❌ Higher CPU usage
+✔ Great for decentralized systems 🌐 | ❌ Larger key sizes required</code></pre>
 
-  <section>
-    <h2>🛠️ Hands-On Exercise</h2>
-    <img src="img9.png" alt="Student doing exercise" />
+    <img src="img4.png" alt="Public and Private Key Use Cases">
+  </div>
+
+  <div class="section">
+    <h2>🌍 Blockchain Use Cases</h2>
+    <p>Let’s compare symmetric vs asymmetric usage in Web3:</p>
+    <img src="img5.png" alt="Symmetric vs Asymmetric Use in Blockchain">
+    <pre><code>Use Case                 | Symmetric         | Asymmetric
+------------------------|-------------------|----------------------------
+Data at Rest            | AES for backups   | Rarely used
+Secure Channels         | VPN / SSH         | TLS for node comms
+Wallet Authentication   | -                 | Private key = your wallet
+Transaction Signing     | -                 | Public key = identity
+Private Messaging       | -                 | Signal protocol-style</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>🧪 Hands-On Exercise</h2>
     <ol>
-      <li>Download the PDF lecture on symmetric vs asymmetric cryptography.</li>
-      <li>Reflect: Write down a real-world scenario where AES is preferable over RSA, and vice versa.</li>
-      <li>Proceed to the next quiz round to test your knowledge. ✅</li>
+      <li>Open your favorite text editor and write a scenario where you’d choose AES over RSA. Then flip it.</li>
+      <li>Answer this quiz:
+        <ul>
+          <li>Which cryptography type is used in MetaMask wallet key management?</li>
+          <li>Why is symmetric encryption not used for signing transactions?</li>
+        </ul>
+      </li>
     </ol>
-  </section>
+    <img src="img6.png" alt="Hands-On Quiz">
+  </div>
 
-  <section>
-    <h2>✨ Summary & Next Steps</h2>
-    <img src="img10.png" alt="Roadmap to next topic" />
-    <p>Symmetric = one key, fast, but key sharing is tricky.<br>
-       Asymmetric = two keys, better distribution and digital signatures, but slower.<br>
-       Both complement in Web3: asymmetric helps exchange symmetric key for fast encryption.</p>
-    <p>In the next lesson, we’ll explore <strong>hash functions and Merkle trees</strong>, the backbone of blockchain integrity. Prepare for the journey. 🛡️</p>
-  </section>
+  <div class="section">
+    <h2>📚 Summary</h2>
+    <p><strong>Symmetric = fast, simple, requires secure key sharing.</strong></p>
+    <p><strong>Asymmetric = slow, secure, ideal for open networks.</strong></p>
+    <p>Web3 often uses both: asymmetric to share a symmetric session key, then symmetric for fast encrypted communication. ⚡🔐</p>
+    <img src="img7.png" alt="Symmetric and Asymmetric Integration">
+  </div>
 
-</main>
+  <div class="section">
+    <h2>🔮 Coming Up Next</h2>
+    <p>Next lesson: <strong>Merkle Trees & Hashing</strong> — the mathematical magic behind blockchain integrity. 🧩</p>
+    <img src="img8.png" alt="Next Module Teaser">
+  </div>
+
+  <div class="section">
+    <h2>🏁 Final Thought</h2>
+    <p>Cryptography isn’t just about secrecy — it’s the foundation of digital sovereignty. In a decentralized world, your private key is your power. Wield it wisely. 🛡️</p>
+    <img src="img9.png" alt="Digital Sovereignty">
+    <img src="img10.png" alt="Final Thought">
+  </div>
+
 </body>
 </html>
