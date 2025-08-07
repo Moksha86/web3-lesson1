@@ -1,4 +1,694 @@
-<!DOCTYPE html>
+f7890abcdef";
+const encrypted = aes.encrypt(sensitiveData, randomKey);
+console.log("Encrypted:", encrypted);
+const decrypted = aes.decrypt(encrypted, randomKey);
+console.log("Decrypted:", decrypted);
+
+// Method 2: Using password-derived key
+const password = "MySecurePassword123!";
+const salt = crypto.randomBytes(32); // Always use random salt
+const derivedKey = aes.deriveKeyFromPassword(password, salt);
+const encryptedWithPassword = aes.encrypt(sensitiveData, derivedKey);
+console.log("Password-encrypted:", encryptedWithPassword);
+
+// Demonstrate secure key storage (conceptual)
+class SecureKeyManager {
+    constructor() {
+        this.keys = new Map();
+        this.keyMetadata = new Map();
+    }
+
+    storeKey(keyId, key, metadata = {}) {
+        // In production, keys would be stored in secure hardware or key management service
+        this.keys.set(keyId, key);
+        this.keyMetadata.set(keyId, {
+            ...metadata,
+            createdAt: new Date(),
+            accessCount: 0
+        });
+    }
+
+    retrieveKey(keyId) {
+        const key = this.keys.get(keyId);
+        if (key) {
+            const metadata = this.keyMetadata.get(keyId);
+            metadata.accessCount++;
+            metadata.lastAccessed = new Date();
+            return key;
+        }
+        throw new Error('Key not found');
+    }
+
+    rotateKey(keyId) {
+        // Key rotation for enhanced security
+        const oldKey = this.keys.get(keyId);
+        if (oldKey) {
+            const newKey = aes.generateKey();
+            this.storeKey(keyId, newKey, { rotatedFrom: oldKey.toString('hex').substring(0, 8) });
+            return newKey;
+        }
+        throw new Error('Key not found for rotation');
+    }
+}
+</code></pre>
+
+            <h4>Triple DES (3DES)</h4>
+            
+            <p>Triple DES, or 3DES, was developed as an interim solution to address the security vulnerabilities of the original DES. By applying DES encryption three times with different keys, 3DES effectively increases the key space and provides enhanced security. However, its slower performance compared to AES has led to its gradual phase-out in favor of more modern algorithms.</p>
+
+            <pre><code>// 3DES Implementation Example
+const crypto = require('crypto');
+
+class TripleDESEncryption {
+    constructor() {
+        this.algorithm = 'des-ede3-cbc'; // Triple DES with CBC mode
+        this.keyLength = 24; // 192 bits (3 * 64-bit DES keys)
+        this.ivLength = 8;   // 64 bits
+    }
+
+    encrypt(plaintext, key) {
+        const iv = crypto.randomBytes(this.ivLength);
+        const cipher = crypto.createCipher(this.algorithm, key, iv);
+        
+        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        
+        return iv.toString('hex') + ':' + encrypted;
+    }
+
+    decrypt(encryptedData, key) {
+        const parts = encryptedData.split(':');
+        const iv = Buffer.from(parts[0], 'hex');
+        const encrypted = parts[1];
+        
+        const decipher = crypto.createDecipher(this.algorithm, key, iv);
+        
+        let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        
+        return decrypted;
+    }
+}
+
+// Performance comparison helper
+function benchmarkEncryption(algorithm, data, iterations = 1000) {
+    const startTime = process.hrtime();
+    
+    for (let i = 0; i < iterations; i++) {
+        algorithm.encrypt(data, algorithm.generateKey());
+    }
+    
+    const endTime = process.hrtime(startTime);
+    const totalTime = endTime[0] * 1000 + endTime[1] / 1000000; // Convert to milliseconds
+    
+    return {
+        totalTime,
+        averageTime: totalTime / iterations,
+        operationsPerSecond: iterations / (totalTime / 1000)
+    };
+}
+</code></pre>
+
+            <h4>ChaCha20</h4>
+            
+            <p>ChaCha20, developed by Daniel J. Bernstein, represents a newer approach to stream cipher design. It offers excellent security properties and performance, particularly on mobile and embedded devices where AES hardware acceleration may not be available. ChaCha20 is increasingly adopted in modern protocols, including TLS 1.3 and the Signal messaging protocol.</p>
+
+            <div class="highlight-box">
+                <h5>ChaCha20 Advantages</h5>
+                <ul>
+                    <li><strong>Software Performance:</strong> Excellent performance on platforms without AES hardware acceleration</li>
+                    <li><strong>Constant-Time Operation:</strong> Designed to resist timing attacks</li>
+                    <li><strong>Simplicity:</strong> Relatively simple implementation reduces the risk of bugs</li>
+                    <li><strong>Cryptographic Security:</strong> Strong resistance to known attacks</li>
+                </ul>
+            </div>
+
+            <img src="img4.png" alt="Symmetric Cryptography Performance Analysis and Comparison Matrix" class="lesson-image diagram-image">
+
+            <h3>Performance Characteristics and Benchmarking</h3>
+            
+            <p>Understanding the performance characteristics of different symmetric algorithms is crucial for making informed decisions in system design. The following analysis provides comprehensive benchmarking data and performance considerations.</p>
+
+            <div class="performance-chart">
+                <h4>Algorithm Performance Comparison</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Key Size (bits)</th>
+                            <th>Block Size (bits)</th>
+                            <th>Throughput (MB/s)*</th>
+                            <th>Memory Usage</th>
+                            <th>Hardware Support</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AES-128</td>
+                            <td>128</td>
+                            <td>128</td>
+                            <td>1,200-4,000</td>
+                            <td>Low</td>
+                            <td>Extensive</td>
+                        </tr>
+                        <tr>
+                            <td>AES-256</td>
+                            <td>256</td>
+                            <td>128</td>
+                            <td>800-3,200</td>
+                            <td>Low</td>
+                            <td>Extensive</td>
+                        </tr>
+                        <tr>
+                            <td>3DES</td>
+                            <td>192</td>
+                            <td>64</td>
+                            <td>45-100</td>
+                            <td>Medium</td>
+                            <td>Legacy</td>
+                        </tr>
+                        <tr>
+                            <td>ChaCha20</td>
+                            <td>256</td>
+                            <td>N/A (Stream)</td>
+                            <td>600-1,500</td>
+                            <td>Low</td>
+                            <td>Limited</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 0.9em; color: #7fc1ff;">*Performance varies significantly based on hardware, implementation, and whether hardware acceleration is available</p>
+            </div>
+
+            <h3>Security Considerations and Best Practices</h3>
+            
+            <h4>Key Management</h4>
+            
+            <p>Proper key management represents perhaps the most critical aspect of symmetric cryptography implementation. Even the strongest algorithm becomes vulnerable if keys are poorly managed.</p>
+
+            <div class="warning-box">
+                <h5>Critical Key Management Principles</h5>
+                <ul>
+                    <li><strong>Key Generation:</strong> Always use cryptographically secure random number generators</li>
+                    <li><strong>Key Storage:</strong> Never store keys in plain text; use secure key management systems</li>
+                    <li><strong>Key Distribution:</strong> Employ secure channels for key distribution (out-of-band methods preferred)</li>
+                    <li><strong>Key Rotation:</strong> Regularly rotate keys to limit exposure from potential compromises</li>
+                    <li><strong>Key Destruction:</strong> Securely destroy keys when they're no longer needed</li>
+                </ul>
+            </div>
+
+            <pre><code>// Advanced Key Management Implementation
+class EnterpriseKeyManager {
+    constructor() {
+        this.keyStore = new Map();
+        this.keyPolicies = new Map();
+        this.auditLog = [];
+    }
+
+    // Generate key with policy enforcement
+    generateKey(keyId, policy = {}) {
+        const defaultPolicy = {
+            algorithm: 'aes-256-gcm',
+            maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+            maxOperations: 1000000,
+            rotationThreshold: 0.8
+        };
+
+        const keyPolicy = { ...defaultPolicy, ...policy };
+        
+        // Generate cryptographically secure key
+        const key = crypto.randomBytes(32); // 256-bit key
+        
+        const keyMetadata = {
+            id: keyId,
+            key: key,
+            policy: keyPolicy,
+            createdAt: new Date(),
+            operationCount: 0,
+            lastUsed: new Date(),
+            status: 'active'
+        };
+
+        this.keyStore.set(keyId, keyMetadata);
+        this.keyPolicies.set(keyId, keyPolicy);
+        
+        this.auditLog.push({
+            action: 'KEY_GENERATED',
+            keyId: keyId,
+            timestamp: new Date(),
+            metadata: { algorithm: keyPolicy.algorithm }
+        });
+
+        return keyId;
+    }
+
+    // Retrieve key with policy checks
+    getKey(keyId, operation = 'encrypt') {
+        const keyData = this.keyStore.get(keyId);
+        
+        if (!keyData) {
+            throw new Error(`Key ${keyId} not found`);
+        }
+
+        // Check key status
+        if (keyData.status !== 'active') {
+            throw new Error(`Key ${keyId} is not active`);
+        }
+
+        // Check age policy
+        const age = Date.now() - keyData.createdAt.getTime();
+        if (age > keyData.policy.maxAge) {
+            throw new Error(`Key ${keyId} has exceeded maximum age`);
+        }
+
+        // Check operation count policy
+        if (keyData.operationCount >= keyData.policy.maxOperations) {
+            throw new Error(`Key ${keyId} has exceeded maximum operations`);
+        }
+
+        // Update usage statistics
+        keyData.operationCount++;
+        keyData.lastUsed = new Date();
+
+        // Check if rotation is needed
+        const operationRatio = keyData.operationCount / keyData.policy.maxOperations;
+        const ageRatio = age / keyData.policy.maxAge;
+        
+        if (operationRatio >= keyData.policy.rotationThreshold || 
+            ageRatio >= keyData.policy.rotationThreshold) {
+            this.scheduleKeyRotation(keyId);
+        }
+
+        this.auditLog.push({
+            action: 'KEY_ACCESSED',
+            keyId: keyId,
+            operation: operation,
+            timestamp: new Date()
+        });
+
+        return keyData.key;
+    }
+
+    // Automated key rotation
+    scheduleKeyRotation(keyId) {
+        const keyData = this.keyStore.get(keyId);
+        if (!keyData) return;
+
+        // Generate new key with same policy
+        const newKeyId = keyId + '_v' + Date.now();
+        this.generateKey(newKeyId, keyData.policy);
+
+        // Mark old key for deprecation
+        keyData.status = 'deprecated';
+        
+        this.auditLog.push({
+            action: 'KEY_ROTATION_SCHEDULED',
+            oldKeyId: keyId,
+            newKeyId: newKeyId,
+            timestamp: new Date()
+        });
+
+        return newKeyId;
+    }
+
+    // Secure key destruction
+    destroyKey(keyId) {
+        const keyData = this.keyStore.get(keyId);
+        if (keyData) {
+            // Overwrite key data with random bytes (defense against memory dumps)
+            keyData.key.fill(0);
+            crypto.randomFillSync(keyData.key);
+            
+            keyData.status = 'destroyed';
+            
+            this.auditLog.push({
+                action: 'KEY_DESTROYED',
+                keyId: keyId,
+                timestamp: new Date()
+            });
+        }
+    }
+
+    // Generate audit report
+    generateAuditReport(startDate, endDate) {
+        return this.auditLog.filter(entry => 
+            entry.timestamp >= startDate && entry.timestamp <= endDate
+        ).map(entry => ({
+            ...entry,
+            timestamp: entry.timestamp.toISOString()
+        }));
+    }
+}
+</code></pre>
+
+            <h4>Mode of Operation Considerations</h4>
+            
+            <p>The mode of operation determines how a block cipher processes data larger than a single block. The choice of mode significantly impacts both security and performance characteristics.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Security Level</th>
+                        <th>Parallelizable</th>
+                        <th>Padding Required</th>
+                        <th>Best Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ECB</td>
+                        <td>Low (Not Recommended)</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>None (Deprecated)</td>
+                    </tr>
+                    <tr>
+                        <td>CBC</td>
+                        <td>Medium-High</td>
+                        <td>Decrypt Only</td>
+                        <td>Yes</td>
+                        <td>File Encryption</td>
+                    </tr>
+                    <tr>
+                        <td>GCM</td>
+                        <td>Very High</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Network Communications</td>
+                    </tr>
+                    <tr>
+                        <td>CTR</td>
+                        <td>High</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Real-time Streaming</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Hands-On Implementation Exercise</h3>
+            
+            <p>Let's implement a comprehensive file encryption system that demonstrates best practices in symmetric cryptography:</p>
+
+            <pre><code>// Professional File Encryption System
+const crypto = require('crypto');
+const fs = require('fs').promises;
+const path = require('path');
+
+class SecureFileEncryption {
+    constructor() {
+        this.algorithm = 'aes-256-gcm';
+        this.keyLength = 32; // 256 bits
+        this.ivLength = 12;  // 96 bits for GCM
+        this.tagLength = 16; // 128 bits authentication tag
+        this.saltLength = 32; // 256 bits for key derivation
+        this.iterations = 100000; // PBKDF2 iterations
+    }
+
+    // Derive key from password using PBKDF2
+    async deriveKey(password, salt) {
+        return new Promise((resolve, reject) => {
+            crypto.pbkdf2(password, salt, this.iterations, this.keyLength, 'sha256', (err, key) => {
+                if (err) reject(err);
+                else resolve(key);
+            });
+        });
+    }
+
+    // Encrypt file with authenticated encryption
+    async encryptFile(inputPath, outputPath, password) {
+        try {
+            // Read input file
+            const plaintext = await fs.readFile(inputPath);
+            
+            // Generate random salt and IV
+            const salt = crypto.randomBytes(this.saltLength);
+            const iv = crypto.randomBytes(this.ivLength);
+            
+            // Derive key from password
+            const key = await this.deriveKey(password, salt);
+            
+            // Create cipher
+            const cipher = crypto.createCipher(this.algorithm, key, { iv });
+            
+            // Encrypt data
+            const encrypted = Buffer.concat([
+                cipher.update(plaintext),
+                cipher.final()
+            ]);
+            
+            // Get authentication tag
+            const tag = cipher.getAuthTag();
+            
+            // Create file header with metadata
+            const header = Buffer.alloc(4 + 4 + 4); // version + salt_len + iv_len
+            header.writeUInt32BE(1, 0); // Version
+            header.writeUInt32BE(this.saltLength, 4);
+            header.writeUInt32BE(this.ivLength, 8);
+            
+            // Combine all components
+            const output = Buffer.concat([
+                header,
+                salt,
+                iv,
+                tag,
+                encrypted
+            ]);
+            
+            // Write encrypted file
+            await fs.writeFile(outputPath, output);
+            
+            return {
+                success: true,
+                originalSize: plaintext.length,
+                encryptedSize: output.length,
+                overhead: output.length - plaintext.length
+            };
+            
+        } catch (error) {
+            throw new Error(`Encryption failed: ${error.message}`);
+        }
+    }
+
+    // Decrypt file with authentication verification
+    async decryptFile(inputPath, outputPath, password) {
+        try {
+            // Read encrypted file
+            const encrypted = await fs.readFile(inputPath);
+            
+            let offset = 0;
+            
+            // Parse header
+            const version = encrypted.readUInt32BE(offset);
+            offset += 4;
+            
+            if (version !== 1) {
+                throw new Error('Unsupported file version');
+            }
+            
+            const saltLength = encrypted.readUInt32BE(offset);
+            offset += 4;
+            const ivLength = encrypted.readUInt32BE(offset);
+            offset += 4;
+            
+            // Extract components
+            const salt = encrypted.slice(offset, offset + saltLength);
+            offset += saltLength;
+            
+            const iv = encrypted.slice(offset, offset + ivLength);
+            offset += ivLength;
+            
+            const tag = encrypted.slice(offset, offset + this.tagLength);
+            offset += this.tagLength;
+            
+            const ciphertext = encrypted.slice(offset);
+            
+            // Derive key from password
+            const key = await this.deriveKey(password, salt);
+            
+            // Create decipher
+            const decipher = crypto.createDecipher(this.algorithm, key, { iv });
+            decipher.setAuthTag(tag);
+            
+            // Decrypt data
+            const plaintext = Buffer.concat([
+                decipher.update(ciphertext),
+                decipher.final()
+            ]);
+            
+            // Write decrypted file
+            await fs.writeFile(outputPath, plaintext);
+            
+            return {
+                success: true,
+                decryptedSize: plaintext.length
+            };
+            
+        } catch (error) {
+            throw new Error(`Decryption failed: ${error.message}`);
+        }
+    }
+
+    // Secure file shredding (multiple overwrites)
+    async secureDelete(filePath) {
+        try {
+            const stats = await fs.stat(filePath);
+            const fileSize = stats.size;
+            
+            // Multiple overwrite passes
+            const patterns = [
+                Buffer.alloc(fileSize, 0x00), // Zeros
+                Buffer.alloc(fileSize, 0xFF), // Ones
+                crypto.randomBytes(fileSize)   // Random
+            ];
+            
+            for (const pattern of patterns) {
+                await fs.writeFile(filePath, pattern);
+                await fs.fsync(filePath); // Force write to disk
+            }
+            
+            // Finally delete the file
+            await fs.unlink(filePath);
+            
+            return { success: true, message: 'File securely deleted' };
+            
+        } catch (error) {
+            throw new Error(`Secure deletion failed: ${error.message}`);
+        }
+    }
+}
+
+// Usage demonstration
+async function demonstrateFileEncryption() {
+    const encryptor = new SecureFileEncryption();
+    const testFile = 'sensitive_document.txt';
+    const encryptedFile = 'sensitive_document.enc';
+    const decryptedFile = 'sensitive_document_recovered.txt';
+    const password = 'MyVerySecurePassword123!';
+    
+    try {
+        // Create test file
+        await fs.writeFile(testFile, 'This is sensitive information that needs to be encrypted securely.');
+        
+        // Encrypt file
+        console.log('Encrypting file...');
+        const encResult = await encryptor.encryptFile(testFile, encryptedFile, password);
+        console.log('Encryption result:', encResult);
+        
+        // Decrypt file
+        console.log('Decrypting file...');
+        const decResult = await encryptor.decryptFile(encryptedFile, decryptedFile, password);
+        console.log('Decryption result:', decResult);
+        
+        // Verify content
+        const original = await fs.readFile(testFile, 'utf8');
+        const recovered = await fs.readFile(decryptedFile, 'utf8');
+        
+        console.log('Content verification:', original === recovered ? 'PASSED' : 'FAILED');
+        
+        // Clean up
+        await encryptor.secureDelete(testFile);
+        await encryptor.secureDelete(decryptedFile);
+        
+    } catch (error) {
+        console.error('Demonstration failed:', error.message);
+    }
+}
+
+// Run demonstration
+demonstrateFileEncryption().catch(console.error);
+</code></pre>
+
+            <div class="success-box">
+                <h4>Key Takeaways from Symmetric Cryptography</h4>
+                <ul>
+                    <li><strong>Speed and Efficiency:</strong> Symmetric algorithms are significantly faster than asymmetric algorithms</li>
+                    <li><strong>Key Management Challenge:</strong> The primary weakness is secure key distribution and management</li>
+                    <li><strong>Perfect for Bulk Data:</strong> Ideal for encrypting large amounts of data efficiently</li>
+                    <li><strong>Authentication Integration:</strong> Modern modes like GCM provide both confidentiality and authenticity</li>
+                    <li><strong>Hardware Acceleration:</strong> Many platforms provide dedicated hardware support for algorithms like AES</li>
+                </ul>
+            </div>
+
+            <h3>Symmetric Cryptography in Blockchain Context</h3>
+            
+            <p>In blockchain and Web3 applications, symmetric cryptography plays several crucial roles:</p>
+
+            <h4>Transaction Data Encryption</h4>
+            
+            <p>While blockchain transactions are typically public, symmetric encryption is often used for:</p>
+
+            <ul>
+                <li><strong>Private Transactions:</strong> Zero-knowledge protocols often use symmetric encryption for data confidentiality</li>
+                <li><strong>Off-chain Data Storage:</strong> Sensitive data referenced by smart contracts but stored off-chain</li>
+                <li><strong>Communication Channels:</strong> Secure communication between blockchain nodes and clients</li>
+            </ul>
+
+            <h4>Layer 2 Privacy Solutions</h4>
+            
+            <p>Layer 2 scaling solutions frequently employ symmetric cryptography for privacy-preserving features:</p>
+
+            <pre><code>// Example: Encrypted State Channels
+class EncryptedStateChannel {
+    constructor(participants) {
+        this.participants = participants;
+        this.channelKey = crypto.randomBytes(32); // Shared symmetric key
+        this.state = {};
+        this.nonce = 0;
+    }
+
+    // Encrypt state update
+    encryptStateUpdate(update) {
+        const iv = crypto.randomBytes(12);
+        const cipher = crypto.createCipher('aes-256-gcm', this.channelKey, { iv });
+        
+        const data = JSON.stringify({
+            update,
+            nonce: ++this.nonce,
+            timestamp: Date.now()
+        });
+        
+        const encrypted = Buffer.concat([
+            cipher.update(data, 'utf8'),
+            cipher.final()
+        ]);
+        
+        const tag = cipher.getAuthTag();
+        
+        return {
+            iv: iv.toString('hex'),
+            data: encrypted.toString('hex'),
+            tag: tag.toString('hex')
+        };
+    }
+
+    // Decrypt state update
+    decryptStateUpdate(encryptedUpdate) {
+        const iv = Buffer.from(encryptedUpdate.iv, 'hex');
+        const data = Buffer.from(encryptedUpdate.data, 'hex');
+        const tag = Buffer.from(encryptedUpdate.tag, 'hex');
+        
+        const decipher = crypto.createDecipher('aes-256-gcm', this.channelKey, { iv });
+        decipher.setAuthTag(tag);
+        
+        const decrypted = Buffer.concat([
+            decipher.update(data),
+            decipher.final()
+        ]).toString('utf8');
+        
+        return JSON.parse(decrypted);
+    }
+}
+</code></pre>
+
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- Section 3: Asymmetric Cryptography -->
+        <section id="asymmetric-cryptography">
+            <img src="img5.png" alt<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -38,36 +728,27 @@
             backdrop-filter: blur(10px);
             border-bottom: 2px solid #7fc1ff;
             z-index: 1000;
-            padding: 10px 20px;
+            padding: 15px 20px;
             display: flex;
+            justify-content: center;
             align-items: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .header-logo {
-            height: 60px;
-            margin-right: 20px;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+            transition: transform 0.3s ease;
         }
 
-        .header-text h1 {
-            font-family: 'Roboto Slab', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 2px;
-        }
-
-        .header-text p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-            color: #7fc1ff;
-            font-weight: 400;
+        .header-logo:hover {
+            transform: scale(1.05);
         }
 
         main {
             max-width: 980px;
-            margin: 120px auto 0;
+            margin: 140px auto 0;
             padding: 40px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
@@ -136,22 +817,38 @@
 
         .lesson-image {
             display: block;
-            margin: 30px auto;
-            max-width: 400px;
+            margin: 40px auto;
+            max-width: 800px;
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(127, 193, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: auto;
+            min-height: 400px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+            border: 3px solid rgba(127, 193, 255, 0.4);
+            transition: all 0.4s ease;
+            background: linear-gradient(135deg, rgba(127, 193, 255, 0.1), rgba(59, 121, 214, 0.1));
+            object-fit: cover;
         }
 
         .lesson-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            border-color: rgba(127, 193, 255, 0.8);
         }
 
         .code-image {
-            max-width: 640px;
+            max-width: 900px;
+            min-height: 500px;
+        }
+
+        .overview-image {
+            max-width: 850px;
+            min-height: 450px;
+        }
+
+        .diagram-image {
+            max-width: 750px;
+            min-height: 400px;
         }
 
         ul, ol {
@@ -398,10 +1095,6 @@
 <body>
     <header>
         <img src="logo.png" alt="MOKSHA STUDIOS Logo" class="header-logo">
-        <div class="header-text">
-            <h1>Web3 Odyssey</h1>
-            <p>Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</p>
-        </div>
     </header>
 
     <main>
@@ -409,9 +1102,9 @@
 
         <!-- Section 1: Lesson Overview -->
         <section id="lesson-overview">
-            <img src="img1.png" alt="Lesson Overview" class="lesson-image">
+            <img src="img1.png" alt="Comprehensive Lesson Overview - Web3 Cryptography Fundamentals" class="lesson-image overview-image">
             
-            <h2><span class="emoji">🎯</span>Lesson Overview</h2>
+            <h2><span class="emoji">🎯</span>Comprehensive Lesson Overview</h2>
             
             <p>Welcome to the first foundational lesson of the Web3 Odyssey course! In this comprehensive exploration, we will dive deep into the cryptographic principles that form the bedrock of blockchain technology and decentralized systems. Cryptography is not merely a theoretical concept—it is the invisible force that secures our digital transactions, protects our privacy, and enables trust in trustless environments.</p>
 
@@ -546,9 +1239,9 @@
 
         <!-- Section 2: Symmetric Cryptography -->
         <section id="symmetric-cryptography">
-            <img src="img2.png" alt="Symmetric Cryptography Fundamentals" class="lesson-image">
+            <img src="img2.png" alt="Symmetric Cryptography Architecture and Implementation" class="lesson-image diagram-image">
             
-            <h2><span class="emoji">🔑</span>Symmetric Cryptography</h2>
+            <h2><span class="emoji">🔑</span>Symmetric Cryptography: The Foundation of Secure Communication</h2>
             
             <h3>Fundamental Principles and Theory</h3>
             
@@ -609,7 +1302,7 @@ const decrypted = caesarEncrypt(encrypted, -3); // "HELLO WORLD"</code></pre>
 
             <p>AES operates on 128-bit blocks and supports key sizes of 128, 192, and 256 bits, corresponding to AES-128, AES-192, and AES-256 respectively. The algorithm's strength lies in its mathematical foundation based on finite field arithmetic and its resistance to known cryptanalytic attacks.</p>
 
-            <img src="img3.png" alt="AES Implementation Example" class="lesson-image code-image">
+            <img src="img3.png" alt="Advanced AES Implementation and Code Structure Analysis" class="lesson-image code-image">
 
             <h5>AES Algorithm Structure</h5>
             
@@ -697,6 +1390,10 @@ class AESEncryption {
 
 // Practical usage example
 const aes = new AESEncryption();
+
+// Method 1: Using random key
+const randomKey = aes.generateKey();
+const sensitiveData = "User private key: 0x1a2b3c4d5e6
 
 // Method 1: Using random key
 const randomKey = aes.generateKey();
