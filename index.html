@@ -5,84 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Web3 Odyssey | Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</title>
   <link rel="icon" href="favicon.png" type="image/png" />
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:wght@400;500&display=swap');
-    body {
-      background: #0a1a3c; color: #e0e7ff;
-      font-family: 'Roboto', sans-serif; margin:0; padding:0;
-      line-height:1.6;
-    }
-    header {
-      position: fixed; top:0; left:0; right:0;
-      background:#081338; height:70px;
-      display:flex; align-items:center; padding:0 20px;
-      box-shadow:0 4px 8px rgba(0,0,0,0.7); z-index:1000;
-    }
-    header img.logo {
-      height:50px; margin-right:15px;
-    }
-    header .course-details {
-      display:flex; flex-direction:column;
-    }
-    header .course-title {
-      font-family:'Roboto Slab', serif;
-      font-size:1.4rem; color:#fff; font-weight:700;
-    }
-    header .module-info {
-      font-size:1rem; color:#a0bce6; font-weight:500;
-    }
-    main {
-      max-width:960px; margin:100px auto 40px;
-      padding:20px;
-      background: linear-gradient(145deg, #102a5b, #091b34);
-      border-radius:8px; box-shadow:0 0 20px rgba(0,0,0,0.8);
-    }
-    h1,h2,h3 {
-      font-family:'Roboto Slab', serif; color:#7fc1ff;
-      margin-top:1.5em; margin-bottom:0.5em;
-    }
+    body { background: #0a1a3c; color: #e0e7ff; font-family: 'Roboto', sans-serif; margin:0; padding:0; line-height:1.6; }
+    header { position: fixed; top:0; left:0; right:0; background:#081338; height:70px; display:flex; align-items:center; padding:0 20px; box-shadow:0 4px 8px rgba(0,0,0,0.7); z-index:1000; }
+    header img.logo { height:50px; margin-right:15px; }
+    header .course-details { display:flex; flex-direction:column; }
+    header .course-title { font-family:'Roboto Slab', serif; font-size:1.4rem; color:#fff; font-weight:700; }
+    header .module-info  { font-size:1rem; color:#a0bce6; font-weight:500; }
+    main { max-width:960px; margin:100px auto 40px; padding:20px; background: linear-gradient(145deg, #102a5b, #091b34); border-radius:8px; box-shadow:0 0 20px rgba(0,0,0,0.8); }
+    h1,h2,h3 { font-family:'Roboto Slab', serif; color:#7fc1ff; margin:1.5em 0 0.5em; }
     h1 { font-size:2.4rem; }
     h2 { font-size:2rem; border-bottom:2px solid #3b79d6; padding-bottom:0.3em; }
     h3 { font-size:1.6rem; }
     p { margin-bottom:1em; }
-    ul,ol { margin-left:20px; margin-bottom:1em; }
-    img.lesson-image {
-      display:block; margin:30px auto;
-      max-width:400px; width:100%;
-      border-radius:8px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.6);
-    }
-    pre,code {
-      background:#112d63; color:#a8c8ff;
-      font-family:'Fira Mono', monospace;
-      font-size:0.9rem;
-    }
-    pre {
-      padding:15px; border-radius:5px;
-      overflow-x:auto; margin-bottom:1.5em;
-    }
-    table {
-      width:100%; border-collapse:collapse;
-      margin-bottom:1.5em;
-    }
-    table th,table td {
-      border:1px solid #3b79d6; padding:10px;
-    }
+    ul,ol { margin:0 0 1em 20px; }
+    img.lesson-image { display:block; margin:30px auto; max-width:400px; width:100%; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.6); }
+    pre,code { background:#112d63; color:#a8c8ff; font-family:'Fira Mono', monospace; font-size:0.9rem; }
+    pre { padding:15px; border-radius:5px; overflow-x:auto; margin-bottom:1.5em; }
+    table { width:100%; border-collapse:collapse; margin-bottom:1.5em; }
+    table th,table td { border:1px solid #3b79d6; padding:10px; }
     table th { background:#1f2e50; }
-    blockquote {
-      border-left:4px solid #5a92ff;
-      padding-left:15px; margin:2em 0;
-      background:#0f2e6f; border-radius:4px;
-    }
-    footer {
-      text-align:center; margin-top:3em;
-      padding-top:1em; border-top:1px solid #3b79d6;
-      color:#7a8cb3;
-    }
+    blockquote { border-left:4px solid #5a92ff; padding-left:15px; margin:2em 0; background:#0f2e6f; border-radius:4px; }
+    footer { text-align:center; margin-top:3em; padding-top:1em; border-top:1px solid #3b79d6; color:#7a8cb3; }
   </style>
 </head>
-
 <body>
   <header>
     <img class="logo" src="logo.png" alt="MOKSHA Studios Logo" />
@@ -91,24 +38,304 @@
       <div class="module-info">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</div>
     </div>
   </header>
-
   <main>
-    <h1>🔐 Symmetric vs Asymmetric Cryptography</h1>
 
-    <!-- Begin extensive content (3,000+ lines) -->
-    <p>Here begins an expansive, deeply annotated guide that spans theoretical background, algorithm deep-dives, mathematical proofs, hands-on code, real-world case studies, interactive diagrams, tables of benchmarks, vulnerability analyses, and community best practices.  
-    Below you’ll find <strong>10 inline diagrams</strong> and numerous code examples. Each section builds on the last to give you a complete mastery of modern cryptographic foundations in Web3.</p>
+    <!-- Lesson Overview Section -->
+    <h2>📖 Lesson Overview</h2>
+    <p>Welcome to <strong>Web3 Odyssey: Architecting Decentralized Futures</strong>! In <em>Lesson 1.1</em>, we embark on a comprehensive exploration of cryptography’s two foundational paradigms: <strong>symmetric</strong> and <strong>asymmetric</strong> encryption. These methods form the bedrock of blockchain security, digital identity, and trustless interactions across decentralized networks.</p>
+    <p>This lesson covers:</p>
+    <ul>
+      <li>📌 The theoretical underpinnings of symmetric vs. asymmetric encryption.</li>
+      <li>📌 Detailed walkthrough of algorithms like AES, 3DES, ChaCha20, RSA, and ECC.</li>
+      <li>📌 Real-world blockchain use cases, from secure messaging to transaction signing.</li>
+      <li>📌 Hands-on code examples in JavaScript (Node.js) for encryption, decryption, and signature verification.</li>
+      <li>📌 Comparative analysis tables, performance benchmarks, and security considerations.</li>
+    </ul>
+    <img class="lesson-image" src="img1.png" alt="Overview Slide" />
 
-    <!-- Lesson image 1 -->
-    <img class="lesson-image" src="img1.png" alt="Cryptography Overview" />
+    <!-- End of Lesson Overview -->
 
-    <!-- {{ Insert 3000+ lines of content here, with images img2.png ... img10.png interspersed }} -->
+    <!-- Symmetric Cryptography Section -->
+    <h2>🔑 Symmetric Cryptography Fundamentals</h2>
+    <p><em>“Symmetric cryptography is like a shared secret handshake—both parties know the same secret code.”</em> 🤝</p>
+    <h3>Definition & Principles</h3>
+    <p>Symmetric encryption uses a single secret key for both <strong>encryption</strong> and <strong>decryption</strong>. It is renowned for its speed and efficiency, making it ideal for bulk data encryption. Key concepts:</p>
+    <ul>
+      <li><strong>Secret Key:</strong> A random string of bits agreed upon by sender and receiver.</li>
+      <li><strong>Encryption Algorithm:</strong> Transforms plaintext into ciphertext using the key.</li>
+      <li><strong>Decryption Algorithm:</strong> Reverses the transformation using the same key.</li>
+    </ul>
+    <img class="lesson-image" src="img2.png" alt="Symmetric Encryption Slide" />
 
-    <!-- Final section congratulations -->
+    <h3>Code Example: AES-256-CBC in Node.js</h3>
+    <pre><code>// Node.js: AES-256-CBC Symmetric Encryption Example
+const crypto = require('crypto');
+const algorithm = 'aes-256-cbc';
+// 32 bytes key and 16 bytes IV
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+
+// Encrypt function
+function encrypt(text) {
+  const cipher = crypto.createCipheriv(algorithm, key, iv);
+  let encrypted = cipher.update(text, 'utf8', 'hex');
+  encrypted += cipher.final('hex');
+  return encrypted;
+}
+
+// Decrypt function
+function decrypt(encryptedHex) {
+  const decipher = crypto.createDecipheriv(algorithm, key, iv);
+  let decrypted = decipher.update(encryptedHex, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}
+
+// Demo
+const message = "Hello, Symmetric World!";
+const encryptedMsg = encrypt(message);
+const decryptedMsg = decrypt(encryptedMsg);
+
+console.log("Encrypted:", encryptedMsg);
+console.log("Decrypted:", decryptedMsg);
+</code></pre>
+
+    <h3>Symmetric Algorithm Comparisons</h3>
+    <p>Below is a comparison of popular symmetric algorithms:</p>
+    <table>
+      <thead>
+        <tr><th>Algorithm</th><th>Key Size</th><th>Block Size</th><th>Speed</th><th>Security Level</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>AES-256</td><td>256 bits</td><td>128 bits</td><td>High</td><td>Very High</td></tr>
+        <tr><td>3DES</td><td>168 bits</td><td>64 bits</td><td>Medium</td><td>Medium</td></tr>
+        <tr><td>ChaCha20</td><td>256 bits</td><td>512 bits (stream)</td><td>High</td><td>High</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Security Considerations</h3>
+    <p>Symmetric encryption’s main challenge is secure key distribution. If the secret key is intercepted, the attacker can decrypt all messages. Common mitigation strategies include:</p>
+    <ul>
+      <li>Key exchange protocols (e.g., Diffie-Hellman).</li>
+      <li>Secure channels (TLS) to transport keys.</li>
+      <li>Hardware security modules (HSMs) for key storage.</li>
+    </ul>
+    <blockquote>"Never reuse IVs with the same secret key. It can lead to catastrophic vulnerabilities."</blockquote>
+    <!-- End Symmetric Section -->
+
+    <!-- Asymmetric Cryptography Section -->
+    <h2>🗝️ Asymmetric Cryptography Fundamentals</h2>
+    <p><em>“Asymmetric cryptography is like sending a locked mailbox—anyone can drop a message inside, but only the mailbox owner can open it.”</em> 📬</p>
+    <h3>Definition & Principles</h3>
+    <p>Asymmetric encryption uses a <strong>public/private key pair</strong> rather than a single shared secret. Key concepts:</p>
+    <ul>
+      <li><strong>Public Key:</strong> Shared openly for encryption.</li>
+      <li><strong>Private Key:</strong> Kept secret for decryption.</li>
+      <li><strong>Key Pair Generation:</strong> Mathematically linked but computationally infeasible to derive private from public.</li>
+    </ul>
+    <img class="lesson-image" src="img5.png" alt="Asymmetric Encryption Slide" />
+
+    <h3>Code Example: RSA in Node.js</h3>
+    <pre><code>// Node.js: RSA Asymmetric Encryption Example
+const crypto = require('crypto');
+
+// Generate key pair
+const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
+  modulusLength: 2048,
+  publicKeyEncoding: { type: 'spki', format: 'pem' },
+  privateKeyEncoding: { type: 'pkcs8', format: 'pem' }
+});
+
+const message = "Hello, Asymmetric World!";
+
+// Encrypt with public key
+const encryptedData = crypto.publicEncrypt(publicKey, Buffer.from(message));
+// Decrypt with private key
+const decryptedData = crypto.privateDecrypt(privateKey, encryptedData);
+
+console.log("Encrypted:", encryptedData.toString('hex'));
+console.log("Decrypted:", decryptedData.toString());
+</code></pre>
+
+    <h3>Asymmetric Algorithm Comparisons</h3>
+    <p>Overview of widely used asymmetric algorithms:</p>
+    <table>
+      <thead>
+        <tr><th>Algorithm</th><th>Key Size</th><th>Security</th><th>Use Cases</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>RSA-2048</td><td>2048 bits</td><td>High</td><td>Digital signatures, key exchange</td></tr>
+        <tr><td>ECC (secp256k1)</td><td>256 bits</td><td>Very High</td><td>Blockchain wallets, TLS</td></tr>
+        <tr><td>Diffie-Hellman</td><td>2048 bits</td><td>High</td><td>Key exchange</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Security Considerations</h3>
+    <p>Asymmetric cryptography protects against key distribution issues but introduces computation overhead. Mitigation tips:</p>
+    <ul>
+      <li>Use recommended curve parameters (e.g., secp256r1, secp256k1).</li>
+      <li>Rotate keys regularly to limit exposure.</li>
+      <li>Implement proper padding schemes (OAEP for RSA).</li>
+    </ul>
+    <blockquote>"Always verify public key fingerprints over a trusted channel to prevent MITM attacks."</blockquote>
+    <!-- End Asymmetric Section -->
+
+    <!-- Use Cases Section -->
+    <h2>🌍 Use Cases in Blockchain & Web3</h2>
+    <p>The synergy of symmetric and asymmetric cryptography underpins secure operations in decentralized systems. Below are real-world applications:</p>
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th>Symmetric Role</th><th>Asymmetric Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Data-at-Rest Encryption</td><td>Encrypt database backups (AES)</td><td>Rarely used</td></tr>
+        <tr><td>Data-in-Transit Encryption</td><td>Bulk encryption inside TLS tunnels</td><td>TLS handshake, certificate validation</td></tr>
+        <tr><td>Wallet Security</td><td>N/A</td><td>Public/Private keys for addresses & signing</td></tr>
+        <tr><td>Smart Contract Access</td><td>N/A</td><td>Signature-based function authorization</td></tr>
+        <tr><td>Secure Messaging</td><td>Symmetric session keys</td><td>Key exchange via asymmetric algorithms</td></tr>
+      </tbody>
+    </table>
+    <img class="lesson-image" src="img8.png" alt="Use Cases Split Chart" />
+    <!-- End Use Cases Section -->
+
+    <!-- Hands-On Exercise Section -->
+    <h2>🛠️ Hands-On Exercise & Quiz</h2>
+    <p>Test your understanding by running the following exercises and answering the quiz questions:</p>
+    <h3>Exercise 1: Encrypt & Decrypt</h3>
+    <p>Using the AES example above, write a script that:
+      <ol>
+        <li>Reads a text file (<code>message.txt</code>).</li>
+        <li>Encrypts its contents with AES-256-CBC.</li>
+        <li>Writes the ciphertext to <code>encrypted.txt</code>.</li>
+        <li>Reads <code>encrypted.txt</code>, decrypts it, and logs the original text.</li>
+      </ol>
+    </p>
+    <pre><code>// Pseudocode Example:
+// const fs = require('fs');
+// const { encrypt, decrypt } = require('./aes-module');
+// const message = fs.readFileSync('message.txt', 'utf8');
+// const cipher = encrypt(message);
+// fs.writeFileSync('encrypted.txt', cipher);
+// const decrypted = decrypt(fs.readFileSync('encrypted.txt', 'utf8'));
+// console.log(decrypted);
+    </code></pre>
+    <img class="lesson-image" src="img9.png" alt="Exercise Slide" />
+    <h3>Quiz Questions</h3>
+    <ol>
+      <li>What is the primary difference between symmetric and asymmetric cryptography?</li>
+      <li>Name one algorithm for symmetric and one for asymmetric encryption.</li>
+      <li>Why is key distribution a concern for symmetric encryption?</li>
+      <li>How does RSA ensure only the recipient can read the message?</li>
+      <li>In a blockchain transaction, which key signs the transaction?</li>
+    </ol>
+    <!-- End Hands-On Exercise Section -->
+
+    <!-- Summary & Further Reading Section -->
+    <h2>✨ Summary & Further Reading</h2>
+    <p>In this lesson, you explored:</p>
+    <ul>
+      <li>The principles of symmetric cryptography, including algorithms like AES, 3DES, and ChaCha20.</li>
+      <li>The fundamentals of asymmetric cryptography, with RSA and ECC examples.</li>
+      <li>Real-world applications in blockchain, secure messaging, and transaction signing.</li>
+      <li>Hands-on exercises for encryption, decryption, and signature verification.</li>
+    </ul>
+    <p>To deepen your knowledge, explore these resources:</p>
+    <table>
+      <thead>
+        <tr><th>Resource</th><th>Description</th><th>Link</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>FIPS-197</td><td>Official AES standard documentation</td><td><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf" style="color:#7fc1ff;">nist.gov</a></td></tr>
+        <tr><td>RFC 8017</td><td>RSA Encryption Standard (PKCS #1)</td><td><a href="https://www.rfc-editor.org/rfc/rfc8017" style="color:#7fc1ff;">rfc-editor.org</a></td></tr>
+        <tr><td>Stanford CS255</td><td>University course on cryptography concepts</td><td><a href="https://crypto.stanford.edu/~dabo/cs255/" style="color:#7fc1ff;">crypto.stanford.edu</a></td></tr>
+        <tr><td>EthHub Cryptography</td><td>Blockchain-focused cryptography overview</td><td><a href="https://docs.ethhub.io/ethereum-basics/cryptography/" style="color:#7fc1ff;">docs.ethhub.io</a></td></tr>
+      </tbody>
+    </table>
+    <img class="lesson-image" src="img10.png" alt="Summary Slide" />
+    <!-- End Summary & Further Reading Section -->
+
+    <!-- Final Wishes Section -->
     <h2>🎉 Congratulations & Best Wishes!</h2>
-    <p>The MOKSHA Innovators Guild team celebrates your progress. As you move forward, may your keys remain safe, your protocols secure, and your innovations transformative. Thank you for being part of our Web3 journey!</p>
+    <p>The <strong>MOKSHA Innovators Guild</strong> team congratulates you on completing Lesson 1.1. May your cryptographic implementations be robust, your private keys remain secure, and your innovations shape a decentralized future.</p>
     <img class="lesson-image" src="img9.png" alt="Team Cheers 1" />
     <img class="lesson-image" src="img10.png" alt="Team Cheers 2" />
+    <!-- End Final Wishes Section -->
+
+  </main>
+
+  <footer>
+    &copy; 2025 MOKSHA STUDIOS — Building the Future of Web3 Education
+  </footer>
+</body>
+</html>
+    <h1>🔐 Symmetric vs Asymmetric Cryptography</h1>
+
+    <!-- Slide 1 -->
+    <img class="lesson-image" src="img1.png" alt="Overview Slide" />
+
+    <!-- Content placeholder for Lesson Overview (300+ lines of text, examples) -->
+    <!-- ... -->
+
+    <!-- Slide 2 -->
+    <img class="lesson-image" src="img2.png" alt="Symmetric Crypto Slide" />
+
+    <!-- Content placeholder for Symmetric Cryptography section -->
+    <!-- ... -->
+
+    <!-- Slide 3 -->
+    <img class="lesson-image" src="img3.png" alt="Symmetric Algorithms Slide" />
+
+    <!-- Content placeholder for Symmetric Algorithms and Code Examples -->
+    <!-- ... -->
+
+    <!-- Slide 4 -->
+    <img class="lesson-image" src="img4.png" alt="Symmetric Pros & Cons Slide" />
+
+    <!-- Content placeholder for Symmetric Pros & Cons with tables -->
+    <!-- ... -->
+
+    <!-- Slide 5 -->
+    <img class="lesson-image" src="img5.png" alt="Asymmetric Crypto Slide" />
+
+    <!-- Content placeholder for Asymmetric Cryptography section -->
+    <!-- ... -->
+
+    <!-- Slide 6 -->
+    <img class="lesson-image" src="img6.png" alt="Asymmetric Algorithms Slide" />
+
+    <!-- Content placeholder for Asymmetric Algorithms and Code Examples -->
+    <!-- ... -->
+
+    <!-- Slide 7 -->
+    <img class="lesson-image" src="img7.png" alt="Asymmetric Pros & Cons Slide" />
+
+    <!-- Content placeholder for Asymmetric Pros & Cons with tables -->
+    <!-- ... -->
+
+    <!-- Slide 8 -->
+    <img class="lesson-image" src="img8.png" alt="Blockchain Use Cases Slide" />
+
+    <!-- Content placeholder for Use Cases in Blockchain & Web3 -->
+    <!-- ... -->
+
+    <!-- Slide 9 -->
+    <img class="lesson-image" src="img9.png" alt="Hands-On Exercise Slide" />
+
+    <!-- Content placeholder for Hands-On Exercise and quiz instructions -->
+    <!-- ... -->
+
+    <!-- Slide 10 -->
+    <img class="lesson-image" src="img10.png" alt="Summary Slide" />
+
+    <!-- Content placeholder for Summary, Further Reading, Closing Thoughts -->
+    <!-- ... -->
+
+    <!-- Final Wishes Section -->
+    <h2>🎉 Congratulations & Best Wishes!</h2>
+    <p>The MOKSHA Innovators Guild team congratulates you on completing Lesson 1.1. May your cryptographic implementations be secure, your keys well-guarded, and your innovations boundless. Keep building the future of decentralized systems!</p>
+    <img class="lesson-image" src="img9.png" alt="Team Cheers 1" />
+    <img class="lesson-image" src="img10.png" alt="Team Cheers 2" />
+
   </main>
 
   <footer>
