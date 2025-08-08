@@ -1,12 +1,4 @@
-I'll create a comprehensive, self-contained HTML5 page for the Web3 Odyssey lesson on Symmetric vs Asymmetric Cryptography. Let me start by exploring the workspace structure to understand the current setup.
-
-Ran tool
-It seems I'm in the root directory. Let me check if there's a specific workspace or project directory I should be working in.
-
-Ran tool
-Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 Odyssey lesson. Since this will be placed in the GitHub repository, I'll create the complete self-contained HTML file with all the specifications you've outlined.
-
-Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmetric vs Asymmetric Cryptography":
+I'll fix the logo and favicon display issues and add more extensive code examples throughout the lesson. Here's the complete rewritten HTML with all the improvements:
 
 ```html
 <!DOCTYPE html>
@@ -15,7 +7,7 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web3 Odyssey - Module 1: Lesson 1.1 | Symmetric vs Asymmetric Cryptography</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="./favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -67,8 +59,10 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
 
         .logo {
             height: 60px;
-            width: auto;
+            width: 60px;
+            object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+            border-radius: 8px;
         }
 
         .header-text {
@@ -90,6 +84,33 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
             font-size: 0.9rem;
             color: var(--text-secondary);
             font-weight: 400;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: var(--text-secondary);
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
 
         /* Main Container */
@@ -264,6 +285,24 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
             border-left: 3px solid var(--accent-cyan);
         }
 
+        /* Info Tags */
+        .info-tags {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .info-tag {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: var(--accent-cyan);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -310,6 +349,17 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
             th, td {
                 padding: 10px;
             }
+
+            .nav-buttons {
+                flex-direction: row;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+
+            .nav-btn {
+                white-space: nowrap;
+                min-width: 120px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -349,37 +399,56 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="logo.png" alt="MOKSHA Innovators Guild" class="logo">
+        <img src="./logo.png" alt="MOKSHA Innovators Guild" class="logo">
         <div class="header-text">
             <div class="header-title">Web3 Odyssey</div>
             <div class="header-subtitle">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</div>
+            <div class="nav-buttons">
+                <a href="#intro" class="nav-btn">Intro</a>
+                <a href="#symmetric-theory" class="nav-btn">Symmetric Theory</a>
+                <a href="#symmetric-code" class="nav-btn">Symmetric Code</a>
+                <a href="#symmetric-pros-cons" class="nav-btn">Symmetric Pros/Cons</a>
+                <a href="#asymmetric-theory" class="nav-btn">Asymmetric Theory</a>
+                <a href="#asymmetric-code" class="nav-btn">Asymmetric Code</a>
+                <a href="#asymmetric-pros-cons" class="nav-btn">Asym. Pros/Cons</a>
+                <a href="#web3-use-cases" class="nav-btn">Web3 Use Cases</a>
+                <a href="#exercise-quiz" class="nav-btn">Exercise + Quiz</a>
+                <a href="#summary" class="nav-btn">Summary</a>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
     <div class="main-container">
         <!-- Lesson Introduction -->
-        <h1>🔐 Symmetric vs Asymmetric Cryptography</h1>
+        <h1 id="intro">🔐 Symmetric vs Asymmetric Cryptography</h1>
         
         <p>Welcome to the foundational lesson of Web3 Odyssey! In this comprehensive exploration, we'll dive deep into the two fundamental approaches to cryptography that power the entire Web3 ecosystem. Understanding the difference between symmetric and asymmetric cryptography is crucial for anyone serious about blockchain development, smart contract security, and decentralized applications.</p>
 
+        <div class="info-tags">
+            <span class="info-tag">Intermediate → Advanced</span>
+            <span class="info-tag">Node.js Examples</span>
+            <span class="info-tag">Approx. 45-60 min</span>
+        </div>
+
         <blockquote>
-            "Cryptography is the foundation upon which the entire Web3 ecosystem is built. Without it, there would be no secure transactions, no digital signatures, and no trust in the decentralized world." — MOKSHA Innovators Guild
+            "In Web3, keys are identity and signatures are programmable truth. Choose primitives that scale cryptographic trust—not just throughput." — MOKSHA Innovators Guild
         </blockquote>
 
         <h2>🎯 Learning Objectives</h2>
         <p>By the end of this lesson, you will be able to:</p>
         <ul>
             <li>Understand the fundamental differences between symmetric and asymmetric cryptography</li>
-            <li>Implement both encryption methods using Node.js</li>
+            <li>Implement both encryption methods using Node.js with production-ready code</li>
             <li>Analyze real-world Web3 use cases for each approach</li>
             <li>Evaluate security trade-offs and performance considerations</li>
             <li>Apply cryptographic principles to smart contract development</li>
+            <li>Build secure communication systems using hybrid cryptography</li>
         </ul>
 
         <!-- Slide 1: Introduction to Cryptography -->
-        <h2>📚 Slide 1: The Foundation of Digital Security</h2>
-        <img src="img1.png" alt="Cryptography Foundation" class="slide-image">
+        <h2 id="symmetric-theory">📚 Slide 1: The Foundation of Digital Security</h2>
+        <img src="./img1.png" alt="Cryptography Foundation" class="slide-image">
         
         <p>Cryptography is the science of secure communication in the presence of adversaries. It's the mathematical foundation that enables trust in the digital world. In Web3, cryptography is not just a tool—it's the very fabric that holds the decentralized ecosystem together.</p>
 
@@ -394,7 +463,7 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
 
         <!-- Slide 2: Symmetric Encryption Theory -->
         <h2>�� Slide 2: Symmetric Encryption - The Shared Secret</h2>
-        <img src="img2.png" alt="Symmetric Encryption" class="slide-image">
+        <img src="./img2.png" alt="Symmetric Encryption" class="slide-image">
         
         <p>Symmetric encryption, also known as secret-key encryption, uses the same key for both encryption and decryption. This approach is like having a single key that both locks and unlocks a treasure chest. The key must be kept secret and shared securely between the communicating parties.</p>
 
@@ -409,31 +478,43 @@ Here's the complete HTML5 page for "Web3 Odyssey – Module 1: Lesson 1.1 Symmet
         <p>The strength of symmetric encryption lies in its simplicity and speed. Since the same key is used for both operations, the computational overhead is minimal, making it ideal for encrypting large amounts of data efficiently.</p>
 
         <!-- Slide 3: Symmetric Encryption Code Example -->
-        <h2>💻 Slide 3: Implementing Symmetric Encryption in Node.js</h2>
-        <img src="img3.png" alt="Symmetric Code Example" class="slide-image">
+        <h2 id="symmetric-code">💻 Slide 3: Implementing Symmetric Encryption in Node.js</h2>
+        <img src="./img3.png" alt="Symmetric Code Example" class="slide-image">
         
-        <p>Let's implement AES-256-GCM symmetric encryption using Node.js. This example demonstrates how to encrypt and decrypt data with authentication, ensuring both confidentiality and integrity.</p>
+        <p>Let's implement a comprehensive symmetric encryption system using Node.js. This example demonstrates multiple algorithms, proper key management, and security best practices.</p>
 
         <pre><code>const crypto = require('crypto');
 
 class SymmetricEncryption {
     constructor() {
-        this.algorithm = 'aes-256-gcm';
+        this.algorithms = {
+            aes256gcm: 'aes-256-gcm',
+            aes256cbc: 'aes-256-cbc',
+            chacha20: 'chacha20-poly1305'
+        };
         this.keyLength = 32; // 256 bits
         this.ivLength = 16;  // 128 bits
         this.tagLength = 16; // 128 bits
     }
 
-    // Generate a random encryption key
-    generateKey() {
+    // Generate cryptographically secure random key
+    generateKey(algorithm = 'aes256gcm') {
         return crypto.randomBytes(this.keyLength);
     }
 
-    // Encrypt data using AES-256-GCM
-    encrypt(plaintext, key) {
-        const iv = crypto.randomBytes(this.ivLength);
-        const cipher = crypto.createCipher(this.algorithm, key);
-        cipher.setAAD(Buffer.from('web3-odyssey', 'utf8')); // Additional authenticated data
+    // Generate random IV (Initialization Vector)
+    generateIV() {
+        return crypto.randomBytes(this.ivLength);
+    }
+
+    // Encrypt data using AES-256-GCM (Authenticated Encryption)
+    encryptAESGCM(plaintext, key, additionalData = '') {
+        const iv = this.generateIV();
+        const cipher = crypto.createCipher(this.algorithms.aes256gcm, key);
+        
+        if (additionalData) {
+            cipher.setAAD(Buffer.from(additionalData, 'utf8'));
+        }
         
         let encrypted = cipher.update(plaintext, 'utf8', 'hex');
         encrypted += cipher.final('hex');
@@ -441,17 +522,22 @@ class SymmetricEncryption {
         const tag = cipher.getAuthTag();
         
         return {
+            algorithm: this.algorithms.aes256gcm,
             encrypted: encrypted,
             iv: iv.toString('hex'),
             tag: tag.toString('hex'),
-            algorithm: this.algorithm
+            additionalData: additionalData
         };
     }
 
     // Decrypt data using AES-256-GCM
-    decrypt(encryptedData, key) {
-        const decipher = crypto.createDecipher(this.algorithm, key);
-        decipher.setAAD(Buffer.from('web3-odyssey', 'utf8'));
+    decryptAESGCM(encryptedData, key) {
+        const decipher = crypto.createDecipher(this.algorithms.aes256gcm, key);
+        
+        if (encryptedData.additionalData) {
+            decipher.setAAD(Buffer.from(encryptedData.additionalData, 'utf8'));
+        }
+        
         decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
         
         let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
@@ -459,26 +545,177 @@ class SymmetricEncryption {
         
         return decrypted;
     }
+
+    // Encrypt data using AES-256-CBC (Legacy support)
+    encryptAESCBC(plaintext, key) {
+        const iv = this.generateIV();
+        const cipher = crypto.createCipher(this.algorithms.aes256cbc, key);
+        
+        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        
+        return {
+            algorithm: this.algorithms.aes256cbc,
+            encrypted: encrypted,
+            iv: iv.toString('hex')
+        };
+    }
+
+    // Decrypt data using AES-256-CBC
+    decryptAESCBC(encryptedData, key) {
+        const decipher = crypto.createDecipher(this.algorithms.aes256cbc, key);
+        
+        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        
+        return decrypted;
+    }
+
+    // Encrypt data using ChaCha20-Poly1305 (Modern stream cipher)
+    encryptChaCha20(plaintext, key) {
+        const iv = crypto.randomBytes(12); // ChaCha20 uses 12-byte nonce
+        const cipher = crypto.createCipher(this.algorithms.chacha20, key);
+        
+        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        
+        const tag = cipher.getAuthTag();
+        
+        return {
+            algorithm: this.algorithms.chacha20,
+            encrypted: encrypted,
+            nonce: iv.toString('hex'),
+            tag: tag.toString('hex')
+        };
+    }
+
+    // Decrypt data using ChaCha20-Poly1305
+    decryptChaCha20(encryptedData, key) {
+        const decipher = crypto.createDecipher(this.algorithms.chacha20, key);
+        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
+        
+        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        
+        return decrypted;
+    }
+
+    // Key derivation using PBKDF2 (Password-Based Key Derivation)
+    deriveKeyFromPassword(password, salt, iterations = 100000) {
+        return crypto.pbkdf2Sync(password, salt, iterations, this.keyLength, 'sha256');
+    }
+
+    // Secure key storage (encrypt key with master key)
+    encryptKey(keyToEncrypt, masterKey) {
+        return this.encryptAESGCM(keyToEncrypt.toString('hex'), masterKey, 'key-encryption');
+    }
+
+    // Secure key retrieval
+    decryptKey(encryptedKey, masterKey) {
+        const decrypted = this.decryptAESGCM(encryptedKey, masterKey);
+        return Buffer.from(decrypted, 'hex');
+    }
 }
 
-// Usage example
-const crypto = new SymmetricEncryption();
-const secretKey = crypto.generateKey();
-const message = "Hello, Web3 World!";
+// Advanced usage example with multiple algorithms
+async function demonstrateSymmetricEncryption() {
+    const crypto = new SymmetricEncryption();
+    
+    // Generate keys
+    const aesKey = crypto.generateKey('aes256gcm');
+    const chachaKey = crypto.generateKey('chacha20');
+    const masterKey = crypto.generateKey('aes256gcm');
+    
+    const messages = [
+        "Hello, Web3 World!",
+        "This is a secure message for blockchain applications.",
+        "Cryptography is the foundation of trust in decentralized systems."
+    ];
+    
+    console.log("=== Symmetric Encryption Demonstration ===\n");
+    
+    // Test AES-256-GCM
+    console.log("1. AES-256-GCM (Authenticated Encryption):");
+    for (let i = 0; i < messages.length; i++) {
+        const encrypted = crypto.encryptAESGCM(messages[i], aesKey, `message-${i}`);
+        console.log(`   Message ${i + 1}: ${messages[i]}`);
+        console.log(`   Encrypted: ${encrypted.encrypted.substring(0, 32)}...`);
+        
+        const decrypted = crypto.decryptAESGCM(encrypted, aesKey);
+        console.log(`   Decrypted: ${decrypted}`);
+        console.log(`   Integrity: ${decrypted === messages[i] ? '✓ Verified' : '✗ Failed'}\n`);
+    }
+    
+    // Test ChaCha20-Poly1305
+    console.log("2. ChaCha20-Poly1305 (Modern Stream Cipher):");
+    const chachaEncrypted = crypto.encryptChaCha20(messages[0], chachaKey);
+    console.log(`   Original: ${messages[0]}`);
+    console.log(`   Encrypted: ${chachaEncrypted.encrypted.substring(0, 32)}...`);
+    
+    const chachaDecrypted = crypto.decryptChaCha20(chachaEncrypted, chachaKey);
+    console.log(`   Decrypted: ${chachaDecrypted}`);
+    console.log(`   Integrity: ${chachaDecrypted === messages[0] ? '✓ Verified' : '✗ Failed'}\n`);
+    
+    // Test key derivation
+    console.log("3. Key Derivation from Password:");
+    const password = "MySecurePassword123!";
+    const salt = crypto.randomBytes(16);
+    const derivedKey = crypto.deriveKeyFromPassword(password, salt);
+    console.log(`   Password: ${password}`);
+    console.log(`   Derived Key: ${derivedKey.toString('hex').substring(0, 32)}...\n`);
+    
+    // Test secure key storage
+    console.log("4. Secure Key Storage:");
+    const encryptedKey = crypto.encryptKey(aesKey, masterKey);
+    console.log(`   Original Key: ${aesKey.toString('hex').substring(0, 32)}...`);
+    console.log(`   Encrypted Key: ${encryptedKey.encrypted.substring(0, 32)}...`);
+    
+    const retrievedKey = crypto.decryptKey(encryptedKey, masterKey);
+    console.log(`   Retrieved Key: ${retrievedKey.toString('hex').substring(0, 32)}...`);
+    console.log(`   Key Integrity: ${aesKey.equals(retrievedKey) ? '✓ Verified' : '✗ Failed'}\n`);
+}
 
-console.log("Original message:", message);
+// Performance benchmarking
+function benchmarkAlgorithms() {
+    const crypto = new SymmetricEncryption();
+    const testData = "A".repeat(1000000); // 1MB of data
+    const iterations = 100;
+    
+    console.log("=== Performance Benchmark ===\n");
+    
+    // Benchmark AES-256-GCM
+    const aesKey = crypto.generateKey();
+    const aesStart = Date.now();
+    for (let i = 0; i < iterations; i++) {
+        const encrypted = crypto.encryptAESGCM(testData, aesKey);
+        crypto.decryptAESGCM(encrypted, aesKey);
+    }
+    const aesTime = Date.now() - aesStart;
+    
+    // Benchmark ChaCha20
+    const chachaKey = crypto.generateKey();
+    const chachaStart = Date.now();
+    for (let i = 0; i < iterations; i++) {
+        const encrypted = crypto.encryptChaCha20(testData, chachaKey);
+        crypto.decryptChaCha20(encrypted, chachaKey);
+    }
+    const chachaTime = Date.now() - chachaStart;
+    
+    console.log(`AES-256-GCM: ${aesTime}ms for ${iterations} iterations`);
+    console.log(`ChaCha20-Poly1305: ${chachaTime}ms for ${iterations} iterations`);
+    console.log(`Performance ratio: ${(aesTime / chachaTime).toFixed(2)}x\n`);
+}
 
-const encrypted = crypto.encrypt(message, secretKey);
-console.log("Encrypted data:", encrypted);
+// Run demonstrations
+demonstrateSymmetricEncryption().then(() => {
+    benchmarkAlgorithms();
+}).catch(console.error);</code></pre>
 
-const decrypted = crypto.decrypt(encrypted, secretKey);
-console.log("Decrypted message:", decrypted);</code></pre>
-
-        <p>This implementation uses AES-256-GCM, which provides both encryption and authentication. The GCM (Galois/Counter Mode) ensures that any tampering with the encrypted data will be detected during decryption.</p>
+        <p>This comprehensive implementation includes multiple algorithms, proper key management, performance benchmarking, and security best practices. The code demonstrates authenticated encryption, key derivation, and secure key storage techniques essential for Web3 applications.</p>
 
         <!-- Slide 4: Symmetric Encryption Pros & Cons -->
-        <h2>⚖️ Slide 4: Symmetric Encryption Analysis</h2>
-        <img src="img4.png" alt="Symmetric Analysis" class="slide-image">
+        <h2 id="symmetric-pros-cons">⚖️ Slide 4: Symmetric Encryption Analysis</h2>
+        <img src="./img4.png" alt="Symmetric Analysis" class="slide-image">
         
         <table>
             <thead>
@@ -527,8 +764,8 @@ console.log("Decrypted message:", decrypted);</code></pre>
         </div>
 
         <!-- Slide 5: Asymmetric Encryption Theory -->
-        <h2>🔐 Slide 5: Asymmetric Encryption - The Key Pair Revolution</h2>
-        <img src="img5.png" alt="Asymmetric Encryption" class="slide-image">
+        <h2 id="asymmetric-theory">🔐 Slide 5: Asymmetric Encryption - The Key Pair Revolution</h2>
+        <img src="./img5.png" alt="Asymmetric Encryption" class="slide-image">
         
         <p>Asymmetric encryption, also known as public-key cryptography, uses a pair of mathematically related keys: a public key for encryption and a private key for decryption. This revolutionary approach solves the key distribution problem that plagued symmetric encryption.</p>
 
@@ -543,26 +780,27 @@ console.log("Decrypted message:", decrypted);</code></pre>
         <p>In Web3, ECC is particularly important because it provides the same security level as RSA with much smaller key sizes, making it ideal for blockchain applications where efficiency is crucial.</p>
 
         <!-- Slide 6: Asymmetric Encryption Code Example -->
-        <h2>💻 Slide 6: Implementing Asymmetric Encryption in Node.js</h2>
-        <img src="img6.png" alt="Asymmetric Code Example" class="slide-image">
+        <h2 id="asymmetric-code">💻 Slide 6: Implementing Asymmetric Encryption in Node.js</h2>
+        <img src="./img6.png" alt="Asymmetric Code Example" class="slide-image">
         
-        <p>Let's implement RSA asymmetric encryption using Node.js. This example shows how to generate key pairs, encrypt data with a public key, and decrypt it with the corresponding private key.</p>
+        <p>Let's implement a comprehensive asymmetric encryption system using Node.js. This example covers RSA, ECC, digital signatures, and key management for Web3 applications.</p>
 
         <pre><code>const crypto = require('crypto');
+const secp256k1 = require('secp256k1'); // For ECC operations
 
 class AsymmetricEncryption {
     constructor() {
-        this.algorithm = 'rsa';
-        this.keySize = 2048;
-        this.encryptionScheme = 'oaep';
+        this.rsaKeySize = 2048;
+        this.eccCurve = 'secp256k1'; // Bitcoin/Ethereum curve
         this.hashAlgorithm = 'sha256';
+        this.encryptionScheme = 'oaep';
     }
 
     // Generate RSA key pair
-    generateKeyPair() {
+    generateRSAKeyPair() {
         return new Promise((resolve, reject) => {
-            crypto.generateKeyPair(this.algorithm, {
-                modulusLength: this.keySize,
+            crypto.generateKeyPair('rsa', {
+                modulusLength: this.rsaKeySize,
                 publicKeyEncoding: {
                     type: 'spki',
                     format: 'pem'
@@ -578,8 +816,23 @@ class AsymmetricEncryption {
         });
     }
 
-    // Encrypt data using public key
-    encrypt(plaintext, publicKey) {
+    // Generate ECC key pair (secp256k1 - Bitcoin/Ethereum compatible)
+    generateECCKeyPair() {
+        let privateKey;
+        do {
+            privateKey = crypto.randomBytes(32);
+        } while (!secp256k1.privateKeyVerify(privateKey));
+        
+        const publicKey = secp256k1.publicKeyCreate(privateKey);
+        
+        return {
+            privateKey: privateKey.toString('hex'),
+            publicKey: publicKey.toString('hex')
+        };
+    }
+
+    // Encrypt data using RSA public key
+    encryptRSA(plaintext, publicKey) {
         const buffer = Buffer.from(plaintext, 'utf8');
         const encrypted = crypto.publicEncrypt({
             key: publicKey,
@@ -590,8 +843,8 @@ class AsymmetricEncryption {
         return encrypted.toString('base64');
     }
 
-    // Decrypt data using private key
-    decrypt(encryptedData, privateKey) {
+    // Decrypt data using RSA private key
+    decryptRSA(encryptedData, privateKey) {
         const buffer = Buffer.from(encryptedData, 'base64');
         const decrypted = crypto.privateDecrypt({
             key: privateKey,
@@ -602,484 +855,212 @@ class AsymmetricEncryption {
         return decrypted.toString('utf8');
     }
 
-    // Create digital signature
-    sign(data, privateKey) {
+    // Encrypt data using ECC (ECDH + AES)
+    encryptECC(plaintext, recipientPublicKey, senderPrivateKey) {
+        // Generate ephemeral key pair for this encryption
+        const ephemeralKeyPair = this.generateECCKeyPair();
+        
+        // Perform ECDH key exchange
+        const sharedSecret = secp256k1.ecdh(
+            Buffer.from(recipientPublicKey, 'hex'),
+            Buffer.from(ephemeralKeyPair.privateKey, 'hex')
+        );
+        
+        // Use shared secret to derive AES key
+        const aesKey = crypto.createHash('sha256').update(sharedSecret).digest();
+        
+        // Encrypt data with AES
+        const iv = crypto.randomBytes(16);
+        const cipher = crypto.createCipher('aes-256-gcm', aesKey);
+        cipher.setAAD(Buffer.from('ecc-encryption', 'utf8'));
+        
+        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        const tag = cipher.getAuthTag();
+        
+        return {
+            algorithm: 'ecc-aes-256-gcm',
+            ephemeralPublicKey: ephemeralKeyPair.publicKey,
+            encrypted: encrypted,
+            iv: iv.toString('hex'),
+            tag: tag.toString('hex')
+        };
+    }
+
+    // Decrypt data using ECC
+    decryptECC(encryptedData, recipientPrivateKey) {
+        // Perform ECDH key exchange with ephemeral public key
+        const sharedSecret = secp256k1.ecdh(
+            Buffer.from(encryptedData.ephemeralPublicKey, 'hex'),
+            Buffer.from(recipientPrivateKey, 'hex')
+        );
+        
+        // Derive AES key
+        const aesKey = crypto.createHash('sha256').update(sharedSecret).digest();
+        
+        // Decrypt with AES
+        const decipher = crypto.createDecipher('aes-256-gcm', aesKey);
+        decipher.setAAD(Buffer.from('ecc-encryption', 'utf8'));
+        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
+        
+        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        
+        return decrypted;
+    }
+
+    // Create digital signature using RSA
+    signRSA(data, privateKey) {
         const sign = crypto.createSign('SHA256');
         sign.update(data);
         sign.end();
         return sign.sign(privateKey, 'base64');
     }
 
-    // Verify digital signature
-    verify(data, signature, publicKey) {
+    // Verify digital signature using RSA
+    verifyRSA(data, signature, publicKey) {
         const verify = crypto.createVerify('SHA256');
         verify.update(data);
         verify.end();
         return verify.verify(publicKey, signature, 'base64');
     }
+
+    // Create digital signature using ECC (secp256k1)
+    signECC(data, privateKey) {
+        const messageHash = crypto.createHash('sha256').update(data).digest();
+        const signature = secp256k1.sign(messageHash, Buffer.from(privateKey, 'hex'));
+        return {
+            signature: signature.signature.toString('hex'),
+            recovery: signature.recovery
+        };
+    }
+
+    // Verify digital signature using ECC
+    verifyECC(data, signature, publicKey) {
+        const messageHash = crypto.createHash('sha256').update(data).digest();
+        return secp256k1.verify(messageHash, Buffer.from(signature.signature, 'hex'), Buffer.from(publicKey, 'hex'));
+    }
+
+    // Generate Bitcoin/Ethereum compatible address from public key
+    generateAddress(publicKey) {
+        const hash1 = crypto.createHash('sha256').update(Buffer.from(publicKey, 'hex')).digest();
+        const hash2 = crypto.createHash('ripemd160').update(hash1).digest();
+        return hash2.toString('hex');
+    }
+
+    // Key derivation for hierarchical deterministic wallets (BIP-32)
+    deriveChildKey(parentPrivateKey, parentPublicKey, index, chainCode) {
+        const data = Buffer.concat([
+            Buffer.from(parentPublicKey, 'hex'),
+            Buffer.alloc(4),
+            Buffer.from(index.toString(16).padStart(8, '0'), 'hex')
+        ]);
+        
+        const hmac = crypto.createHmac('sha512', chainCode);
+        hmac.update(data);
+        const result = hmac.digest();
+        
+        const childPrivateKey = (BigInt('0x' + parentPrivateKey) + BigInt('0x' + result.slice(0, 32).toString('hex'))) % BigInt('0x' + 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141');
+        
+        return {
+            privateKey: childPrivateKey.toString(16).padStart(64, '0'),
+            chainCode: result.slice(32).toString('hex')
+        };
+    }
 }
 
-// Usage example
+// Advanced usage example with multiple algorithms
 async function demonstrateAsymmetricEncryption() {
     const crypto = new AsymmetricEncryption();
     
-    // Generate key pair
-    const { publicKey, privateKey } = await crypto.generateKeyPair();
-    console.log("Generated RSA key pair");
+    console.log("=== Asymmetric Encryption Demonstration ===\n");
     
-    const message = "Secure Web3 Communication";
-    console.log("Original message:", message);
+    // Test RSA
+    console.log("1. RSA Encryption and Digital Signatures:");
+    const rsaKeys = await crypto.generateRSAKeyPair();
+    const rsaMessage = "Hello, Web3 World!";
     
-    // Encrypt with public key
-    const encrypted = crypto.encrypt(message, publicKey);
-    console.log("Encrypted data:", encrypted);
+    const rsaEncrypted = crypto.encryptRSA(rsaMessage, rsaKeys.publicKey);
+    console.log(`   Original: ${rsaMessage}`);
+    console.log(`   Encrypted: ${rsaEncrypted.substring(0, 50)}...`);
     
-    // Decrypt with private key
-    const decrypted = crypto.decrypt(encrypted, privateKey);
-    console.log("Decrypted message:", decrypted);
+    const rsaDecrypted = crypto.decryptRSA(rsaEncrypted, rsaKeys.privateKey);
+    console.log(`   Decrypted: ${rsaDecrypted}`);
+    console.log(`   Integrity: ${rsaDecrypted === rsaMessage ? '✓ Verified' : '✗ Failed'}`);
     
-    // Digital signature
-    const signature = crypto.sign(message, privateKey);
-    console.log("Digital signature:", signature);
+    const rsaSignature = crypto.signRSA(rsaMessage, rsaKeys.privateKey);
+    const rsaVerified = crypto.verifyRSA(rsaMessage, rsaSignature, rsaKeys.publicKey);
+    console.log(`   Signature: ${rsaSignature.substring(0, 50)}...`);
+    console.log(`   Verified: ${rsaVerified ? '✓ Valid' : '✗ Invalid'}\n`);
     
-    // Verify signature
-    const isValid = crypto.verify(message, signature, publicKey);
-    console.log("Signature valid:", isValid);
+    // Test ECC
+    console.log("2. ECC Encryption and Digital Signatures:");
+    const aliceKeys = crypto.generateECCKeyPair();
+    const bobKeys = crypto.generateECCKeyPair();
+    const eccMessage = "Secure ECC communication";
+    
+    const eccEncrypted = crypto.encryptECC(eccMessage, bobKeys.publicKey, aliceKeys.privateKey);
+    console.log(`   Original: ${eccMessage}`);
+    console.log(`   Encrypted: ${eccEncrypted.encrypted.substring(0, 32)}...`);
+    
+    const eccDecrypted = crypto.decryptECC(eccEncrypted, bobKeys.privateKey);
+    console.log(`   Decrypted: ${eccDecrypted}`);
+    console.log(`   Integrity: ${eccDecrypted === eccMessage ? '✓ Verified' : '✗ Failed'}`);
+    
+    const eccSignature = crypto.signECC(eccMessage, aliceKeys.privateKey);
+    const eccVerified = crypto.verifyECC(eccMessage, eccSignature, aliceKeys.publicKey);
+    console.log(`   Signature: ${eccSignature.signature.substring(0, 32)}...`);
+    console.log(`   Verified: ${eccVerified ? '✓ Valid' : '✗ Invalid'}\n`);
+    
+    // Test address generation
+    console.log("3. Bitcoin/Ethereum Address Generation:");
+    const walletKeys = crypto.generateECCKeyPair();
+    const address = crypto.generateAddress(walletKeys.publicKey);
+    console.log(`   Public Key: ${walletKeys.publicKey.substring(0, 32)}...`);
+    console.log(`   Address: ${address}\n`);
+    
+    // Test key derivation
+    console.log("4. Hierarchical Deterministic Key Derivation:");
+    const masterKeys = crypto.generateECCKeyPair();
+    const chainCode = crypto.randomBytes(32).toString('hex');
+    
+    for (let i = 0; i < 3; i++) {
+        const childKeys = crypto.deriveChildKey(
+            masterKeys.privateKey,
+            masterKeys.publicKey,
+            i,
+            chainCode
+        );
+        console.log(`   Child ${i}: ${childKeys.privateKey.substring(0, 32)}...`);
+    }
+    console.log();
 }
 
-demonstrateAsymmetricEncryption().catch(console.error);</code></pre>
-
-        <p>This implementation demonstrates both encryption/decryption and digital signatures, which are fundamental to Web3 applications. Digital signatures prove authenticity and integrity without revealing the private key.</p>
-
-        <!-- Slide 7: Asymmetric Encryption Pros & Cons -->
-        <h2>⚖️ Slide 7: Asymmetric Encryption Analysis</h2>
-        <img src="img7.png" alt="Asymmetric Analysis" class="slide-image">
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Advantages</th>
-                    <th>Disadvantages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🔑 Solves key distribution problem</td>
-                    <td>🐌 Slower than symmetric encryption</td>
-                </tr>
-                <tr>
-                    <td>✍️ Enables digital signatures</td>
-                    <td>💾 Larger key sizes required</td>
-                </tr>
-                <tr>
-                    <td>🔐 Built-in authentication</td>
-                    <td>⚡ Higher computational overhead</td>
-                </tr>
-                <tr>
-                    <td>🌐 Perfect for key exchange</td>
-                    <td>📊 Limited data size for encryption</td>
-                </tr>
-                <tr>
-                    <td>🛡️ Non-repudiation support</td>
-                    <td>🔍 Vulnerable to quantum attacks</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p>The performance trade-off is significant: asymmetric encryption is typically 100-1000 times slower than symmetric encryption. This is why hybrid systems that combine both approaches are commonly used in practice.</p>
-
-        <!-- Quiz 2 -->
-        <div class="quiz-section">
-            <h3>🧠 Quick Quiz 2: Asymmetric Encryption</h3>
-            <p class="quiz-question">What is the primary advantage of asymmetric encryption over symmetric encryption?</p>
-            <ul class="quiz-options">
-                <li>A) Faster encryption speed</li>
-                <li>B) Smaller key sizes</li>
-                <li>C) Solves the key distribution problem</li>
-                <li>D) Lower computational overhead</li>
-            </ul>
-            <p><strong>Answer:</strong> C) Solves the key distribution problem. Asymmetric encryption eliminates the need to securely share secret keys.</p>
-        </div>
-
-        <!-- Slide 8: Web3 Use Cases -->
-        <h2>🌐 Slide 8: Real-World Web3 Applications</h2>
-        <img src="img8.png" alt="Web3 Use Cases" class="slide-image">
-        
-        <p>In the Web3 ecosystem, both symmetric and asymmetric cryptography play crucial roles, often working together in hybrid systems. Let's explore the most important applications:</p>
-
-        <h3>�� Digital Wallets</h3>
-        <p>Cryptocurrency wallets use asymmetric cryptography extensively. When you create a wallet, a private/public key pair is generated. The public key is derived from the private key and serves as your wallet address. The private key is used to sign transactions, proving ownership of the funds.</p>
-
-        <pre><code>// Simplified wallet key generation
-const crypto = require('crypto');
-const secp256k1 = require('secp256k1');
-
-class Web3Wallet {
-    generateWallet() {
-        let privateKey;
-        do {
-            privateKey = crypto.randomBytes(32);
-        } while (!secp256k1.privateKeyVerify(privateKey));
-        
-        const publicKey = secp256k1.publicKeyCreate(privateKey);
-        const address = this.generateAddress(publicKey);
-        
-        return {
-            privateKey: privateKey.toString('hex'),
-            publicKey: publicKey.toString('hex'),
-            address: address
-        };
-    }
+// Performance comparison
+function benchmarkAsymmetricAlgorithms() {
+    const crypto = new AsymmetricEncryption();
+    const testData = "Test message for asymmetric encryption";
+    const iterations = 100;
     
-    signTransaction(transaction, privateKey) {
-        const messageHash = crypto.createHash('sha256')
-            .update(JSON.stringify(transaction))
-            .digest();
-        
-        const signature = secp256k1.sign(messageHash, Buffer.from(privateKey, 'hex'));
-        return signature.signature.toString('hex');
-    }
-}</code></pre>
-
-        <h3>�� Smart Contracts</h3>
-        <p>Smart contracts use cryptographic signatures to verify that transactions are authorized by the correct parties. This prevents unauthorized modifications and ensures the integrity of the contract logic.</p>
-
-        <h3>🔗 Blockchain Consensus</h3>
-        <p>Proof-of-Work and Proof-of-Stake consensus mechanisms rely on cryptographic puzzles and digital signatures to maintain network security and prevent double-spending attacks.</p>
-
-        <!-- Slide 9: Hybrid Cryptography Systems -->
-        <h2>🔄 Slide 9: Hybrid Cryptography - The Best of Both Worlds</h2>
-        <img src="img9.png" alt="Hybrid Cryptography" class="slide-image">
-        
-        <p>Modern Web3 applications typically use hybrid cryptography systems that combine the strengths of both symmetric and asymmetric encryption. This approach provides optimal security and performance.</p>
-
-        <p>The typical hybrid workflow is:</p>
-        <ol>
-            <li><strong>Key Exchange:</strong> Use asymmetric encryption to securely exchange a symmetric session key</li>
-            <li><strong>Data Encryption:</strong> Use the symmetric key for fast encryption of the actual data</li>
-            <li><strong>Authentication:</strong> Use digital signatures to verify the identity of the parties</li>
-        </ol>
-
-        <pre><code>class HybridCryptography {
-    constructor() {
-        this.symmetricCrypto = new SymmetricEncryption();
-        this.asymmetricCrypto = new AsymmetricEncryption();
-    }
-
-    async secureCommunication(senderPrivateKey, receiverPublicKey, message) {
-        // Step 1: Generate a random symmetric session key
-        const sessionKey = this.symmetricCrypto.generateKey();
-        
-        // Step 2: Encrypt the session key with receiver's public key
-        const encryptedSessionKey = this.asymmetricCrypto.encrypt(
-            sessionKey.toString('hex'), 
-            receiverPublicKey
-        );
-        
-        // Step 3: Encrypt the message with the session key
-        const encryptedMessage = this.symmetricCrypto.encrypt(message, sessionKey);
-        
-        // Step 4: Sign the encrypted message with sender's private key
-        const signature = this.asymmetricCrypto.sign(
-            encryptedMessage.encrypted, 
-            senderPrivateKey
-        );
-        
-        return {
-            encryptedSessionKey,
-            encryptedMessage,
-            signature,
-            timestamp: Date.now()
-        };
-    }
-}</code></pre>
-
-        <p>This hybrid approach is used in protocols like TLS/SSL, which secure most web communications, and in blockchain networks for secure peer-to-peer communication.</p>
-
-        <!-- Quiz 3 -->
-        <div class="quiz-section">
-            <h3>🧠 Quick Quiz 3: Hybrid Systems</h3>
-            <p class="quiz-question">Why do hybrid cryptography systems use asymmetric encryption for key exchange and symmetric encryption for data?</p>
-            <ul class="quiz-options">
-                <li>A) Asymmetric encryption is more secure</li>
-                <li>B) Symmetric encryption is faster for large data</li>
-                <li>C) It's easier to implement</li>
-                <li>D) Both A and B</li>
-            </ul>
-            <p><strong>Answer:</strong> D) Both A and B. Asymmetric encryption solves the key distribution problem, while symmetric encryption provides faster performance for large data volumes.</p>
-        </div>
-
-        <!-- Slide 10: Security Considerations -->
-        <h2>🛡️ Slide 10: Security Best Practices & Considerations</h2>
-        <img src="img10.png" alt="Security Considerations" class="slide-image">
-        
-        <p>Implementing cryptography correctly is challenging, and even small mistakes can lead to catastrophic security failures. Here are the critical considerations for Web3 developers:</p>
-
-        <h3>�� Key Management</h3>
-        <ul>
-            <li><strong>Key Generation:</strong> Always use cryptographically secure random number generators</li>
-            <li><strong>Key Storage:</strong> Never store private keys in plain text or in version control</li>
-            <li><strong>Key Rotation:</strong> Regularly update keys to limit exposure from potential breaches</li>
-            <li><strong>Key Backup:</strong> Implement secure backup strategies for critical keys</li>
-        </ul>
-
-        <h3>🔒 Algorithm Selection</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Use Case</th>
-                    <th>Recommended Algorithm</th>
-                    <th>Key Size</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>General Encryption</td>
-                    <td>AES-256-GCM</td>
-                    <td>256 bits</td>
-                </tr>
-                <tr>
-                    <td>Digital Signatures</td>
-                    <td>ECDSA with secp256k1</td>
-                    <td>256 bits</td>
-                </tr>
-                <tr>
-                    <td>Key Exchange</td>
-                    <td>ECDH with secp256k1</td>
-                    <td>256 bits</td>
-                </tr>
-                <tr>
-                    <td>Hash Functions</td>
-                    <td>SHA-256 or SHA-3</td>
-                    <td>256 bits</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>⚠️ Common Pitfalls</h3>
-        <blockquote>
-            <strong>Never:</strong> Implement your own cryptographic algorithms, use weak random number generators, store keys insecurely, or ignore algorithm deprecation warnings.
-        </blockquote>
-
-        <!-- Quiz 4 -->
-        <div class="quiz-section">
-            <h3>🧠 Quick Quiz 4: Security Best Practices</h3>
-            <p class="quiz-question">Which of the following is the most critical security consideration for Web3 developers?</p>
-            <ul class="quiz-options">
-                <li>A) Using the fastest encryption algorithm</li>
-                <li>B) Implementing custom cryptographic functions</li>
-                <li>C) Proper key management and secure storage</li>
-                <li>D) Using the smallest possible key sizes</li>
-            </ul>
-            <p><strong>Answer:</strong> C) Proper key management and secure storage. Even the strongest algorithms are useless if keys are compromised.</p>
-        </div>
-
-        <!-- Hands-On Exercise -->
-        <h2>��️ Hands-On Exercise: Building a Secure Web3 Communication System</h2>
-        <p>Now it's time to put your knowledge into practice! You'll build a simple but secure communication system that demonstrates both symmetric and asymmetric cryptography.</p>
-
-        <h3>Exercise Requirements:</h3>
-        <ol>
-            <li>Create a Node.js application that implements hybrid cryptography</li>
-            <li>Generate RSA key pairs for two users (Alice and Bob)</li>
-            <li>Implement secure message exchange using the hybrid approach</li>
-            <li>Add digital signature verification</li>
-            <li>Include error handling and security validation</li>
-        </ol>
-
-        <pre><code>// Complete exercise solution
-const crypto = require('crypto');
-
-class SecureWeb3Communication {
-    constructor() {
-        this.algorithm = 'aes-256-gcm';
-        this.rsaKeySize = 2048;
-    }
-
-    async generateUserKeys() {
-        return new Promise((resolve, reject) => {
-            crypto.generateKeyPair('rsa', {
-                modulusLength: this.rsaKeySize,
-                publicKeyEncoding: { type: 'spki', format: 'pem' },
-                privateKeyEncoding: { type: 'pkcs8', format: 'pem' }
-            }, (err, publicKey, privateKey) => {
-                if (err) reject(err);
-                else resolve({ publicKey, privateKey });
-            });
-        });
-    }
-
-    async secureMessageExchange(senderPrivateKey, receiverPublicKey, message) {
-        // Generate session key
-        const sessionKey = crypto.randomBytes(32);
-        
-        // Encrypt session key with receiver's public key
-        const encryptedSessionKey = crypto.publicEncrypt({
-            key: receiverPublicKey,
-            padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-            oaepHash: 'sha256'
-        }, sessionKey);
-        
-        // Encrypt message with session key
-        const iv = crypto.randomBytes(16);
-        const cipher = crypto.createCipher(this.algorithm, sessionKey);
-        let encryptedMessage = cipher.update(message, 'utf8', 'hex');
-        encryptedMessage += cipher.final('hex');
-        const authTag = cipher.getAuthTag();
-        
-        // Sign the encrypted message
-        const sign = crypto.createSign('SHA256');
-        sign.update(encryptedMessage);
-        sign.end();
-        const signature = sign.sign(senderPrivateKey, 'base64');
-        
-        return {
-            encryptedSessionKey: encryptedSessionKey.toString('base64'),
-            encryptedMessage,
-            iv: iv.toString('hex'),
-            authTag: authTag.toString('hex'),
-            signature
-        };
-    }
-
-    async decryptMessage(receiverPrivateKey, senderPublicKey, encryptedData) {
-        // Decrypt session key
-        const sessionKey = crypto.privateDecrypt({
-            key: receiverPrivateKey,
-            padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-            oaepHash: 'sha256'
-        }, Buffer.from(encryptedData.encryptedSessionKey, 'base64'));
-        
-        // Verify signature
-        const verify = crypto.createVerify('SHA256');
-        verify.update(encryptedData.encryptedMessage);
-        verify.end();
-        const isValid = verify.verify(senderPublicKey, encryptedData.signature, 'base64');
-        
-        if (!isValid) {
-            throw new Error('Message signature verification failed');
+    console.log("=== Asymmetric Algorithm Performance ===\n");
+    
+    // Benchmark RSA
+    crypto.generateRSAKeyPair().then(rsaKeys => {
+        const rsaStart = Date.now();
+        for (let i = 0; i < iterations; i++) {
+            const encrypted = crypto.encryptRSA(testData, rsaKeys.publicKey);
+            crypto.decryptRSA(encrypted, rsaKeys.privateKey);
         }
+        const rsaTime = Date.now() - rsaStart;
         
-        // Decrypt message
-        const decipher = crypto.createDecipher(this.algorithm, sessionKey);
-        decipher.setAuthTag(Buffer.from(encryptedData.authTag, 'hex'));
+        // Benchmark ECC
+        const eccKeys = crypto.generateECCKeyPair();
+        const eccStart = Date.now();
+        for (let i = 0; i < iterations; i++) {
+            const encrypted = crypto.encryptECC(testData, eccKeys.publicKey, eccKeys.privateKey);
+            crypto.decryptECC(encrypted, eccKeys.privateKey);
+        }
+        const eccTime = Date.now() - eccStart;
         
-        let decrypted = decipher.update(encryptedData.encryptedMessage, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        
-        return decrypted;
-    }
-}
-
-// Demo usage
-async function runExercise() {
-    const comm = new SecureWeb3Communication();
-    
-    // Generate keys for Alice and Bob
-    const aliceKeys = await comm.generateUserKeys();
-    const bobKeys = await comm.generateUserKeys();
-    
-    console.log('Generated key pairs for Alice and Bob');
-    
-    // Alice sends a secure message to Bob
-    const message = "Hello Bob! This is a secure Web3 message.";
-    console.log('Original message:', message);
-    
-    const encrypted = await comm.secureMessageExchange(
-        aliceKeys.privateKey,
-        bobKeys.publicKey,
-        message
-    );
-    console.log('Encrypted data sent to Bob');
-    
-    // Bob decrypts and verifies the message
-    const decrypted = await comm.decryptMessage(
-        bobKeys.privateKey,
-        aliceKeys.publicKey,
-        encrypted
-    );
-    console.log('Decrypted message:', decrypted);
-    console.log('Message verified successfully!');
-}
-
-runExercise().catch(console.error);</code></pre>
-
-        <!-- Quiz 5 -->
-        <div class="quiz-section">
-            <h3>🧠 Final Quiz: Comprehensive Understanding</h3>
-            <p class="quiz-question">In the hybrid cryptography system we just implemented, what is the purpose of the digital signature?</p>
-            <ul class="quiz-options">
-                <li>A) To encrypt the message</li>
-                <li>B) To verify the sender's identity and message integrity</li>
-                <li>C) To generate the session key</li>
-                <li>D) To compress the data</li>
-            </ul>
-            <p><strong>Answer:</strong> B) To verify the sender's identity and message integrity. Digital signatures provide authentication and non-repudiation.</p>
-        </div>
-
-        <!-- Summary -->
-        <h2>📋 Summary & Key Takeaways</h2>
-        <p>Congratulations! You've completed the foundational lesson on symmetric vs asymmetric cryptography. Here's what we've covered:</p>
-
-        <h3>🔑 Symmetric Cryptography</h3>
-        <ul>
-            <li>Uses the same key for encryption and decryption</li>
-            <li>Fast and efficient for large data volumes</li>
-            <li>Suffers from the key distribution problem</li>
-            <li>Best for: Bulk data encryption, session keys</li>
-        </ul>
-
-        <h3>🔐 Asymmetric Cryptography</h3>
-        <ul>
-            <li>Uses public/private key pairs</li>
-            <li>Solves the key distribution problem</li>
-            <li>Enables digital signatures and authentication</li>
-            <li>Slower but more flexible than symmetric</li>
-        </ul>
-
-        <h3>�� Hybrid Systems</h3>
-        <ul>
-            <li>Combine the best of both approaches</li>
-            <li>Use asymmetric for key exchange</li>
-            <li>Use symmetric for data encryption</li>
-            <li>Standard in modern Web3 applications</li>
-        </ul>
-
-        <h3>🛡️ Security Best Practices</h3>
-        <ul>
-            <li>Always use established, well-tested algorithms</li>
-            <li>Implement proper key management</li>
-            <li>Never store private keys insecurely</li>
-            <li>Regularly update and rotate keys</li>
-        </ul>
-
-        <!-- Further Reading -->
-        <h2>📚 Further Reading & Resources</h2>
-        <p>To deepen your understanding of cryptography in Web3, explore these resources:</p>
-
-        <h3>�� Books</h3>
-        <ul>
-            <li><strong>"Applied Cryptography"</strong> by Bruce Schneier</li>
-            <li><strong>"Cryptography Engineering"</strong> by Ferguson, Schneier, and Kohno</li>
-            <li><strong>"Mastering Bitcoin"</strong> by Andreas Antonopoulos</li>
-        </ul>
-
-        <h3>�� Online Resources</h3>
-        <ul>
-            <li><a href="https://cryptography.io/" target="_blank">Cryptography.io</a> - Python cryptography library</li>
-            <li><a href="https://nodejs.org/api/crypto.html" target="_blank">Node.js Crypto Module</a> - Official documentation</li>
-            <li><a href="https://www.nist.gov/cryptography" target="_blank">NIST Cryptography Standards</a> - Government standards</li>
-        </ul>
-
-        <h3>�� Research Papers</h3>
-        <ul>
-            <li>"Bitcoin: A Peer-to-Peer Electronic Cash System" by Satoshi Nakamoto</li>
-            <li>"Elliptic Curve Cryptography" by Koblitz and Menezes</li>
-            <li>"The Mathematics of the RSA Public-Key Cryptosystem" by Rivest</li>
-        </ul>
-
-        <!-- Closing Note -->
-        <blockquote style="background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(138, 43, 226, 0.1)); border-left: 4px solid var(--accent-violet);">
-            <h3 style="color: var(--accent-violet); margin-bottom: 15px;">�� A Message from MOKSHA Innovators Guild</h3>
-            <p>You've taken the first crucial step in your Web3 journey. Cryptography is not just a technical skill—it's the foundation of trust in the decentralized world. As you continue your exploration, remember that with great cryptographic power comes great responsibility. Use these tools wisely to build a more secure, transparent, and equitable digital future.</p>
-            <p style="margin-top: 15px; font-weight: 600;">The future of Web3 is in your hands. Build it securely. Build it r
+        console.log(`RSA-2048: ${rsaTime}ms for ${iterations} iterations`);
+        console.log(`ECC-secp256k1: ${eccTime}
