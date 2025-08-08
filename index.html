@@ -1,4 +1,4 @@
-I'll fix the logo and favicon display issues and add more extensive code examples throughout the lesson. Here's the complete rewritten HTML with all the improvements:
+I'll remove the logo and its container from the header, keeping everything else exactly the same. Here's the updated code:
 
 ```html
 <!DOCTYPE html>
@@ -53,20 +53,12 @@ I'll fix the logo and favicon display issues and add more extensive code example
             z-index: 1000;
             padding: 15px 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
         }
 
-        .logo {
-            height: 60px;
-            width: 60px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
-            border-radius: 8px;
-        }
-
         .header-text {
-            text-align: right;
+            text-align: center;
         }
 
         .header-title {
@@ -399,7 +391,6 @@ I'll fix the logo and favicon display issues and add more extensive code example
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="./logo.png" alt="MOKSHA Innovators Guild" class="logo">
         <div class="header-text">
             <div class="header-title">Web3 Odyssey</div>
             <div class="header-subtitle">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</div>
@@ -462,7 +453,7 @@ I'll fix the logo and favicon display issues and add more extensive code example
         <p>In the context of Web3, these principles are applied to create secure digital wallets, verify smart contract interactions, and establish trust in decentralized networks without relying on central authorities.</p>
 
         <!-- Slide 2: Symmetric Encryption Theory -->
-        <h2>�� Slide 2: Symmetric Encryption - The Shared Secret</h2>
+        <h2> Slide 2: Symmetric Encryption - The Shared Secret</h2>
         <img src="./img2.png" alt="Symmetric Encryption" class="slide-image">
         
         <p>Symmetric encryption, also known as secret-key encryption, uses the same key for both encryption and decryption. This approach is like having a single key that both locks and unlocks a treasure chest. The key must be kept secret and shared securely between the communicating parties.</p>
@@ -1063,4 +1054,14 @@ function benchmarkAsymmetricAlgorithms() {
         const eccTime = Date.now() - eccStart;
         
         console.log(`RSA-2048: ${rsaTime}ms for ${iterations} iterations`);
-        console.log(`ECC-secp256k1: ${eccTime}
+        console.log(`ECC-secp256k1: ${eccTime}ms for ${iterations} iterations`);
+        console.log(`Performance ratio: ${(rsaTime / eccTime).toFixed(2)}x\n`);
+    });
+}
+
+// Run demonstrations
+demonstrateAsymmetricEncryption().then(() => {
+    benchmarkAsymmetricAlgorithms();
+}).catch(console.error);</code></pre>
+
+        <p>This comprehensive implementation covers RSA and ECC encryption, digital signatures, address generation, and hierarchical deterministic key deri
