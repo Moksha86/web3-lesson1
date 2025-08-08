@@ -1,7 +1,13 @@
-I'll create a comprehensive, self-contained HTML5 page for the Web3 Odyssey lesson. Let me start by exploring the workspace to understand the current structure.
+I'll help you create a comprehensive, self-contained HTML5 page for the Web3 Odyssey lesson. Let me start by exploring the current directory structure to understand what we're working with.
 
 Ran tool
-Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 Odyssey lesson. Here's the complete self-contained HTML file:
+Let me check if there's a specific workspace or project directory:
+
+Ran tool
+Let me check the current working directory and see if there's a project folder:
+
+Ran tool
+Based on your requirements, I'll create a comprehensive, self-contained HTML5 page for the Web3 Odyssey lesson. Here's the complete HTML file that meets all your specifications:
 
 ```html
 <!DOCTYPE html>
@@ -9,11 +15,11 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Web3 Odyssey - Module 1: Lesson 1.1 | Symmetric vs Asymmetric Cryptography</title>
-    <link rel="icon" href="./favicon.png" type="image/png">
+    <title>Web3 Odyssey - Module 1: Lesson 1.1 - Symmetric vs Asymmetric Cryptography</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700;900&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -23,16 +29,15 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
         }
 
         :root {
-            --primary-bg: linear-gradient(135deg, #0a0e27 0%, #1a1f4b 50%, #0f1428 100%);
-            --secondary-bg: linear-gradient(135deg, #1a1f4b 0%, #2a2f5b 100%);
+            --primary-bg: linear-gradient(135deg, #0a0a23 0%, #1a1a3a 50%, #0d0d2b 100%);
+            --secondary-bg: linear-gradient(135deg, #1a1a3a 0%, #2a2a4a 100%);
             --accent-cyan: #00ffff;
             --accent-violet: #8a2be2;
-            --accent-neon: #00ff88;
             --text-primary: #ffffff;
-            --text-secondary: #b8c5d6;
-            --text-muted: #8a9ba8;
+            --text-secondary: #b0b0b0;
+            --text-muted: #808080;
             --border-glow: 0 0 20px rgba(0, 255, 255, 0.3);
-            --shadow-glow: 0 8px 32px rgba(0, 255, 255, 0.15);
+            --shadow-glow: 0 8px 32px rgba(0, 255, 255, 0.1);
         }
 
         body {
@@ -49,36 +54,31 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
             top: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f4b 100%);
+            background: linear-gradient(135deg, #0d0d2b 0%, #1a1a3a 100%);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             box-shadow: var(--shadow-glow);
             z-index: 1000;
-            padding: 15px 30px;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
         }
 
         .logo {
             height: 60px;
-            width: 60px;
-            object-fit: contain;
+            width: auto;
             filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
-            border-radius: 8px;
         }
 
-        .header-text {
+        .header-content {
             text-align: right;
-            flex: 1;
-            margin-left: 20px;
         }
 
         .header-title {
             font-family: 'Roboto Slab', serif;
             font-weight: 900;
-            font-size: 1.8rem;
+            font-size: 2rem;
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-violet));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -89,41 +89,13 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
         .header-subtitle {
             font-size: 0.9rem;
             color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        /* Navigation */
-        .nav-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .nav-btn:hover {
-            background: rgba(0, 255, 255, 0.2);
-            color: var(--accent-cyan);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            font-weight: 300;
         }
 
         /* Main Container */
         .main-container {
             max-width: 1100px;
-            margin: 100px auto 40px;
+            margin: 120px auto 40px;
             padding: 40px;
             background: var(--secondary-bg);
             border-radius: 20px;
@@ -131,88 +103,79 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
             border: 1px solid rgba(0, 255, 255, 0.1);
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Roboto Slab', serif;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        /* Slide Styles */
+        .slide {
+            margin-bottom: 60px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(26, 26, 58, 0.8) 0%, rgba(42, 42, 74, 0.8) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        h1 {
-            font-size: 2.5rem;
-            text-align: center;
+        .slide h2 {
+            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-violet));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
 
-        h2 {
-            font-size: 2rem;
-            color: var(--accent-cyan);
-            border-left: 4px solid var(--accent-cyan);
-            padding-left: 20px;
-            margin-top: 40px;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            color: var(--accent-violet);
-            margin-top: 30px;
-        }
-
-        p {
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Images */
-        .slide-image {
-            width: 75%;
-            max-width: 800px;
-            height: auto;
+        .slide img {
             display: block;
             margin: 30px auto;
-            border-radius: 15px;
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
             box-shadow: var(--border-glow);
-            border: 2px solid rgba(0, 255, 255, 0.2);
         }
 
-        /* Code Blocks */
-        pre {
+        .slide p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Code Block Styles */
+        .code-block {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 10px;
             padding: 20px;
             margin: 20px 0;
             overflow-x: auto;
-            box-shadow: var(--shadow-glow);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        code {
+        .code-block pre {
             font-family: 'Roboto Mono', monospace;
             font-size: 0.9rem;
-            color: var(--accent-neon);
-            background: rgba(0, 0, 0, 0.3);
+            color: #e0e0e0;
+            margin: 0;
+        }
+
+        .code-block code {
+            font-family: 'Roboto Mono', monospace;
+            background: rgba(0, 255, 255, 0.1);
             padding: 2px 6px;
             border-radius: 4px;
+            color: var(--accent-cyan);
         }
 
-        pre code {
-            background: none;
-            padding: 0;
-            color: var(--text-primary);
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 30px 0;
         }
 
-        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
-            background: rgba(26, 31, 75, 0.5);
+            background: linear-gradient(135deg, rgba(26, 26, 58, 0.8) 0%, rgba(42, 42, 74, 0.8) 100%);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow-glow);
@@ -223,12 +186,12 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
             color: #000;
             padding: 15px;
             text-align: left;
-            font-weight: 600;
-            font-family: 'Roboto Slab', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
 
         td {
-            padding: 15px;
+            padding: 12px 15px;
             border-bottom: 1px solid rgba(0, 255, 255, 0.1);
             color: var(--text-secondary);
         }
@@ -237,17 +200,49 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
             background: rgba(0, 255, 255, 0.05);
         }
 
-        /* Blockquotes */
+        /* Quiz Styles */
+        .quiz {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+        }
+
+        .quiz h3 {
+            color: var(--accent-violet);
+            margin-bottom: 15px;
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        /* Blockquote Styles */
         blockquote {
-            background: rgba(0, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
             border-left: 4px solid var(--accent-cyan);
             padding: 20px;
-            margin: 30px 0;
+            margin: 20px 0;
             border-radius: 0 10px 10px 0;
             font-style: italic;
         }
 
-        /* Links */
+        /* Link Styles */
         a {
             color: var(--accent-cyan);
             text-decoration: none;
@@ -255,59 +250,8 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
         }
 
         a:hover {
-            color: var(--accent-neon);
-            text-shadow: 0 0 10px var(--accent-cyan);
-        }
-
-        /* Quiz Sections */
-        .quiz-section {
-            background: rgba(138, 43, 226, 0.1);
-            border: 2px solid var(--accent-violet);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-
-        .quiz-question {
-            font-weight: 600;
             color: var(--accent-violet);
-            margin-bottom: 15px;
-        }
-
-        .quiz-options {
-            list-style: none;
-        }
-
-        .quiz-options li {
-            margin: 10px 0;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .quiz-options li:hover {
-            background: rgba(0, 255, 255, 0.1);
-            border-left: 3px solid var(--accent-cyan);
-        }
-
-        /* Info Tags */
-        .info-tags {
-            display: flex;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-
-        .info-tag {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            color: var(--accent-cyan);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
         }
 
         /* Footer */
@@ -315,7 +259,7 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
             text-align: center;
             padding: 30px;
             border-top: 1px solid rgba(0, 255, 255, 0.2);
-            margin-top: 50px;
+            margin-top: 60px;
             color: var(--text-muted);
             font-size: 0.9rem;
         }
@@ -323,219 +267,202 @@ Based on your requirements, I'll create a comprehensive HTML5 page for the Web3 
         /* Responsive Design */
         @media (max-width: 768px) {
             .header {
-                padding: 10px 20px;
-                height: 70px;
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
             }
 
             .header-title {
-                font-size: 1.4rem;
-            }
-
-            .header-subtitle {
-                font-size: 0.8rem;
-            }
-
-            .nav-buttons {
-                gap: 5px;
-            }
-
-            .nav-btn {
-                padding: 4px 8px;
-                font-size: 0.7rem;
+                font-size: 1.5rem;
             }
 
             .main-container {
-                margin: 90px 20px 20px;
+                margin: 140px 20px 40px;
                 padding: 20px;
             }
 
-            h1 {
-                font-size: 2rem;
+            .slide {
+                padding: 20px;
             }
 
-            h2 {
-                font-size: 1.6rem;
+            .slide h2 {
+                font-size: 1.8rem;
             }
 
-            .slide-image {
-                width: 95%;
-            }
-
-            table {
-                font-size: 0.9rem;
-            }
-
-            th, td {
-                padding: 10px;
+            .slide img {
+                max-width: 100%;
             }
         }
 
         @media (max-width: 480px) {
-            .header {
-                height: 60px;
-                padding: 8px 15px;
-            }
-
             .header-title {
                 font-size: 1.2rem;
             }
 
-            .header-subtitle {
-                font-size: 0.7rem;
+            .slide h2 {
+                font-size: 1.5rem;
             }
 
-            .nav-buttons {
-                display: none;
-            }
-
-            .main-container {
-                margin: 80px 10px 10px;
+            .code-block {
                 padding: 15px;
             }
 
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            h2 {
-                font-size: 1.4rem;
-            }
-
-            p {
-                font-size: 1rem;
+            .code-block pre {
+                font-size: 0.8rem;
             }
         }
 
-        /* Animations */
+        /* Animation */
         @keyframes glow {
             0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
             50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.6); }
         }
 
-        .glow-effect {
-            animation: glow 3s ease-in-out infinite;
+        .slide:hover {
+            animation: glow 2s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
-        <img src="./logo.png" alt="MOKSHA Innovators Guild" class="logo">
-        <div class="header-text">
-            <div class="header-title">Web3 Odyssey</div>
-            <div class="header-subtitle">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</div>
-            <div class="nav-buttons">
-                <a href="#intro" class="nav-btn">Intro</a>
-                <a href="#symmetric-theory" class="nav-btn">Symmetric Theory</a>
-                <a href="#symmetric-code" class="nav-btn">Symmetric Code</a>
-                <a href="#symmetric-pros-cons" class="nav-btn">Symmetric Pros/Cons</a>
-                <a href="#asymmetric-theory" class="nav-btn">Asymmetric Theory</a>
-                <a href="#asymmetric-code" class="nav-btn">Asymmetric Code</a>
-                <a href="#asymmetric-pros-cons" class="nav-btn">Asym. Pros/Cons</a>
-                <a href="#web3-use-cases" class="nav-btn">Web3 Use Cases</a>
-                <a href="#exercise-quiz" class="nav-btn">Exercise + Quiz</a>
-                <a href="#summary" class="nav-btn">Summary</a>
-            </div>
+        <img src="logo.png" alt="MOKSHA Innovators Guild" class="logo">
+        <div class="header-content">
+            <h1 class="header-title">Web3 Odyssey</h1>
+            <p class="header-subtitle">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</p>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="main-container">
-        <!-- Lesson Introduction -->
-        <h1 id="intro">🔐 Symmetric vs Asymmetric Cryptography</h1>
-        
-        <p>Welcome to the foundational lesson of Web3 Odyssey! In this comprehensive exploration, we'll dive deep into the two fundamental approaches to cryptography that power the entire Web3 ecosystem. Understanding the difference between symmetric and asymmetric cryptography is crucial for anyone serious about blockchain development, smart contract security, and decentralized applications.</p>
+    <main class="main-container">
+        <!-- Slide 1: Introduction -->
+        <section class="slide">
+            <h2>Welcome to Web3 Cryptography Fundamentals</h2>
+            <img src="img1.png" alt="Cryptography Overview">
+            <p>Welcome to the foundational lesson of Web3 Odyssey. In this comprehensive exploration, we'll dive deep into the world of cryptography, specifically examining the two fundamental approaches that power the decentralized web: symmetric and asymmetric encryption.</p>
+            
+            <p>Cryptography is the backbone of Web3 security, enabling secure communication, digital signatures, and trustless interactions in decentralized systems. Understanding these concepts is crucial for anyone building or interacting with blockchain networks, smart contracts, and decentralized applications.</p>
 
-        <div class="info-tags">
-            <span class="info-tag">Intermediate → Advanced</span>
-            <span class="info-tag">Node.js Examples</span>
-            <span class="info-tag">Approx. 45-60 min</span>
-        </div>
+            <blockquote>
+                "Cryptography is the art of protecting information by transforming it into an unreadable format, except for those who possess the secret knowledge to decode it."
+            </blockquote>
 
-        <blockquote>
-            "In Web3, keys are identity and signatures are programmable truth. Choose primitives that scale cryptographic trust—not just throughput." — MOKSHA Innovators Guild
-        </blockquote>
-
-        <h2>🎯 Learning Objectives</h2>
-        <p>By the end of this lesson, you will be able to:</p>
-        <ul>
-            <li>Understand the fundamental differences between symmetric and asymmetric cryptography</li>
-            <li>Implement both encryption methods using Node.js with production-ready code</li>
-            <li>Analyze real-world Web3 use cases for each approach</li>
-            <li>Evaluate security trade-offs and performance considerations</li>
-            <li>Apply cryptographic principles to smart contract development</li>
-            <li>Build secure communication systems using hybrid cryptography</li>
-        </ul>
-
-        <!-- Slide 1: Introduction to Cryptography -->
-        <h2 id="symmetric-theory">📚 Slide 1: The Foundation of Digital Security</h2>
-        <img src="./img1.png" alt="Cryptography Foundation" class="slide-image">
-        
-        <p>Cryptography is the science of secure communication in the presence of adversaries. It's the mathematical foundation that enables trust in the digital world. In Web3, cryptography is not just a tool—it's the very fabric that holds the decentralized ecosystem together.</p>
-
-        <p>At its core, cryptography solves three fundamental problems:</p>
-        <ol>
-            <li><strong>Confidentiality:</strong> Ensuring that only authorized parties can read the information</li>
-            <li><strong>Integrity:</strong> Guaranteeing that the information hasn't been tampered with</li>
-            <li><strong>Authentication:</strong> Verifying the identity of the parties involved</li>
-        </ol>
-
-        <p>In the context of Web3, these principles are applied to create secure digital wallets, verify smart contract interactions, and establish trust in decentralized networks without relying on central authorities.</p>
+            <h3>Learning Objectives</h3>
+            <ul>
+                <li>Understand the fundamental differences between symmetric and asymmetric cryptography</li>
+                <li>Explore real-world applications in Web3 ecosystems</li>
+                <li>Implement practical examples using Node.js</li>
+                <li>Analyze security implications and trade-offs</li>
+                <li>Apply knowledge to blockchain and smart contract development</li>
+            </ul>
+        </section>
 
         <!-- Slide 2: Symmetric Encryption Theory -->
-        <h2>🔐 Slide 2: Symmetric Encryption - The Shared Secret</h2>
-        <img src="./img2.png" alt="Symmetric Encryption" class="slide-image">
-        
-        <p>Symmetric encryption, also known as secret-key encryption, uses the same key for both encryption and decryption. This approach is like having a single key that both locks and unlocks a treasure chest. The key must be kept secret and shared securely between the communicating parties.</p>
+        <section class="slide">
+            <h2>Symmetric Encryption: The Foundation</h2>
+            <img src="img2.png" alt="Symmetric Encryption Diagram">
+            <p>Symmetric encryption, also known as secret-key encryption, uses the same key for both encryption and decryption. This approach has been the cornerstone of cryptography for centuries, offering high performance and simplicity in implementation.</p>
 
-        <p>The mathematical foundation of symmetric encryption relies on complex algorithms that transform plaintext into ciphertext using the secret key. Popular symmetric encryption algorithms include:</p>
+            <p>The fundamental principle of symmetric encryption is that both the sender and receiver must possess the same secret key. This key is used to transform plaintext into ciphertext (encryption) and back to plaintext (decryption). The security of the entire system relies on keeping this key secret and secure.</p>
 
-        <ul>
-            <li><strong>AES (Advanced Encryption Standard):</strong> The gold standard for symmetric encryption, supporting key sizes of 128, 192, and 256 bits</li>
-            <li><strong>ChaCha20:</strong> A modern stream cipher designed for high performance and security</li>
-            <li><strong>3DES (Triple Data Encryption Standard):</strong> A legacy algorithm that applies DES three times for enhanced security</li>
-        </ul>
+            <h3>Key Characteristics</h3>
+            <ul>
+                <li><strong>Single Key:</strong> Same key used for encryption and decryption</li>
+                <li><strong>High Performance:</strong> Fast encryption/decryption speeds</li>
+                <li><strong>Key Management:</strong> Secure key distribution is critical</li>
+                <li><strong>Scalability:</strong> Number of keys grows with participants</li>
+            </ul>
 
-        <p>The strength of symmetric encryption lies in its simplicity and speed. Since the same key is used for both operations, the computational overhead is minimal, making it ideal for encrypting large amounts of data efficiently.</p>
+            <div class="quiz">
+                <h3>Quick Quiz: Symmetric Encryption</h3>
+                <p>What is the main challenge with symmetric encryption in a multi-party system?</p>
+                <div class="quiz-option">A) Key generation complexity</div>
+                <div class="quiz-option">B) Encryption speed</div>
+                <div class="quiz-option">C) Secure key distribution</div>
+                <div class="quiz-option">D) Algorithm strength</div>
+            </div>
+        </section>
 
-        <!-- Slide 3: Symmetric Encryption Code Example -->
-        <h2 id="symmetric-code">💻 Slide 3: Implementing Symmetric Encryption in Node.js</h2>
-        <img src="./img3.png" alt="Symmetric Code Example" class="slide-image">
-        
-        <p>Let's implement a comprehensive symmetric encryption system using Node.js. This example demonstrates multiple algorithms, proper key management, and security best practices.</p>
+        <!-- Slide 3: Symmetric Algorithms -->
+        <section class="slide">
+            <h2>Popular Symmetric Algorithms</h2>
+            <img src="img3.png" alt="Symmetric Algorithms Comparison">
+            <p>Several symmetric encryption algorithms have become industry standards, each offering different levels of security and performance characteristics. Let's explore the most widely used ones in Web3 applications.</p>
 
-        <pre><code>const crypto = require('crypto');
+            <h3>AES (Advanced Encryption Standard)</h3>
+            <p>AES is the most widely used symmetric encryption algorithm, adopted as a standard by the U.S. government. It supports key sizes of 128, 192, and 256 bits, with AES-256 being the most secure variant commonly used in Web3 applications.</p>
 
+            <h3>ChaCha20</h3>
+            <p>ChaCha20 is a modern stream cipher designed by Daniel J. Bernstein. It's particularly popular in Web3 applications due to its high performance on software implementations and resistance to timing attacks.</p>
+
+            <h3>3DES (Triple Data Encryption Standard)</h3>
+            <p>3DES applies the DES algorithm three times with different keys, providing enhanced security compared to the original DES. However, it's being phased out in favor of AES due to performance considerations.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Key Size</th>
+                            <th>Security Level</th>
+                            <th>Performance</th>
+                            <th>Web3 Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AES-256</td>
+                            <td>256 bits</td>
+                            <td>Very High</td>
+                            <td>Fast</td>
+                            <td>Widespread</td>
+                        </tr>
+                        <tr>
+                            <td>ChaCha20</td>
+                            <td>256 bits</td>
+                            <td>Very High</td>
+                            <td>Very Fast</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>3DES</td>
+                            <td>168 bits</td>
+                            <td>Medium</td>
+                            <td>Slow</td>
+                            <td>Legacy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Slide 4: Symmetric Encryption Code Example -->
+        <section class="slide">
+            <h2>Symmetric Encryption Implementation</h2>
+            <img src="img4.png" alt="Code Implementation">
+            <p>Let's implement symmetric encryption using Node.js and the crypto module. This example demonstrates AES-256-GCM encryption, which provides both confidentiality and authenticity.</p>
+
+            <div class="code-block">
+                <pre><code>const crypto = require('crypto');
+
+// Symmetric encryption using AES-256-GCM
 class SymmetricEncryption {
     constructor() {
-        this.algorithms = {
-            aes256gcm: 'aes-256-gcm',
-            aes256cbc: 'aes-256-cbc',
-            chacha20: 'chacha20-poly1305'
-        };
+        this.algorithm = 'aes-256-gcm';
         this.keyLength = 32; // 256 bits
         this.ivLength = 16;  // 128 bits
         this.tagLength = 16; // 128 bits
     }
 
-    // Generate cryptographically secure random key
-    generateKey(algorithm = 'aes256gcm') {
+    // Generate a random key
+    generateKey() {
         return crypto.randomBytes(this.keyLength);
     }
 
-    // Generate random IV (Initialization Vector)
-    generateIV() {
-        return crypto.randomBytes(this.ivLength);
-    }
-
-    // Encrypt data using AES-256-GCM (Authenticated Encryption)
-    encryptAESGCM(plaintext, key, additionalData = '') {
-        const iv = this.generateIV();
-        const cipher = crypto.createCipher(this.algorithms.aes256gcm, key);
-        
-        if (additionalData) {
-            cipher.setAAD(Buffer.from(additionalData, 'utf8'));
-        }
+    // Encrypt data
+    encrypt(plaintext, key) {
+        const iv = crypto.randomBytes(this.ivLength);
+        const cipher = crypto.createCipher(this.algorithm, key);
         
         let encrypted = cipher.update(plaintext, 'utf8', 'hex');
         encrypted += cipher.final('hex');
@@ -543,285 +470,188 @@ class SymmetricEncryption {
         const tag = cipher.getAuthTag();
         
         return {
-            algorithm: this.algorithms.aes256gcm,
             encrypted: encrypted,
             iv: iv.toString('hex'),
-            tag: tag.toString('hex'),
-            additionalData: additionalData
-        };
-    }
-
-    // Decrypt data using AES-256-GCM
-    decryptAESGCM(encryptedData, key) {
-        const decipher = crypto.createDecipher(this.algorithms.aes256gcm, key);
-        
-        if (encryptedData.additionalData) {
-            decipher.setAAD(Buffer.from(encryptedData.additionalData, 'utf8'));
-        }
-        
-        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
-        
-        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        
-        return decrypted;
-    }
-
-    // Encrypt data using AES-256-CBC (Legacy support)
-    encryptAESCBC(plaintext, key) {
-        const iv = this.generateIV();
-        const cipher = crypto.createCipher(this.algorithms.aes256cbc, key);
-        
-        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
-        encrypted += cipher.final('hex');
-        
-        return {
-            algorithm: this.algorithms.aes256cbc,
-            encrypted: encrypted,
-            iv: iv.toString('hex')
-        };
-    }
-
-    // Decrypt data using AES-256-CBC
-    decryptAESCBC(encryptedData, key) {
-        const decipher = crypto.createDecipher(this.algorithms.aes256cbc, key);
-        
-        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        
-        return decrypted;
-    }
-
-    // Encrypt data using ChaCha20-Poly1305 (Modern stream cipher)
-    encryptChaCha20(plaintext, key) {
-        const iv = crypto.randomBytes(12); // ChaCha20 uses 12-byte nonce
-        const cipher = crypto.createCipher(this.algorithms.chacha20, key);
-        
-        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
-        encrypted += cipher.final('hex');
-        
-        const tag = cipher.getAuthTag();
-        
-        return {
-            algorithm: this.algorithms.chacha20,
-            encrypted: encrypted,
-            nonce: iv.toString('hex'),
             tag: tag.toString('hex')
         };
     }
 
-    // Decrypt data using ChaCha20-Poly1305
-    decryptChaCha20(encryptedData, key) {
-        const decipher = crypto.createDecipher(this.algorithms.chacha20, key);
-        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
+    // Decrypt data
+    decrypt(encryptedData, key, iv, tag) {
+        const decipher = crypto.createDecipher(this.algorithm, key);
+        decipher.setAuthTag(Buffer.from(tag, 'hex'));
         
-        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
+        let decrypted = decipher.update(encryptedData, 'hex', 'utf8');
         decrypted += decipher.final('utf8');
         
         return decrypted;
     }
-
-    // Key derivation using PBKDF2 (Password-Based Key Derivation)
-    deriveKeyFromPassword(password, salt, iterations = 100000) {
-        return crypto.pbkdf2Sync(password, salt, iterations, this.keyLength, 'sha256');
-    }
-
-    // Secure key storage (encrypt key with master key)
-    encryptKey(keyToEncrypt, masterKey) {
-        return this.encryptAESGCM(keyToEncrypt.toString('hex'), masterKey, 'key-encryption');
-    }
-
-    // Secure key retrieval
-    decryptKey(encryptedKey, masterKey) {
-        const decrypted = this.decryptAESGCM(encryptedKey, masterKey);
-        return Buffer.from(decrypted, 'hex');
-    }
 }
 
-// Advanced usage example with multiple algorithms
-async function demonstrateSymmetricEncryption() {
-    const crypto = new SymmetricEncryption();
-    
-    // Generate keys
-    const aesKey = crypto.generateKey('aes256gcm');
-    const chachaKey = crypto.generateKey('chacha20');
-    const masterKey = crypto.generateKey('aes256gcm');
-    
-    const messages = [
-        "Hello, Web3 World!",
-        "This is a secure message for blockchain applications.",
-        "Cryptography is the foundation of trust in decentralized systems."
-    ];
-    
-    console.log("=== Symmetric Encryption Demonstration ===\n");
-    
-    // Test AES-256-GCM
-    console.log("1. AES-256-GCM (Authenticated Encryption):");
-    for (let i = 0; i < messages.length; i++) {
-        const encrypted = crypto.encryptAESGCM(messages[i], aesKey, `message-${i}`);
-        console.log(`   Message ${i + 1}: ${messages[i]}`);
-        console.log(`   Encrypted: ${encrypted.encrypted.substring(0, 32)}...`);
-        
-        const decrypted = crypto.decryptAESGCM(encrypted, aesKey);
-        console.log(`   Decrypted: ${decrypted}`);
-        console.log(`   Integrity: ${decrypted === messages[i] ? '✓ Verified' : '✗ Failed'}\n`);
-    }
-    
-    // Test ChaCha20-Poly1305
-    console.log("2. ChaCha20-Poly1305 (Modern Stream Cipher):");
-    const chachaEncrypted = crypto.encryptChaCha20(messages[0], chachaKey);
-    console.log(`   Original: ${messages[0]}`);
-    console.log(`   Encrypted: ${chachaEncrypted.encrypted.substring(0, 32)}...`);
-    
-    const chachaDecrypted = crypto.decryptChaCha20(chachaEncrypted, chachaKey);
-    console.log(`   Decrypted: ${chachaDecrypted}`);
-    console.log(`   Integrity: ${chachaDecrypted === messages[0] ? '✓ Verified' : '✗ Failed'}\n`);
-    
-    // Test key derivation
-    console.log("3. Key Derivation from Password:");
-    const password = "MySecurePassword123!";
-    const salt = crypto.randomBytes(16);
-    const derivedKey = crypto.deriveKeyFromPassword(password, salt);
-    console.log(`   Password: ${password}`);
-    console.log(`   Derived Key: ${derivedKey.toString('hex').substring(0, 32)}...\n`);
-    
-    // Test secure key storage
-    console.log("4. Secure Key Storage:");
-    const encryptedKey = crypto.encryptKey(aesKey, masterKey);
-    console.log(`   Original Key: ${aesKey.toString('hex').substring(0, 32)}...`);
-    console.log(`   Encrypted Key: ${encryptedKey.encrypted.substring(0, 32)}...`);
-    
-    const retrievedKey = crypto.decryptKey(encryptedKey, masterKey);
-    console.log(`   Retrieved Key: ${retrievedKey.toString('hex').substring(0, 32)}...`);
-    console.log(`   Key Integrity: ${aesKey.equals(retrievedKey) ? '✓ Verified' : '✗ Failed'}\n`);
-}
+// Usage example
+const crypto = new SymmetricEncryption();
+const key = crypto.generateKey();
+const message = "Hello, Web3 World!";
 
-// Performance benchmarking
-function benchmarkAlgorithms() {
-    const crypto = new SymmetricEncryption();
-    const testData = "A".repeat(1000000); // 1MB of data
-    const iterations = 100;
-    
-    console.log("=== Performance Benchmark ===\n");
-    
-    // Benchmark AES-256-GCM
-    const aesKey = crypto.generateKey();
-    const aesStart = Date.now();
-    for (let i = 0; i < iterations; i++) {
-        const encrypted = crypto.encryptAESGCM(testData, aesKey);
-        crypto.decryptAESGCM(encrypted, aesKey);
-    }
-    const aesTime = Date.now() - aesStart;
-    
-    // Benchmark ChaCha20
-    const chachaKey = crypto.generateKey();
-    const chachaStart = Date.now();
-    for (let i = 0; i < iterations; i++) {
-        const encrypted = crypto.encryptChaCha20(testData, chachaKey);
-        crypto.decryptChaCha20(encrypted, chachaKey);
-    }
-    const chachaTime = Date.now() - chachaStart;
-    
-    console.log(`AES-256-GCM: ${aesTime}ms for ${iterations} iterations`);
-    console.log(`ChaCha20-Poly1305: ${chachaTime}ms for ${iterations} iterations`);
-    console.log(`Performance ratio: ${(aesTime / chachaTime).toFixed(2)}x\n`);
-}
+const encrypted = crypto.encrypt(message, key);
+console.log('Encrypted:', encrypted);
 
-// Run demonstrations
-demonstrateSymmetricEncryption().then(() => {
-    benchmarkAlgorithms();
-}).catch(console.error);</code></pre>
+const decrypted = crypto.decrypt(encrypted.encrypted, key, encrypted.iv, encrypted.tag);
+console.log('Decrypted:', decrypted);</code></pre>
+            </div>
 
-        <p>This comprehensive implementation includes multiple algorithms, proper key management, performance benchmarking, and security best practices. The code demonstrates authenticated encryption, key derivation, and secure key storage techniques essential for Web3 applications.</p>
+            <p>This implementation uses AES-256-GCM (Galois/Counter Mode) which provides both encryption and authentication. The GCM mode ensures that the encrypted data hasn't been tampered with, making it ideal for Web3 applications where data integrity is crucial.</p>
+        </section>
 
-        <!-- Slide 4: Symmetric Encryption Pros & Cons -->
-        <h2 id="symmetric-pros-cons">⚖️ Slide 4: Symmetric Encryption Analysis</h2>
-        <img src="./img4.png" alt="Symmetric Analysis" class="slide-image">
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Advantages</th>
-                    <th>Disadvantages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>⚡ High performance and speed</td>
-                    <td>🔑 Key distribution problem</td>
-                </tr>
-                <tr>
-                    <td>🔒 Strong security with proper key management</td>
-                    <td>👥 Requires secure key exchange</td>
-                </tr>
-                <tr>
-                    <td>💾 Efficient for large data volumes</td>
-                    <td>🔐 Key management complexity</td>
-                </tr>
-                <tr>
-                    <td>🔄 Simple implementation</td>
-                    <td>❌ No built-in authentication</td>
-                </tr>
-                <tr>
-                    <td>🎯 Low computational overhead</td>
-                    <td>🔍 Vulnerable to key compromise</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- Slide 5: Symmetric Pros and Cons -->
+        <section class="slide">
+            <h2>Symmetric Encryption: Pros and Cons</h2>
+            <img src="img5.png" alt="Pros and Cons Analysis">
+            <p>Understanding the advantages and limitations of symmetric encryption is crucial for making informed decisions in Web3 development. Let's analyze both sides of the coin.</p>
 
-        <p>The key distribution problem is the Achilles' heel of symmetric encryption. How do you securely share the secret key with someone you've never met? This fundamental limitation led to the development of asymmetric cryptography.</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Performance</td>
+                            <td>Very fast encryption/decryption</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Key Management</td>
+                            <td>Simple key structure</td>
+                            <td>Complex key distribution</td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td>Efficient for large data</td>
+                            <td>O(n²) key pairs needed</td>
+                        </tr>
+                        <tr>
+                            <td>Security</td>
+                            <td>Proven algorithms</td>
+                            <td>Single point of failure</td>
+                        </tr>
+                        <tr>
+                            <td>Implementation</td>
+                            <td>Straightforward</td>
+                            <td>Key exchange complexity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <!-- Quiz 1 -->
-        <div class="quiz-section">
-            <h3>🧠 Quick Quiz 1: Symmetric Encryption</h3>
-            <p class="quiz-question">Which of the following is the primary challenge with symmetric encryption?</p>
-            <ul class="quiz-options">
-                <li>A) Computational complexity</li>
-                <li>B) Key distribution and management</li>
-                <li>C) Encryption speed</li>
-                <li>D) Algorithm strength</li>
+            <h3>Key Management Challenge</h3>
+            <p>The primary challenge with symmetric encryption is key distribution. In a system with n participants, you need n(n-1)/2 unique key pairs, making it impractical for large-scale decentralized networks. This is where asymmetric encryption comes into play.</p>
+        </section>
+
+        <!-- Slide 6: Asymmetric Encryption Theory -->
+        <section class="slide">
+            <h2>Asymmetric Encryption: The Revolution</h2>
+            <img src="img6.png" alt="Asymmetric Encryption Diagram">
+            <p>Asymmetric encryption, also known as public-key cryptography, revolutionized the field of cryptography by introducing the concept of key pairs. This breakthrough solved the key distribution problem that plagued symmetric encryption.</p>
+
+            <p>In asymmetric encryption, each participant has a pair of mathematically related keys: a public key that can be shared openly and a private key that must be kept secret. The public key is used for encryption, while the private key is used for decryption.</p>
+
+            <h3>Key Characteristics</h3>
+            <ul>
+                <li><strong>Key Pairs:</strong> Public and private key mathematically related</li>
+                <li><strong>Key Distribution:</strong> Public keys can be freely shared</li>
+                <li><strong>Digital Signatures:</strong> Private key can sign, public key can verify</li>
+                <li><strong>Scalability:</strong> Linear growth in key pairs</li>
             </ul>
-            <p><strong>Answer:</strong> B) Key distribution and management. The main challenge is securely sharing the secret key between parties without it being intercepted.</p>
-        </div>
 
-        <!-- Slide 5: Asymmetric Encryption Theory -->
-        <h2 id="asymmetric-theory">🔐 Slide 5: Asymmetric Encryption - The Key Pair Revolution</h2>
-        <img src="./img5.png" alt="Asymmetric Encryption" class="slide-image">
-        
-        <p>Asymmetric encryption, also known as public-key cryptography, uses a pair of mathematically related keys: a public key for encryption and a private key for decryption. This revolutionary approach solves the key distribution problem that plagued symmetric encryption.</p>
+            <div class="quiz">
+                <h3>Quick Quiz: Asymmetric Encryption</h3>
+                <p>What is the main advantage of asymmetric encryption over symmetric encryption?</p>
+                <div class="quiz-option">A) Faster encryption speed</div>
+                <div class="quiz-option">B) Simpler key management</div>
+                <div class="quiz-option">C) Smaller key sizes</div>
+                <div class="quiz-option">D) Better for large data</div>
+            </div>
+        </section>
 
-        <p>The mathematical foundation of asymmetric encryption is based on complex mathematical problems that are easy to solve in one direction but computationally infeasible to reverse. The most common approaches are:</p>
+        <!-- Slide 7: Asymmetric Algorithms -->
+        <section class="slide">
+            <h2>Popular Asymmetric Algorithms</h2>
+            <img src="img7.png" alt="Asymmetric Algorithms Comparison">
+            <p>Asymmetric encryption algorithms are based on mathematical problems that are computationally difficult to solve. The most widely used algorithms in Web3 applications are RSA and ECC (Elliptic Curve Cryptography).</p>
 
-        <ul>
-            <li><strong>RSA (Rivest-Shamir-Adleman):</strong> Based on the difficulty of factoring large prime numbers</li>
-            <li><strong>ECC (Elliptic Curve Cryptography):</strong> Based on the discrete logarithm problem in elliptic curve groups</li>
-            <li><strong>ElGamal:</strong> Based on the Diffie-Hellman key exchange protocol</li>
-        </ul>
+            <h3>RSA (Rivest-Shamir-Adleman)</h3>
+            <p>RSA is based on the difficulty of factoring large composite numbers. It's one of the first practical public-key cryptosystems and remains widely used today. RSA keys are typically 2048 or 4096 bits long for adequate security.</p>
 
-        <p>In Web3, ECC is particularly important because it provides the same security level as RSA with much smaller key sizes, making it ideal for blockchain applications where efficiency is crucial.</p>
+            <h3>ECC (Elliptic Curve Cryptography)</h3>
+            <p>ECC is based on the algebraic structure of elliptic curves over finite fields. It provides the same level of security as RSA but with much smaller key sizes, making it more efficient and popular in Web3 applications.</p>
 
-        <!-- Slide 6: Asymmetric Encryption Code Example -->
-        <h2 id="asymmetric-code">💻 Slide 6: Implementing Asymmetric Encryption in Node.js</h2>
-        <img src="./img6.png" alt="Asymmetric Code Example" class="slide-image">
-        
-        <p>Let's implement a comprehensive asymmetric encryption system using Node.js. This example covers RSA, ECC, digital signatures, and key management for Web3 applications.</p>
+            <h3>Ed25519</h3>
+            <p>Ed25519 is a specific implementation of elliptic curve cryptography that's particularly popular in blockchain applications due to its high performance and security characteristics.</p>
 
-        <pre><code>const crypto = require('crypto');
-const secp256k1 = require('secp256k1'); // For ECC operations
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Key Size</th>
+                            <th>Security Level</th>
+                            <th>Performance</th>
+                            <th>Web3 Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RSA-2048</td>
+                            <td>2048 bits</td>
+                            <td>High</td>
+                            <td>Slow</td>
+                            <td>Common</td>
+                        </tr>
+                        <tr>
+                            <td>ECC-256</td>
+                            <td>256 bits</td>
+                            <td>Very High</td>
+                            <td>Fast</td>
+                            <td>Widespread</td>
+                        </tr>
+                        <tr>
+                            <td>Ed25519</td>
+                            <td>256 bits</td>
+                            <td>Very High</td>
+                            <td>Very Fast</td>
+                            <td>Growing</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
+        <!-- Slide 8: Asymmetric Encryption Code Example -->
+        <section class="slide">
+            <h2>Asymmetric Encryption Implementation</h2>
+            <img src="img8.png" alt="Asymmetric Code Implementation">
+            <p>Let's implement asymmetric encryption using Node.js. This example demonstrates RSA encryption and digital signatures, which are fundamental to Web3 applications.</p>
+
+            <div class="code-block">
+                <pre><code>const crypto = require('crypto');
+
+// Asymmetric encryption using RSA
 class AsymmetricEncryption {
     constructor() {
-        this.rsaKeySize = 2048;
-        this.eccCurve = 'secp256k1'; // Bitcoin/Ethereum curve
-        this.hashAlgorithm = 'sha256';
-        this.encryptionScheme = 'oaep';
+        this.algorithm = 'RSA';
+        this.keySize = 2048;
     }
 
-    // Generate RSA key pair
-    generateRSAKeyPair() {
+    // Generate key pair
+    generateKeyPair() {
         return new Promise((resolve, reject) => {
-            crypto.generateKeyPair('rsa', {
-                modulusLength: this.rsaKeySize,
+            crypto.generateKeyPair(this.algorithm, {
+                modulusLength: this.keySize,
                 publicKeyEncoding: {
                     type: 'spki',
                     format: 'pem'
@@ -837,245 +667,340 @@ class AsymmetricEncryption {
         });
     }
 
-    // Generate ECC key pair (secp256k1 - Bitcoin/Ethereum compatible)
-    generateECCKeyPair() {
-        let privateKey;
-        do {
-            privateKey = crypto.randomBytes(32);
-        } while (!secp256k1.privateKeyVerify(privateKey));
-        
-        const publicKey = secp256k1.publicKeyCreate(privateKey);
-        
-        return {
-            privateKey: privateKey.toString('hex'),
-            publicKey: publicKey.toString('hex')
-        };
-    }
-
-    // Encrypt data using RSA public key
-    encryptRSA(plaintext, publicKey) {
-        const buffer = Buffer.from(plaintext, 'utf8');
-        const encrypted = crypto.publicEncrypt({
-            key: publicKey,
-            padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-            oaepHash: this.hashAlgorithm
-        }, buffer);
-        
+    // Encrypt data with public key
+    encrypt(plaintext, publicKey) {
+        const encrypted = crypto.publicEncrypt(
+            {
+                key: publicKey,
+                padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+                oaepHash: 'sha256'
+            },
+            Buffer.from(plaintext, 'utf8')
+        );
         return encrypted.toString('base64');
     }
 
-    // Decrypt data using RSA private key
-    decryptRSA(encryptedData, privateKey) {
-        const buffer = Buffer.from(encryptedData, 'base64');
-        const decrypted = crypto.privateDecrypt({
-            key: privateKey,
-            padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-            oaepHash: this.hashAlgorithm
-        }, buffer);
-        
+    // Decrypt data with private key
+    decrypt(encryptedData, privateKey) {
+        const decrypted = crypto.privateDecrypt(
+            {
+                key: privateKey,
+                padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+                oaepHash: 'sha256'
+            },
+            Buffer.from(encryptedData, 'base64')
+        );
         return decrypted.toString('utf8');
     }
 
-    // Encrypt data using ECC (ECDH + AES)
-    encryptECC(plaintext, recipientPublicKey, senderPrivateKey) {
-        // Generate ephemeral key pair for this encryption
-        const ephemeralKeyPair = this.generateECCKeyPair();
-        
-        // Perform ECDH key exchange
-        const sharedSecret = secp256k1.ecdh(
-            Buffer.from(recipientPublicKey, 'hex'),
-            Buffer.from(ephemeralKeyPair.privateKey, 'hex')
-        );
-        
-        // Use shared secret to derive AES key
-        const aesKey = crypto.createHash('sha256').update(sharedSecret).digest();
-        
-        // Encrypt data with AES
-        const iv = crypto.randomBytes(16);
-        const cipher = crypto.createCipher('aes-256-gcm', aesKey);
-        cipher.setAAD(Buffer.from('ecc-encryption', 'utf8'));
-        
-        let encrypted = cipher.update(plaintext, 'utf8', 'hex');
-        encrypted += cipher.final('hex');
-        const tag = cipher.getAuthTag();
-        
-        return {
-            algorithm: 'ecc-aes-256-gcm',
-            ephemeralPublicKey: ephemeralKeyPair.publicKey,
-            encrypted: encrypted,
-            iv: iv.toString('hex'),
-            tag: tag.toString('hex')
-        };
-    }
-
-    // Decrypt data using ECC
-    decryptECC(encryptedData, recipientPrivateKey) {
-        // Perform ECDH key exchange with ephemeral public key
-        const sharedSecret = secp256k1.ecdh(
-            Buffer.from(encryptedData.ephemeralPublicKey, 'hex'),
-            Buffer.from(recipientPrivateKey, 'hex')
-        );
-        
-        // Derive AES key
-        const aesKey = crypto.createHash('sha256').update(sharedSecret).digest();
-        
-        // Decrypt with AES
-        const decipher = crypto.createDecipher('aes-256-gcm', aesKey);
-        decipher.setAAD(Buffer.from('ecc-encryption', 'utf8'));
-        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
-        
-        let decrypted = decipher.update(encryptedData.encrypted, 'hex', 'utf8');
-        decrypted += decipher.final('utf8');
-        
-        return decrypted;
-    }
-
-    // Create digital signature using RSA
-    signRSA(data, privateKey) {
+    // Sign data with private key
+    sign(data, privateKey) {
         const sign = crypto.createSign('SHA256');
         sign.update(data);
         sign.end();
         return sign.sign(privateKey, 'base64');
     }
 
-    // Verify digital signature using RSA
-    verifyRSA(data, signature, publicKey) {
+    // Verify signature with public key
+    verify(data, signature, publicKey) {
         const verify = crypto.createVerify('SHA256');
         verify.update(data);
         verify.end();
         return verify.verify(publicKey, signature, 'base64');
     }
-
-    // Create digital signature using ECC (secp256k1)
-    signECC(data, privateKey) {
-        const messageHash = crypto.createHash('sha256').update(data).digest();
-        const signature = secp256k1.sign(messageHash, Buffer.from(privateKey, 'hex'));
-        return {
-            signature: signature.signature.toString('hex'),
-            recovery: signature.recovery
-        };
-    }
-
-    // Verify digital signature using ECC
-    verifyECC(data, signature, publicKey) {
-        const messageHash = crypto.createHash('sha256').update(data).digest();
-        return secp256k1.verify(messageHash, Buffer.from(signature.signature, 'hex'), Buffer.from(publicKey, 'hex'));
-    }
-
-    // Generate Bitcoin/Ethereum compatible address from public key
-    generateAddress(publicKey) {
-        const hash1 = crypto.createHash('sha256').update(Buffer.from(publicKey, 'hex')).digest();
-        const hash2 = crypto.createHash('ripemd160').update(hash1).digest();
-        return hash2.toString('hex');
-    }
-
-    // Key derivation for hierarchical deterministic wallets (BIP-32)
-    deriveChildKey(parentPrivateKey, parentPublicKey, index, chainCode) {
-        const data = Buffer.concat([
-            Buffer.from(parentPublicKey, 'hex'),
-            Buffer.alloc(4),
-            Buffer.from(index.toString(16).padStart(8, '0'), 'hex')
-        ]);
-        
-        const hmac = crypto.createHmac('sha512', chainCode);
-        hmac.update(data);
-        const result = hmac.digest();
-        
-        const childPrivateKey = (BigInt('0x' + parentPrivateKey) + BigInt('0x' + result.slice(0, 32).toString('hex'))) % BigInt('0x' + 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141');
-        
-        return {
-            privateKey: childPrivateKey.toString(16).padStart(64, '0'),
-            chainCode: result.slice(32).toString('hex')
-        };
-    }
 }
 
-// Advanced usage example with multiple algorithms
-async function demonstrateAsymmetricEncryption() {
+// Usage example
+async function demonstrateAsymmetric() {
     const crypto = new AsymmetricEncryption();
+    const { publicKey, privateKey } = await crypto.generateKeyPair();
     
-    console.log("=== Asymmetric Encryption Demonstration ===\n");
+    const message = "Hello, Web3 World!";
     
-    // Test RSA
-    console.log("1. RSA Encryption and Digital Signatures:");
-    const rsaKeys = await crypto.generateRSAKeyPair();
-    const rsaMessage = "Hello, Web3 World!";
+    // Encryption
+    const encrypted = crypto.encrypt(message, publicKey);
+    console.log('Encrypted:', encrypted);
     
-    const rsaEncrypted = crypto.encryptRSA(rsaMessage, rsaKeys.publicKey);
-    console.log(`   Original: ${rsaMessage}`);
-    console.log(`   Encrypted: ${rsaEncrypted.substring(0, 50)}...`);
+    // Decryption
+    const decrypted = crypto.decrypt(encrypted, privateKey);
+    console.log('Decrypted:', decrypted);
     
-    const rsaDecrypted = crypto.decryptRSA(rsaEncrypted, rsaKeys.privateKey);
-    console.log(`   Decrypted: ${rsaDecrypted}`);
-    console.log(`   Integrity: ${rsaDecrypted === rsaMessage ? '✓ Verified' : '✗ Failed'}`);
+    // Digital signature
+    const signature = crypto.sign(message, privateKey);
+    console.log('Signature:', signature);
     
-    const rsaSignature = crypto.signRSA(rsaMessage, rsaKeys.privateKey);
-    const rsaVerified = crypto.verifyRSA(rsaMessage, rsaSignature, rsaKeys.publicKey);
-    console.log(`   Signature: ${rsaSignature.substring(0, 50)}...`);
-    console.log(`   Verified: ${rsaVerified ? '✓ Valid' : '✗ Invalid'}\n`);
-    
-    // Test ECC
-    console.log("2. ECC Encryption and Digital Signatures:");
-    const aliceKeys = crypto.generateECCKeyPair();
-    const bobKeys = crypto.generateECCKeyPair();
-    const eccMessage = "Secure ECC communication";
-    
-    const eccEncrypted = crypto.encryptECC(eccMessage, bobKeys.publicKey, aliceKeys.privateKey);
-    console.log(`   Original: ${eccMessage}`);
-    console.log(`   Encrypted: ${eccEncrypted.encrypted.substring(0, 32)}...`);
-    
-    const eccDecrypted = crypto.decryptECC(eccEncrypted, bobKeys.privateKey);
-    console.log(`   Decrypted: ${eccDecrypted}`);
-    console.log(`   Integrity: ${eccDecrypted === eccMessage ? '✓ Verified' : '✗ Failed'}`);
-    
-    const eccSignature = crypto.signECC(eccMessage, aliceKeys.privateKey);
-    const eccVerified = crypto.verifyECC(eccMessage, eccSignature, aliceKeys.publicKey);
-    console.log(`   Signature: ${eccSignature.signature.substring(0, 32)}...`);
-    console.log(`   Verified: ${eccVerified ? '✓ Valid' : '✗ Invalid'}\n`);
-    
-    // Test address generation
-    console.log("3. Bitcoin/Ethereum Address Generation:");
-    const walletKeys = crypto.generateECCKeyPair();
-    const address = crypto.generateAddress(walletKeys.publicKey);
-    console.log(`   Public Key: ${walletKeys.publicKey.substring(0, 32)}...`);
-    console.log(`   Address: ${address}\n`);
-    
-    // Test key derivation
-    console.log("4. Hierarchical Deterministic Key Derivation:");
-    const masterKeys = crypto.generateECCKeyPair();
-    const chainCode = crypto.randomBytes(32).toString('hex');
-    
-    for (let i = 0; i < 3; i++) {
-        const childKeys = crypto.deriveChildKey(
-            masterKeys.privateKey,
-            masterKeys.publicKey,
-            i,
-            chainCode
+    // Verify signature
+    const isValid = crypto.verify(message, signature, publicKey);
+    console.log('Signature valid:', isValid);
+}</code></pre>
+            </div>
+
+            <p>This implementation demonstrates both encryption and digital signatures using RSA. Digital signatures are particularly important in Web3 as they provide authentication and non-repudiation, ensuring that messages can't be denied by the sender.</p>
+        </section>
+
+        <!-- Slide 9: Asymmetric Pros and Cons -->
+        <section class="slide">
+            <h2>Asymmetric Encryption: Pros and Cons</h2>
+            <img src="img9.png" alt="Asymmetric Pros and Cons">
+            <p>Asymmetric encryption solved many problems of symmetric encryption but introduced new challenges. Understanding these trade-offs is essential for designing secure Web3 systems.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Advantages</th>
+                            <th>Disadvantages</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Key Management</td>
+                            <td>Simple key distribution</td>
+                            <td>Complex key generation</td>
+                        </tr>
+                        <tr>
+                            <td>Scalability</td>
+                            <td>Linear key growth</td>
+                            <td>Larger key sizes</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td>Digital signatures</td>
+                            <td>Slower encryption</td>
+                        </tr>
+                        <tr>
+                            <td>Security</td>
+                            <td>No key exchange needed</td>
+                            <td>Computational overhead</td>
+                        </tr>
+                        <tr>
+                            <td>Applications</td>
+                            <td>Wide range of uses</td>
+                            <td>Not suitable for bulk data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Hybrid Approach</h3>
+            <p>In practice, most Web3 applications use a hybrid approach: asymmetric encryption for key exchange and digital signatures, combined with symmetric encryption for bulk data encryption. This provides the best of both worlds.</p>
+        </section>
+
+        <!-- Slide 10: Web3 Use Cases -->
+        <section class="slide">
+            <h2>Web3 Applications and Use Cases</h2>
+            <img src="img10.png" alt="Web3 Use Cases">
+            <p>Cryptography is fundamental to every aspect of Web3. Let's explore how symmetric and asymmetric encryption are used in real-world blockchain and decentralized applications.</p>
+
+            <h3>Digital Wallets</h3>
+            <p>Digital wallets use asymmetric cryptography extensively. Private keys are used to sign transactions and prove ownership of digital assets, while public keys serve as wallet addresses. The security of the entire system depends on keeping private keys secure.</p>
+
+            <h3>Smart Contracts</h3>
+            <p>Smart contracts use cryptographic signatures to verify transaction authenticity and ensure that only authorized parties can execute contract functions. This creates trustless, automated agreements that execute based on predefined conditions.</p>
+
+            <h3>Decentralized Identity</h3>
+            <p>Decentralized identity systems use cryptographic proofs to verify identity without revealing personal information. This enables privacy-preserving authentication and authorization in Web3 applications.</p>
+
+            <div class="code-block">
+                <pre><code>// Example: Ethereum transaction signing
+const ethers = require('ethers');
+
+class Web3CryptoExample {
+    constructor() {
+        this.provider = new ethers.providers.JsonRpcProvider();
+    }
+
+    // Generate wallet
+    createWallet() {
+        const wallet = ethers.Wallet.createRandom();
+        return {
+            address: wallet.address,
+            privateKey: wallet.privateKey,
+            publicKey: wallet.publicKey
+        };
+    }
+
+    // Sign transaction
+    async signTransaction(transaction, privateKey) {
+        const wallet = new ethers.Wallet(privateKey);
+        const signedTx = await wallet.signTransaction(transaction);
+        return signedTx;
+    }
+
+    // Verify signature
+    verifySignature(message, signature, address) {
+        const recoveredAddress = ethers.utils.verifyMessage(message, signature);
+        return recoveredAddress.toLowerCase() === address.toLowerCase();
+    }
+}</code></pre>
+            </div>
+
+            <div class="quiz">
+                <h3>Quick Quiz: Web3 Applications</h3>
+                <p>Which cryptographic operation is most commonly used for transaction signing in blockchain networks?</p>
+                <div class="quiz-option">A) Symmetric encryption</div>
+                <div class="quiz-option">B) Asymmetric encryption</div>
+                <div class="quiz-option">C) Hash functions</div>
+                <div class="quiz-option">D) Digital signatures</div>
+            </div>
+        </section>
+
+        <!-- Slide 11: Hands-On Exercise -->
+        <section class="slide">
+            <h2>Hands-On Exercise: Building a Secure Messaging System</h2>
+            <p>Let's build a practical example that combines both symmetric and asymmetric encryption to create a secure messaging system suitable for Web3 applications.</p>
+
+            <div class="code-block">
+                <pre><code>const crypto = require('crypto');
+
+class SecureMessagingSystem {
+    constructor() {
+        this.symmetricAlgorithm = 'aes-256-gcm';
+        this.asymmetricAlgorithm = 'RSA';
+    }
+
+    // Generate key pair for user
+    async generateUserKeys() {
+        return new Promise((resolve, reject) => {
+            crypto.generateKeyPair(this.asymmetricAlgorithm, {
+                modulusLength: 2048,
+                publicKeyEncoding: { type: 'spki', format: 'pem' },
+                privateKeyEncoding: { type: 'pkcs8', format: 'pem' }
+            }, (err, publicKey, privateKey) => {
+                if (err) reject(err);
+                else resolve({ publicKey, privateKey });
+            });
+        });
+    }
+
+    // Encrypt message using hybrid approach
+    async encryptMessage(message, recipientPublicKey) {
+        // Generate random symmetric key
+        const symmetricKey = crypto.randomBytes(32);
+        
+        // Encrypt message with symmetric key
+        const iv = crypto.randomBytes(16);
+        const cipher = crypto.createCipher(this.symmetricAlgorithm, symmetricKey);
+        let encrypted = cipher.update(message, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
+        const tag = cipher.getAuthTag();
+
+        // Encrypt symmetric key with recipient's public key
+        const encryptedKey = crypto.publicEncrypt(
+            {
+                key: recipientPublicKey,
+                padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+                oaepHash: 'sha256'
+            },
+            symmetricKey
         );
-        console.log(`   Child ${i}: ${childKeys.privateKey.substring(0, 32)}...`);
+
+        return {
+            encryptedMessage: encrypted,
+            encryptedKey: encryptedKey.toString('base64'),
+            iv: iv.toString('hex'),
+            tag: tag.toString('hex')
+        };
     }
-    console.log();
+
+    // Decrypt message
+    async decryptMessage(encryptedData, recipientPrivateKey) {
+        // Decrypt symmetric key
+        const symmetricKey = crypto.privateDecrypt(
+            {
+                key: recipientPrivateKey,
+                padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+                oaepHash: 'sha256'
+            },
+            Buffer.from(encryptedData.encryptedKey, 'base64')
+        );
+
+        // Decrypt message
+        const decipher = crypto.createDecipher(this.symmetricAlgorithm, symmetricKey);
+        decipher.setAuthTag(Buffer.from(encryptedData.tag, 'hex'));
+        
+        let decrypted = decipher.update(encryptedData.encryptedMessage, 'hex', 'utf8');
+        decrypted += decipher.final('utf8');
+        
+        return decrypted;
+    }
 }
 
-// Performance comparison
-function benchmarkAsymmetricAlgorithms() {
-    const crypto = new AsymmetricEncryption();
-    const testData = "Test message for asymmetric encryption";
-    const iterations = 100;
+// Usage example
+async function demonstrateSecureMessaging() {
+    const messaging = new SecureMessagingSystem();
     
-    console.log("=== Asymmetric Algorithm Performance ===\n");
+    // Generate keys for two users
+    const alice = await messaging.generateUserKeys();
+    const bob = await messaging.generateUserKeys();
     
-    // Benchmark RSA
-    crypto.generateRSAKeyPair().then(rsaKeys => {
-        const rsaStart = Date.now();
-        for (let i = 0; i < iterations; i++) {
-            const encrypted = crypto.encryptRSA(testData, rsaKeys.publicKey);
-            crypto.decryptRSA(encrypted, rsaKeys.privateKey);
-        }
-        const rsaTime = Date.now() - rsaStart;
-        
-        // Benchmark ECC
-        const eccKeys = crypto.generateECCKeyPair();
-        const eccStart = Date.now();
-        for (let i = 0; i < iterations; i++) {
-            const encrypted = crypto.encryptECC
+    const message = "Hello, this is a secure Web3 message!";
+    
+    // Alice encrypts message for Bob
+    const encrypted = await messaging.encryptMessage(message, bob.publicKey);
+    
+    // Bob decrypts the message
+    const decrypted = await messaging.decryptMessage(encrypted, bob.privateKey);
+    
+    console.log('Original:', message);
+    console.log('Decrypted:', decrypted);
+}</code></pre>
+            </div>
+
+            <h3>Exercise Tasks</h3>
+            <ol>
+                <li>Implement the secure messaging system above</li>
+                <li>Add message signing functionality</li>
+                <li>Implement message verification</li>
+                <li>Add timestamp validation</li>
+                <li>Test with multiple users</li>
+            </ol>
+        </section>
+
+        <!-- Slide 12: Summary and Further Reading -->
+        <section class="slide">
+            <h2>Summary and Further Reading</h2>
+            <p>We've covered the fundamental concepts of symmetric and asymmetric cryptography, their implementations, and real-world applications in Web3. Let's summarize the key takeaways and explore further learning opportunities.</p>
+
+            <h3>Key Takeaways</h3>
+            <ul>
+                <li><strong>Symmetric encryption</strong> is fast and efficient but requires secure key distribution</li>
+                <li><strong>Asymmetric encryption</strong> solves key distribution but is computationally expensive</li>
+                <li><strong>Hybrid approaches</strong> combine the best of both worlds</li>
+                <li><strong>Digital signatures</strong> are crucial for Web3 authentication and non-repudiation</li>
+                <li><strong>Key management</strong> is critical for system security</li>
+            </ul>
+
+            <h3>Further Reading</h3>
+            <ul>
+                <li><a href="#">Applied Cryptography by Bruce Schneier</a></li>
+                <li><a href="#">Cryptography Engineering by Ferguson, Schneier, and Kohno</a></li>
+                <li><a href="#">Mastering Bitcoin by Andreas Antonopoulos</a></li>
+                <li><a href="#">Ethereum Yellow Paper</a></li>
+                <li><a href="#">Web3 Security Best Practices</a></li>
+            </ul>
+
+            <div class="quiz">
+                <h3>Final Quiz: Comprehensive Understanding</h3>
+                <p>Which approach would you use for encrypting large amounts of data in a Web3 application?</p>
+                <div class="quiz-option">A) Pure asymmetric encryption</div>
+                <div class="quiz-option">B) Pure symmetric encryption</div>
+                <div class="quiz-option">C) Hybrid approach (asymmetric for key exchange, symmetric for data)</div>
+                <div class="quiz-option">D) Hash functions only</div>
+            </div>
+
+            <blockquote>
+                "The future of Web3 security lies in understanding and properly implementing cryptographic principles. As we build the decentralized web, cryptography will continue to be our most powerful tool for creating trust in trustless systems."
+            </blockquote>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 MOKSHA STUDIOS — Building the Future of Web3 Education</p>
+    </footer>
+</body>
+</html>
+```
+
