@@ -1,780 +1,983 @@
- Title 
-<title>Web3 Odyssey — Module 1: Lesson 1.1 — Symmetric vs Asymmetric Cryptography | MOKSHA Innovators Guild</title>
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+     Meta 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
- Favicon & Required Local Assets 
- The following files must exist in the repository root:
-     - favicon.png
-     - logo.png
-     - img1.png ... img10.png
+    <title>Web3 Odyssey — Module 1: Lesson 1.1 — Symmetric vs Asymmetric Cryptography | MOKSHA Innovators Guild</title>
 
-<link rel="icon" href="./favicon.png" type="image/png" />
+     Favicon & Required Local Assets
+         Place the following files in the repository root:
+         - favicon.png
+         - logo.png
+         - img1.png ... img10.png
+    
+    <link rel="icon" href="./favicon.png" type="image/png" />
 
- Google Fonts (Allowed External) 
-<link
-  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Slab:wght@700;800&family=Roboto+Mono:wght@400;500;700&family=Fira+Mono:wght@400;500;700&display=swap"
-  rel="stylesheet"
-/>
+     Google Fonts (allowed) 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Slab:wght@700;800&family=Roboto+Mono:wght@400;500;700&family=Fira+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
- Styles (All Inline as Required) 
-<style>
-  :root {
-    --bg-start: #0a0f2a;
-    --bg-end: #0b0f2f;
-    --panel-start: #0e1438;
-    --panel-end: #0b1032;
-    --ink: #dbe7ff;
-    --muted: #aab4d4;
-    --neon-cyan: #00e5ff;
-    --neon-violet: #9b5de5;
-    --accent-blue: #4cc9f0;
-    --success: #20e3b2;
-    --warning: #ffcb6b;
-    --danger: #ff6b6b;
-    --border: rgba(255, 255, 255, 0.12);
-    --shadow-neon: 0 0 0.5rem rgba(0, 229, 255, 0.15), 0 0 2.5rem rgba(155, 93, 229, 0.18);
-    --shadow-panel: 0 10px 35px rgba(0, 0, 0, 0.55), 0 0 50px rgba(0, 229, 255, 0.05);
-    --header-bg: rgba(6, 10, 28, 0.9);
-    --header-border: rgba(255, 255, 255, 0.08);
-    --code-bg: #0a1128;
-    --code-border: rgba(76, 201, 240, 0.25);
-    --blockquote-bg: rgba(0, 229, 255, 0.08);
-    --blockquote-border: rgba(0, 229, 255, 0.8);
-    --table-head-bg: rgba(155, 93, 229, 0.15);
-    --table-row-alt: rgba(255, 255, 255, 0.03);
-    --focus: 0 0 0 3px rgba(0, 229, 255, 0.35), 0 0 0 1px rgba(0, 229, 255, 0.65) inset;
-  }
+     Styles (inline only) 
+    <style>
+      :root {
+        --bg-start: #090e25;
+        --bg-end: #0b1030;
+        --panel-start: #0e1438;
+        --panel-end: #0a0f2b;
+        --ink: #dfe7ff;
+        --muted: #a8b6e2;
+        --neon-cyan: #00e5ff;
+        --neon-cyan-soft: rgba(0, 229, 255, 0.25);
+        --neon-violet: #9b5de5;
+        --violet-soft: rgba(155, 93, 229, 0.25);
+        --border: rgba(255, 255, 255, 0.12);
+        --header-bg: rgba(7, 11, 30, 0.9);
+        --code-bg: #0a1128;
+        --code-border: rgba(76, 201, 240, 0.28);
+        --blockquote-bg: rgba(0, 229, 255, 0.08);
+        --blockquote-border: rgba(0, 229, 255, 0.85);
+        --table-head-bg: rgba(155, 93, 229, 0.14);
+        --table-row-alt: rgba(255, 255, 255, 0.035);
+        --focus: 0 0 0 3px rgba(0, 229, 255, 0.35), 0 0 0 1px rgba(0, 229, 255, 0.65) inset;
+      }
 
-  /* Base */
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    margin: 0;
-    color: var(--ink);
-    background: radial-gradient(1200px 800px at 10% -10%, #0c1542 0%, transparent 60%), linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
-    font-family: "Roboto", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-    line-height: 1.65;
-    min-height: 100vh;
-  }
-  a {
-    color: var(--neon-cyan);
-    text-decoration: none;
-    transition: color 0.2s ease, text-shadow 0.2s ease;
-  }
-  a:hover, a:focus {
-    color: #66f2ff;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-    outline: none;
-  }
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
+      /* Base */
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(1200px 800px at 10% -10%, #0c1542 0%, transparent 60%),
+          radial-gradient(1200px 800px at 110% 10%, #1a0f3f 0%, transparent 60%),
+          linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+        font-family: "Roboto", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        line-height: 1.7;
+        min-height: 100vh;
+      }
+      a {
+        color: var(--neon-cyan);
+        text-decoration: none;
+        transition: color 0.2s ease, text-shadow 0.2s ease, transform 0.2s ease;
+      }
+      a:hover, a:focus {
+        color: #7ff1ff;
+        text-shadow: 0 0 10px rgba(0, 229, 255, 0.55);
+        outline: none;
+      }
+      img { max-width: 100%; height: auto; display: block; }
+      .sr-only {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0,0,0,0); border: 0;
+      }
 
-  /* Header */
-  header.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: linear-gradient(180deg, var(--header-bg) 0%, rgba(6, 10, 28, 0.7) 100%);
-    border-bottom: 1px solid var(--header-border);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 18px 24px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 18px;
-    align-items: center;
-  }
-  .brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-  }
-  .brand img {
-    height: 60px;
-    width: auto;
-    filter: drop-shadow(0 4px 12px rgba(0, 229, 255, 0.25));
-  }
-  .brand .title-wrap h1 {
-    margin: 0;
-    font-family: "Roboto Slab", Georgia, serif;
-    font-weight: 800;
-    font-size: clamp(1.2rem, 1.7vw, 1.8rem);
-    letter-spacing: 0.6px;
-    color: #e7eeff;
-    text-shadow: 0 0 16px rgba(155, 93, 229, 0.35), 0 0 6px rgba(0, 229, 255, 0.25);
-  }
-  .brand .title-wrap p {
-    margin: 2px 0 0;
-    color: var(--muted);
-    font-size: clamp(0.85rem, 1.1vw, 1rem);
-  }
-  nav.toc {
-    justify-self: end;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-  }
-  nav.toc a {
-    padding: 8px 12px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    color: #d8e7ff;
-    font-size: 0.9rem;
-  }
-  nav.toc a:hover {
-    background: rgba(0, 229, 255, 0.1);
-    border-color: rgba(0, 229, 255, 0.35);
-  }
+      /* Header (fixed) */
+      header.site-header {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+        background: linear-gradient(180deg, var(--header-bg) 0%, rgba(7, 11, 30, 0.7) 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+      }
+      .header-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 24px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+      .logo-wrap {
+        display: inline-flex; align-items: center;
+      }
+      .logo-wrap img {
+        height: 60px; width: auto;
+        filter: drop-shadow(0 4px 14px rgba(0, 229, 255, 0.35));
+      }
+      .course-info {
+        display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+      }
+      .course-info h1 {
+        margin: 0;
+        font-family: "Roboto Slab", Georgia, serif;
+        font-weight: 800;
+        font-size: clamp(1.3rem, 2.1vw, 1.9rem);
+        letter-spacing: 0.6px;
+        color: #eef2ff;
+        text-shadow: 0 0 16px rgba(155, 93, 229, 0.35), 0 0 6px rgba(0, 229, 255, 0.25);
+      }
+      .course-info p {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(0.9rem, 1.2vw, 1.02rem);
+      }
 
-  /* Main container */
-  main {
-    padding-top: 110px; /* header height + spacing */
-    padding-bottom: 80px;
-  }
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 28px;
-  }
-  .panel {
-    background: linear-gradient(180deg, var(--panel-start), var(--panel-end));
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: var(--shadow-panel), inset 0 0 20px rgba(155, 93, 229, 0.05);
-    padding: clamp(22px, 3.2vw, 38px);
-  }
+      /* Optional in-page nav */
+      .toc {
+        margin-top: 10px;
+        display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
+      }
+      .toc a {
+        padding: 8px 12px; border-radius: 10px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #dbe7ff; font-size: 0.9rem;
+      }
+      .toc a:hover {
+        background: rgba(0, 229, 255, 0.1);
+        border-color: rgba(0, 229, 255, 0.35);
+      }
 
-  /* Headings */
-  h2.section-title {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-family: "Roboto Slab", Georgia, serif;
-    font-weight: 800;
-    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
-    letter-spacing: 0.4px;
-    color: #f1f6ff;
-    text-shadow: 0 0 18px rgba(0, 229, 255, 0.25), 0 0 12px rgba(155, 93, 229, 0.25);
-  }
-  h3.sub-title {
-    margin-top: 16px;
-    margin-bottom: 8px;
-    font-weight: 700;
-    font-size: clamp(1.1rem, 1.6vw, 1.25rem);
-    color: #e6edff;
-  }
+      /* Main container */
+      main { padding-top: 120px; padding-bottom: 90px; }
+      .container { max-width: 1100px; margin: 0 auto; padding: 28px; }
+      .panel {
+        background: linear-gradient(180deg, var(--panel-start), var(--panel-end));
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow:
+          inset 0 0 28px rgba(155, 93, 229, 0.06),
+          0 10px 35px rgba(0, 0, 0, 0.55),
+          0 0 50px rgba(0, 229, 255, 0.05);
+        padding: clamp(22px, 3.2vw, 38px);
+      }
 
-  /* Figure / images */
-  figure.slide-figure {
-    margin: 18px auto 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .slide-figure img {
-    width: min(80%, 860px);
-    border-radius: 14px;
-    border: 1px solid rgba(0, 229, 255, 0.25);
-    box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08), 0 12px 48px rgba(155, 93, 229, 0.12);
-  }
-  .slide-figure figcaption {
-    color: var(--muted);
-    font-size: 0.92rem;
-  }
+      /* Headings */
+      h2.section-title {
+        margin: 0 0 12px 0;
+        font-family: "Roboto Slab", Georgia, serif;
+        font-weight: 800;
+        font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+        letter-spacing: 0.4px;
+        color: #f4f7ff;
+        text-shadow: 0 0 20px rgba(0, 229, 255, 0.25), 0 0 14px rgba(155, 93, 229, 0.25);
+      }
+      h3.sub-title {
+        margin: 18px 0 8px 0;
+        font-weight: 700;
+        font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+        color: #e6edff;
+      }
 
-  /* Code blocks */
-  pre {
-    background: linear-gradient(180deg, #070c1d, var(--code-bg));
-    border: 1px solid var(--code-border);
-    border-radius: 14px;
-    padding: 16px 18px;
-    overflow: auto;
-    color: #e8f3ff;
-    box-shadow: inset 0 0 24px rgba(0, 229, 255, 0.05);
-  }
-  code {
-    font-family: "Roboto Mono", "Fira Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-    font-size: 0.92rem;
-  }
-  /* Simple CSS-only highlighting accents */
-  code .k { color: #82aaff; }    /* keyword */
-  code .fn { color: #c3e88d; }   /* function */
-  code .str { color: #c792ea; }  /* string */
-  code .num { color: #f78c6c; }  /* number */
-  code .com { color: #697799; }  /* comment */
+      /* Badges/meta */
+      .meta-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 10px 0 6px; }
+      .badge {
+        border-radius: 999px; padding: 6px 10px; font-size: 0.78rem; letter-spacing: 0.3px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05); color: #dbe7ff;
+      }
+      .badge.cyan { border-color: rgba(0, 229, 255, 0.35); background: rgba(0, 229, 255, 0.08); color: #c8f7ff; }
+      .badge.violet { border-color: rgba(155, 93, 229, 0.35); background: rgba(155, 93, 229, 0.08); color: #ecd6ff; }
 
-  /* Tables */
-  .table-wrap {
-    overflow-x: auto;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    box-shadow: inset 0 0 0 1px rgba(155, 93, 229, 0.15);
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 680px;
-  }
-  thead th {
-    background: var(--table-head-bg);
-    color: #e9f0ff;
-    text-align: left;
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    font-weight: 700;
-  }
-  tbody td {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #dbe4ff;
-  }
-  tbody tr:nth-child(even) td {
-    background: var(--table-row-alt);
-  }
+      /* Figures */
+      figure.slide-figure { margin: 18px auto 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+      .slide-figure img {
+        width: min(80%, 860px);
+        border-radius: 14px;
+        border: 1px solid rgba(0, 229, 255, 0.25);
+        box-shadow: 0 6px 28px rgba(0, 229, 255, 0.08), 0 12px 48px rgba(155, 93, 229, 0.12);
+      }
+      .slide-figure figcaption { color: var(--muted); font-size: 0.92rem; }
 
-  /* Blockquote */
-  blockquote {
-    margin: 18px 0;
-    padding: 14px 16px;
-    border-left: 4px solid var(--blockquote-border);
-    background: var(--blockquote-bg);
-    border-radius: 12px;
-    color: #d9eeff;
-  }
+      /* Code blocks + simple highlighting */
+      pre {
+        background: linear-gradient(180deg, #070c1d, var(--code-bg));
+        border: 1px solid var(--code-border);
+        border-radius: 14px; padding: 16px 18px; overflow: auto; color: #e8f3ff;
+        box-shadow: inset 0 0 24px rgba(0, 229, 255, 0.05);
+      }
+      code {
+        font-family: "Roboto Mono", "Fira Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.93rem;
+      }
+      /* decorative token colors */
+      code .k { color: #82aaff; }    /* keyword */
+      code .fn { color: #c3e88d; }   /* function */
+      code .str { color: #c792ea; }  /* string */
+      code .num { color: #f78c6c; }  /* number */
+      code .com { color: #6a7899; }  /* comment */
 
-  /* Quiz (details/summary) */
-  details.quiz {
-    margin: 12px 0 0;
-    padding: 0;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-  }
-  details.quiz > summary {
-    cursor: pointer;
-    list-style: none;
-    padding: 12px 14px;
-    font-weight: 600;
-    color: #e8f6ff;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  details.quiz > summary::before {
-    content: "▸";
-    color: var(--neon-cyan);
-    font-weight: 900;
-    display: inline-block;
-    transform: translateY(-1px);
-  }
-  details.quiz[open] > summary::before {
-    content: "▾";
-  }
-  details.quiz .answer {
-    padding: 0 14px 14px;
-    color: #cfe6ff;
-  }
+      /* Tables */
+      .table-wrap {
+        overflow-x: auto;
+        border-radius: 14px;
+        border: 1px solid rgba(0, 229, 255, 0.2);
+        box-shadow: inset 0 0 0 1px rgba(155, 93, 229, 0.15);
+        margin: 10px 0;
+      }
+      table { width: 100%; border-collapse: collapse; min-width: 680px; }
+      thead th {
+        background: var(--table-head-bg); color: #e9f0ff; text-align: left;
+        padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        font-weight: 700;
+      }
+      tbody td {
+        padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); color: #dbe4ff;
+      }
+      tbody tr:nth-child(even) td { background: var(--table-row-alt); }
 
-  /* Slide sections */
-  section.slide {
-    margin-top: 34px;
-    scroll-margin-top: 92px;
-  }
-  .meta-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin: 10px 0 6px;
-  }
-  .badge {
-    border-radius: 999px;
-    padding: 6px 10px;
-    font-size: 0.78rem;
-    letter-spacing: 0.3px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.05);
-    color: #dbe7ff;
-  }
-  .badge.cyan {
-    border-color: rgba(0, 229, 255, 0.35);
-    background: rgba(0, 229, 255, 0.08);
-    color: #c8f7ff;
-  }
-  .badge.violet {
-    border-color: rgba(155, 93, 229, 0.35);
-    background: rgba(155, 93, 229, 0.08);
-    color: #ecd6ff;
-  }
+      /* Blockquotes */
+      blockquote {
+        margin: 18px 0; padding: 14px 16px;
+        border-left: 4px solid var(--blockquote-border);
+        background: var(--blockquote-bg);
+        border-radius: 12px; color: #d9eeff;
+      }
 
-  /* Footer */
-  footer.site-footer {
-    padding: 30px 18px 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(6, 10, 28, 0.3) 0%, rgba(6, 10, 28, 0.6) 100%);
-    text-align: center;
-    color: #b9c6e6;
-    font-size: 0.95rem;
-  }
+      /* Quizzes */
+      details.quiz {
+        margin: 12px 0 0; padding: 0;
+        border-radius: 12px; background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(0, 229, 255, 0.2);
+      }
+      details.quiz > summary {
+        cursor: pointer; list-style: none; padding: 12px 14px;
+        font-weight: 600; color: #e8f6ff; display: flex; align-items: center; gap: 10px;
+      }
+      details.quiz > summary::before {
+        content: "▸"; color: var(--neon-cyan); font-weight: 900; display: inline-block; transform: translateY(-1px);
+      }
+      details.quiz[open] > summary::before { content: "▾"; }
+      details.quiz .answer { padding: 0 14px 14px; color: #cfe6ff; }
 
-  /* Responsive */
-  @media (max-width: 900px) {
-    .header-inner {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    nav.toc {
-      justify-self: start;
-      overflow-x: auto;
-      padding-bottom: 6px;
-      scrollbar-width: thin;
-    }
-    .slide-figure img {
-      width: 92%;
-    }
-  }
-  @media (max-width: 560px) {
-    .brand .title-wrap h1 {
-      font-size: 1.2rem;
-    }
-    .brand img {
-      height: 48px;
-    }
-    nav.toc a {
-      font-size: 0.86rem;
-      padding: 7px 10px;
-    }
-    .container {
-      padding: 16px;
-    }
-    .panel {
-      padding: 18px;
-    }
-  }
+      /* Slides */
+      section.slide { margin-top: 34px; scroll-margin-top: 100px; }
 
-  /* Focus styles for accessibility */
-  a:focus-visible, summary:focus-visible, button:focus-visible {
-    outline: none;
-    box-shadow: var(--focus);
-    border-radius: 10px;
-  }
+      /* Footer */
+      footer.site-footer {
+        padding: 30px 18px 50px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        background: linear-gradient(180deg, rgba(6, 10, 28, 0.3) 0%, rgba(6, 10, 28, 0.6) 100%);
+        text-align: center; color: #b9c6e6; font-size: 0.95rem;
+      }
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    height: 10px;
-    width: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(155, 93, 229, 0.55));
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.04);
-  }
-</style>
- Header 
-<header class="site-header" role="banner" aria-label="Course header">
-  <div class="header-inner">
-    <div class="brand">
-      <img src="./logo.png" alt="MOKSHA Innovators Guild logo" />
-      <div class="title-wrap">
-        <h1>Web3 Odyssey</h1>
-        <p>Module 1: Foundations | Lesson 1.1 — Symmetric vs Asymmetric Cryptography</p>
+      /* Responsive */
+      @media (max-width: 920px) {
+        .header-inner { grid-template-columns: 1fr; gap: 10px; }
+        .course-info { align-items: flex-start; }
+        .toc { justify-content: flex-start; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+        .slide-figure img { width: 92%; }
+      }
+      @media (max-width: 560px) {
+        .logo-wrap img { height: 48px; }
+        .course-info h1 { font-size: 1.2rem; }
+        .container { padding: 16px; }
+        .panel { padding: 18px; }
+      }
+
+      /* Accessibility focus */
+      a:focus-visible, summary:focus-visible, button:focus-visible {
+        outline: none; box-shadow: var(--focus); border-radius: 10px;
+      }
+
+      /* Scrollbars */
+      ::-webkit-scrollbar { height: 10px; width: 10px; }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, rgba(0, 229, 255, 0.55), rgba(155, 93, 229, 0.55));
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.04); }
+    </style>
+  </head>
+
+  <body>
+    <a href="#content" class="sr-only">Skip to content</a>
+
+     Header 
+    <header class="site-header" role="banner" aria-label="Course header">
+      <div class="header-inner">
+         Left: Logo 
+        <div class="logo-wrap">
+          <img src="./logo.png" alt="MOKSHA Innovators Guild logo" />
+        </div>
+
+         Right: Course title + lesson info + optional TOC 
+        <div class="course-info">
+          <h1>Web3 Odyssey</h1>
+          <p>Module 1: Foundations | Lesson 1.1 — Symmetric vs Asymmetric Cryptography</p>
+          <nav class="toc" aria-label="In-page navigation">
+            <a href="#slide-1">Intro</a>
+            <a href="#slide-2">Symmetric Theory</a>
+            <a href="#slide-3">Symmetric Code</a>
+            <a href="#slide-4">Symmetric Pros/Cons</a>
+            <a href="#slide-5">Asymmetric Theory</a>
+            <a href="#slide-6">Asymmetric Code</a>
+            <a href="#slide-7">Asym. Pros/Cons</a>
+            <a href="#slide-8">Web3 Use Cases</a>
+            <a href="#slide-9">Exercise + Quiz</a>
+            <a href="#slide-10">Summary</a>
+          </nav>
+        </div>
       </div>
-    </div>
-    <nav class="toc" aria-label="In-page navigation">
-      <a href="#slide-1">Intro</a>
-      <a href="#slide-2">Symmetric Theory</a>
-      <a href="#slide-3">Symmetric Code</a>
-      <a href="#slide-4">Symmetric Pros/Cons</a>
-      <a href="#slide-5">Asymmetric Theory</a>
-      <a href="#slide-6">Asymmetric Code</a>
-      <a href="#slide-7">Asym. Pros/Cons</a>
-      <a href="#slide-8">Web3 Use Cases</a>
-      <a href="#slide-9">Exercise + Quiz</a>
-      <a href="#slide-10">Summary</a>
-    </nav>
-  </div>
-</header>
+    </header>
 
- Main 
-<main id="content" role="main">
-  <div class="container">
-     Overview Panel 
-    <section class="panel" aria-labelledby="lesson-intro">
-      <h2 id="lesson-intro" class="section-title">Lesson Introduction & Objectives</h2>
-      <p>
-        Cryptography is the security backbone of Web3. Keys, signatures, and ciphers dictate how wallets authenticate, how nodes validate, and how smart contracts enforce trustless rules. In this lesson, you will internalize the difference between symmetric and asymmetric cryptography, understand when to use each, and see practical Node.js examples that mirror real Web3 workflows. We will reason about performance, threat models, and developer ergonomics while maintaining an academic approach and a futuristic, systems-level mindset consistent with the MOKSHA Innovators Guild philosophy.
-      </p>
-      <div class="meta-row" aria-label="Lesson metadata">
-        <span class="badge cyan">Intermediate → Advanced</span>
-        <span class="badge violet">Node.js Examples</span>
-        <span class="badge">Approx. 45–60 min</span>
+     Main 
+    <main id="content" role="main">
+      <div class="container">
+         Lesson Introduction & Objectives 
+        <section class="panel" aria-labelledby="lesson-intro">
+          <h2 id="lesson-intro" class="section-title">Lesson Introduction & Objectives</h2>
+          <p>
+            Cryptography is the substrate of trust in Web3. Wallets derive identity from public keys, signatures express consent and authorization, and ciphers preserve confidentiality across peer-to-peer links and decentralized storage. This lesson develops a rigorous mental model for the two primary families—symmetric and asymmetric cryptography—then shows how real systems combine them in hybrid patterns. You will see how AES-GCM and ChaCha20-Poly1305 deliver fast, authenticated encryption, why RSA and ECC (especially secp256k1) enable open verification, and how wallet- and contract-level capabilities map onto these primitives. We emphasize practical security—nonce management, padding choices, deterministic signing, threat modeling—so you can implement robust flows in production dApps and services.
+          </p>
+          <p>
+            By the end, you will be able to evaluate trade-offs (speed, bandwidth, UX, auditability), select suitable parameters, implement reference-grade Node.js code, and articulate why hybrid encryption is the default architecture: asymmetric steps to establish identity and exchange keys; symmetric steps to protect data efficiently. Each slide pairs theory with a concrete Web3 scenario, a concise code example, and a table or mini diagram to reinforce the model. Quizzes help you self-assess and prepare for advanced topics like threshold signatures, account abstraction, and post-quantum migration paths.
+          </p>
+          <div class="meta-row" aria-label="Lesson metadata">
+            <span class="badge cyan">Intermediate → Advanced</span>
+            <span class="badge violet">Node.js Examples</span>
+            <span class="badge">Approx. 45–60 min</span>
+          </div>
+
+          <blockquote>
+            In Web3, keys are identity, and signatures are programmable truth. Choose primitives that scale cryptographic trust—not just throughput.
+          </blockquote>
+
+          <div class="table-wrap" role="region" aria-label="Lesson Objectives">
+            <table>
+              <thead>
+                <tr>
+                  <th>Objective</th>
+                  <th>Details</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Differentiate crypto families</td>
+                  <td>Algorithms, security properties, typical protocols</td>
+                  <td>Clear model for when to use each</td>
+                </tr>
+                <tr>
+                  <td>Implement symmetric encryption</td>
+                  <td>AES-256-GCM with AAD, IV hygiene, tags</td>
+                  <td>Confidentiality with integrity and replay resistance</td>
+                </tr>
+                <tr>
+                  <td>Implement asymmetric operations</td>
+                  <td>RSA-OAEP encryption; ECDSA signatures (secp256k1)</td>
+                  <td>Secure key wrapping and verifiable statements</td>
+                </tr>
+                <tr>
+                  <td>Apply to Web3 workflows</td>
+                  <td>Wallets, EIP-712, on-chain verification, IPFS</td>
+                  <td>Composable, gas-aware security patterns</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <details class="quiz" aria-label="Intro Quiz">
+            <summary>Quick Check: Which family underpins wallet addresses and signatures on Ethereum?</summary>
+            <div class="answer">
+              Asymmetric cryptography (ECDSA over secp256k1). Addresses derive from public keys; private keys sign, and anyone can verify with the public key.
+            </div>
+          </details>
+        </section>
+
+         Slides 
+         Slide 1 
+        <section id="slide-1" class="slide panel" aria-labelledby="slide-1-title">
+          <h2 id="slide-1-title" class="section-title">Slide 1 — Symmetric vs Asymmetric: The Big Picture</h2>
+          <figure class="slide-figure">
+            <img src="./img1.png" alt="High-level contrast between symmetric shared key and asymmetric public/private key flows" />
+            <figcaption>Shared secret vs. public/private pairs: complementary building blocks.</figcaption>
+          </figure>
+          <p>
+            Symmetric and asymmetric cryptography are not competitors; they are complementary instruments. Symmetric ciphers use one secret key for both encryption and decryption, yielding exceptional throughput and energy efficiency—ideal for streaming, backups, and large payloads. Their main operational challenge is key distribution: all authorized parties must possess the same secret, and the process of sharing and storing that secret safely is a central risk. Asymmetric cryptography, by contrast, assigns a private key to the owner and a mathematically linked public key to the world. Anyone can encrypt to you (using your public key) or verify your signatures; only you can decrypt or produce valid signatures. This solves distribution and enables decentralized verification, but at significantly higher computational cost per operation.
+          </p>
+          <p>
+            Modern architectures blend both: an asymmetric step authenticates identities and establishes a shared secret (often through key exchange or key wrapping), while a symmetric cipher protects the actual data. This hybrid pattern dominates TLS, secure messaging, and Web3 data pipelines because it combines the usability of public keys with the raw performance of symmetric encryption. The result is scalable security that supports high throughput without sacrificing auditability or composability.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Family Comparison Overview">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Symmetric</th>
+                  <th>Asymmetric</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Keys</td>
+                  <td>Single shared secret</td>
+                  <td>Public/Private pair</td>
+                </tr>
+                <tr>
+                  <td>Speed</td>
+                  <td>Very fast; constant per-byte cost</td>
+                  <td>Slower; higher per-operation cost</td>
+                </tr>
+                <tr>
+                  <td>Distribution</td>
+                  <td>Hard (how to share safely?)</td>
+                  <td>Easy (public keys are shareable)</td>
+                </tr>
+                <tr>
+                  <td>Best Use</td>
+                  <td>Bulk data encryption</td>
+                  <td>Identity, signatures, key exchange</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why do most secure protocols use a hybrid approach?</summary>
+            <div class="answer">
+              Hybrids deliver public verifiability and safe key establishment (asymmetric) with high-throughput data protection (symmetric), achieving both usability and performance.
+            </div>
+          </details>
+        </section>
+
+         Slide 2 
+        <section id="slide-2" class="slide panel" aria-labelledby="slide-2-title">
+          <h2 id="slide-2-title" class="section-title">Slide 2 — Symmetric Encryption Theory (AES, ChaCha20, 3DES)</h2>
+          <figure class="slide-figure">
+            <img src="./img2.png" alt="Block and stream cipher visual: AES-GCM vs ChaCha20-Poly1305 with nonce and counter" />
+            <figcaption>AES-GCM and ChaCha20-Poly1305 provide authenticated encryption (AEAD).</figcaption>
+          </figure>
+          <p>
+            Symmetric cryptography encrypts and decrypts with the same key. AES (Advanced Encryption Standard) is a block cipher operating on 128-bit blocks with key sizes of 128, 192, or 256 bits. Security in practice depends heavily on the mode of operation. AEAD modes like AES-GCM (Galois/Counter Mode) and ChaCha20-Poly1305 provide both confidentiality and integrity: decryption succeeds only if the authentication tag verifies. GCM builds a counter-mode keystream then authenticates via GHASH; ChaCha20-Poly1305 combines the ChaCha20 stream cipher with the Poly1305 MAC. ChaCha20-Poly1305 often outperforms AES on devices lacking AES-NI hardware acceleration, while AES-GCM is excellent on modern CPUs that support dedicated instructions.
+          </p>
+          <p>
+            3DES (Triple DES) historically extended DES’s security by applying it three times, but its 64-bit block size and performance profile render it legacy for modern designs. Avoid 3DES for new systems. Critical operational concerns include key entropy (use high-quality randomness), IV/nonce uniqueness for counter-based modes, and constant-time implementations to mitigate timing attacks. With GCM, reusing a nonce with the same key catastrophically undermines security by exposing keystream relations and invalidating authentication guarantees. Production-grade designs enforce unique nonces per key, rotate keys for long-lived sessions, and bind context (like protocol fields) as AAD to prevent cross-protocol misuse.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Symmetric Cipher Comparison">
+            <table>
+              <thead>
+                <tr>
+                  <th>Cipher</th>
+                  <th>Mode/Suite</th>
+                  <th>Strengths</th>
+                  <th>Caveats</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>AES-256-GCM</td>
+                  <td>AEAD (counter + GHASH)</td>
+                  <td>Fast with AES-NI; integrated integrity</td>
+                  <td>Strict nonce uniqueness; GHASH constant-time care</td>
+                </tr>
+                <tr>
+                  <td>ChaCha20-Poly1305</td>
+                  <td>AEAD (stream + MAC)</td>
+                  <td>Great on mobile/ARM; constant-time</td>
+                  <td>Nonce discipline still required</td>
+                </tr>
+                <tr>
+                  <td>3DES</td>
+                  <td>Legacy block cipher</td>
+                  <td>Compatibility with old systems</td>
+                  <td>Slow; small block size; avoid new use</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why is nonce reuse fatal for GCM?</summary>
+            <div class="answer">
+              It reveals relationships between keystream blocks, enabling plaintext inference and undermining authentication; attackers may recover messages or forge tags.
+            </div>
+          </details>
+        </section>
+
+         Slide 3 
+        <section id="slide-3" class="slide panel" aria-labelledby="slide-3-title">
+          <h2 id="slide-3-title" class="section-title">Slide 3 — Symmetric Encryption Code Example (Node.js, AES-256-GCM)</h2>
+          <figure class="slide-figure">
+            <img src="./img3.png" alt="IV, AAD, ciphertext, and tag flow diagram for AES-GCM" />
+            <figcaption>Use a 12-byte IV per message, include AAD, and verify the tag before accepting plaintext.</figcaption>
+          </figure>
+          <p>
+            Node.js exposes AES-GCM via the <code>crypto</code> module. This minimal reference uses a 32-byte key for AES-256-GCM and a 12-byte random IV. We also show AAD (Associated Authenticated Data) to bind context such as protocol version, user IDs, or content identifiers without encrypting them. Always store the IV and tag with the ciphertext. For larger files, chunk into records, use unique IVs per record, and bind record sequence numbers in AAD to prevent truncation or reordering attacks.
+          </p>
+          <pre aria-label="AES-256-GCM Node.js example"><code>
+// <span class="com">Node.js AES-256-GCM reference</span>
+import { randomBytes, createCipheriv, createDecipheriv } from "crypto";
+
+export function <span class="fn">aesGcmEncrypt</span>(plaintext: Buffer, key: Buffer, aad?: Buffer) {
+  const iv = randomBytes(12); <span class="com">// 96-bit IV recommended</span>
+  const cipher = createCipheriv(<span class="str">"aes-256-gcm"</span>, key, iv, { authTagLength: 16 });
+  if (aad) cipher.setAAD(aad, { plaintextLength: plaintext.length });
+  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
+  const tag = cipher.getAuthTag();
+  return { iv, ciphertext, tag };
+}
+
+export function <span class="fn">aesGcmDecrypt</span>(
+  ciphertext: Buffer, key: Buffer, iv: Buffer, tag: Buffer, aad?: Buffer
+) {
+  const decipher = createDecipheriv(<span class="str">"aes-256-gcm"</span>, key, iv, { authTagLength: 16 });
+  if (aad) decipher.setAAD(aad, { plaintextLength: ciphertext.length });
+  decipher.setAuthTag(tag);
+  const plaintext = Buffer.concat([decipher.update(ciphertext), decipher.final()]);
+  return plaintext;
+}
+
+// <span class="com">Usage</span>
+const key = randomBytes(32); <span class="com">// AES-256</span>
+const aad = Buffer.from(<span class="str">"context:web3-odyssey:lesson-1.1"</span>);
+const message = Buffer.from(<span class="str">"Confidential payload"</span>);
+const { iv, ciphertext, tag } = aesGcmEncrypt(message, key, aad);
+const recovered = aesGcmDecrypt(ciphertext, key, iv, tag, aad);
+console.log(recovered.toString()); <span class="com">// "Confidential payload"</span>
+          </code></pre>
+          <div class="table-wrap" role="region" aria-label="Symmetric Best Practices">
+            <table>
+              <thead>
+                <tr>
+                  <th>Practice</th>
+                  <th>Reason</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Random 12-byte IV</td>
+                  <td>Required uniqueness for GCM</td>
+                  <td>Prevents keystream reuse</td>
+                </tr>
+                <tr>
+                  <td>Use AAD</td>
+                  <td>Bind context (protocol/user)</td>
+                  <td>Stops cross-context replay</td>
+                </tr>
+                <tr>
+                  <td>Rotate keys</td>
+                  <td>Limit blast radius</td>
+                  <td>Improved forward secrecy</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: What belongs in AAD for a dApp message?</summary>
+            <div class="answer">
+              Domain/version, sender and recipient identifiers (addresses), content-type, and sequence numbers—anything you must validate but need not encrypt.
+            </div>
+          </details>
+        </section>
+
+         Slide 4 
+        <section id="slide-4" class="slide panel" aria-labelledby="slide-4-title">
+          <h2 id="slide-4-title" class="section-title">Slide 4 — Symmetric Pros &amp; Cons</h2>
+          <figure class="slide-figure">
+            <img src="./img4.png" alt="Throughput comparison highlighting symmetric cipher speed advantages" />
+            <figcaption>Symmetric ciphers dominate in throughput and energy per byte.</figcaption>
+          </figure>
+          <p>
+            Symmetric cryptography wins on speed, latency, and energy. With hardware acceleration (e.g., AES-NI), AES-GCM can reach multi‑GB/s per core, while ChaCha20-Poly1305 excels on mobile and embedded CPUs. Integrating authentication (AEAD) reduces complexity and eliminates the need for ad‑hoc MAC schemes. The core risk is operational: compromise of the shared key collapses both confidentiality and integrity. As organizations scale, key distribution, rotation, and storage become governance problems as much as technical ones. In Web3, symmetric encryption is a natural fit for encrypting IPFS content, bundle archives, and P2P streaming frames once access is established.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Symmetric Pros and Cons">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Pros</th>
+                  <th>Cons</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Performance</td>
+                  <td>Extremely fast and stable</td>
+                  <td>Can hide misuse (errors fail fast only with AEAD)</td>
+                </tr>
+                <tr>
+                  <td>Security</td>
+                  <td>AEAD gives integrity and authenticity</td>
+                  <td>Single shared key is a liability</td>
+                </tr>
+                <tr>
+                  <td>Operations</td>
+                  <td>Simple APIs</td>
+                  <td>Nonce/key lifecycle discipline required</td>
+                </tr>
+                <tr>
+                  <td>Web3 Fit</td>
+                  <td>Great for off-chain confidentiality</td>
+                  <td>Needs asymmetric layer for access control</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: What is the single largest risk in symmetric deployments?</summary>
+            <div class="answer">
+              Key distribution and storage. If the shared key leaks, attackers can decrypt and forge valid ciphertexts.
+            </div>
+          </details>
+        </section>
+
+         Slide 5 
+        <section id="slide-5" class="slide panel" aria-labelledby="slide-5-title">
+          <h2 id="slide-5-title" class="section-title">Slide 5 — Asymmetric Encryption Theory (RSA, ECC)</h2>
+          <figure class="slide-figure">
+            <img src="./img5.png" alt="Public/private key conceptual overview with encryption and signature flows" />
+            <figcaption>Encrypt with public → decrypt with private; sign with private → verify with public.</figcaption>
+          </figure>
+          <p>
+            Asymmetric cryptography pairs a private key (kept secret) with a public key (shared widely). RSA’s security stems from the hardness of factoring a large composite number <code>n = p × q</code>. With a public exponent <code>e</code> and private exponent <code>d</code>, encryption computes <code>c = m^e mod n</code> and decryption uses <code>m = c^d mod n</code>. For signatures, the flow reverses: the signer uses <code>d</code>, verifiers use <code>e</code>. Robust practice wraps RSA with OAEP for encryption and PSS for signatures to randomize structure and resist adaptive attacks. ECC instead relies on the elliptic curve discrete logarithm problem; a private scalar multiplied by a base point yields the public point. ECDSA (on secp256k1 for Ethereum) provides compact signatures and efficient verification with smaller key sizes than RSA.
+          </p>
+          <p>
+            In Web3, asymmetric cryptography is identity. Private keys authorize actions; public keys enable permissionless verification on and off chain. Wallets sign typed data (EIP-712) and transactions; contracts recover the signer and enforce rules. Because asymmetric operations are comparatively expensive, systems use them sparingly—mainly for key establishment, attestation, and authorization—while delegating bulk encryption to symmetric ciphers. This separation of duties keeps UX responsive and gas overhead manageable while preserving auditability and non-repudiation.
+          </p>
+          <div class="table-wrap" role="region" aria-label="RSA vs ECC Overview">
+            <table>
+              <thead>
+                <tr>
+                  <th>Criterion</th>
+                  <th>RSA</th>
+                  <th>ECC (e.g., secp256k1)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Key/Signature Size</td>
+                  <td>Larger</td>
+                  <td>Smaller (bandwidth-friendly)</td>
+                </tr>
+                <tr>
+                  <td>Performance</td>
+                  <td>Slower verify; mature tooling</td>
+                  <td>Efficient verify; widely used in Web3</td>
+                </tr>
+                <tr>
+                  <td>Use in Web3</td>
+                  <td>Less common on-chain</td>
+                  <td>Standard for wallets and signatures</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why is ECC often preferred over RSA today?</summary>
+            <div class="answer">
+              Comparable security with smaller keys and signatures, improving performance and bandwidth—especially important for blockchain and mobile clients.
+            </div>
+          </details>
+        </section>
+
+         Slide 6 
+        <section id="slide-6" class="slide panel" aria-labelledby="slide-6-title">
+          <h2 id="slide-6-title" class="section-title">Slide 6 — Asymmetric Code Examples (Node.js: RSA-OAEP, ECDSA)</h2>
+          <figure class="slide-figure">
+            <img src="./img6.png" alt="Key generation and signature verification process diagram" />
+            <figcaption>Use RSA-OAEP for key wrapping; ECDSA for verifiable consent.</figcaption>
+          </figure>
+          <p>
+            Node.js provides first-class primitives for RSA and EC keys via <code>crypto</code>. Use RSA-OAEP (with SHA‑256) to encrypt small secrets like symmetric keys. For signatures aligned with Web3, use ECDSA on secp256k1. Ethereum clients sign messages and typed data, while contracts verify by recovering the signer address. Below are concise examples.
+          </p>
+          <pre aria-label="RSA-OAEP encryption/decryption in Node.js"><code>
+// <span class="com">RSA-OAEP (SHA-256) — Encrypt with public, decrypt with private</span>
+import { generateKeyPairSync, publicEncrypt, privateDecrypt, constants } from "crypto";
+
+const { publicKey, privateKey } = generateKeyPairSync(<span class="str">"rsa"</span>, {
+  modulusLength: 2048,
+  publicKeyEncoding: { type: <span class="str">"spki"</span>, format: <span class="str">"pem"</span> },
+  privateKeyEncoding: { type: <span class="str">"pkcs8"</span>, format: <span class="str">"pem"</span> },
+});
+
+const plaintext = Buffer.from(<span class="str">"Only the private key holder reads this."</span>);
+const ciphertext = publicEncrypt(
+  { key: publicKey, padding: constants.RSA_PKCS1_OAEP_PADDING, oaepHash: <span class="str">"sha256"</span> },
+  plaintext
+);
+const recovered = privateDecrypt(
+  { key: privateKey, padding: constants.RSA_PKCS1_OAEP_PADDING, oaepHash: <span class="str">"sha256"</span> },
+  ciphertext
+);
+console.log(recovered.toString()); <span class="com">// original message</span>
+          </code></pre>
+
+          <pre aria-label="ECDSA secp256k1 signature in Node.js"><code>
+// <span class="com">ECDSA (secp256k1) — Sign with private, verify with public</span>
+import { generateKeyPairSync, createSign, createVerify } from "crypto";
+
+const { publicKey: ecPub, privateKey: ecPriv } = generateKeyPairSync(<span class="str">"ec"</span>, {
+  namedCurve: <span class="str">"secp256k1"</span>,
+  publicKeyEncoding: { type: <span class="str">"spki"</span>, format: <span class="str">"pem"</span> },
+  privateKeyEncoding: { type: <span class="str">"pkcs8"</span>, format: <span class="str">"pem"</span> },
+});
+
+const data = Buffer.from(<span class="str">"Message bound to my Web3 identity"</span>);
+const signer = createSign(<span class="str">"SHA256"</span>);
+signer.update(data); signer.end();
+const signature = signer.sign(ecPriv);
+
+const verifier = createVerify(<span class="str">"SHA256"</span>);
+verifier.update(data); verifier.end();
+const valid = verifier.verify(ecPub, signature);
+console.log({ valid }); <span class="com">// { valid: true }</span>
+          </code></pre>
+          <div class="table-wrap" role="region" aria-label="Asymmetric Best Practices">
+            <table>
+              <thead>
+                <tr>
+                  <th>Practice</th>
+                  <th>Reason</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Use OAEP/PSS for RSA</td>
+                  <td>Randomization; CCA resistance</td>
+                  <td>Safer than textbook RSA</td>
+                </tr>
+                <tr>
+                  <td>Domain-separate signatures</td>
+                  <td>Prevent replay across contexts</td>
+                  <td>UX clarity; phishing reduction</td>
+                </tr>
+                <tr>
+                  <td>Prefer ECC for wallets</td>
+                  <td>Small keys; fast verify</td>
+                  <td>Cheaper bandwidth/on-chain costs</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why use RSA-OAEP to wrap a symmetric key?</summary>
+            <div class="answer">
+              OAEP randomizes encryption, preventing deterministic outputs and chosen-ciphertext attacks. It’s ideal for encrypting small secrets like AES keys to a recipient’s public key.
+            </div>
+          </details>
+        </section>
+
+         Slide 7 
+        <section id="slide-7" class="slide panel" aria-labelledby="slide-7-title">
+          <h2 id="slide-7-title" class="section-title">Slide 7 — Asymmetric Pros &amp; Cons</h2>
+          <figure class="slide-figure">
+            <img src="./img7.png" alt="Comparison matrix of RSA and ECC across size, speed, and tooling" />
+            <figcaption>ECC offers smaller artifacts; RSA offers long-term tooling and audit depth.</figcaption>
+          </figure>
+          <p>
+            The superpower of asymmetric cryptography is global verifiability: anyone with a public key can validate a signature without contacting the signer or sharing secrets. This is a cornerstone of decentralized systems where parties operate permissionlessly. The costs are heavier computation and more nuanced implementations to avoid side channels or misuse (e.g., deterministic vs. randomized signing, padding choices). RSA remains ubiquitous in enterprise due to historical standardization, while ECC powers wallets and modern protocols where artifact size and verification speed matter most.
+          </p>
+          <div class="table-wrap" role="region" aria-label="Asymmetric Pros and Cons">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Pros</th>
+                  <th>Cons</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Identity</td>
+                  <td>Public verifiability; no pre-shared secrets</td>
+                  <td>Key rotation/revocation policy needed</td>
+                </tr>
+                <tr>
+                  <td>Performance</td>
+                  <td>Acceptable for auth/exchange</td>
+                  <td>Too slow for bulk encryption</td>
+                </tr>
+                <tr>
+                  <td>Artifacts</td>
+                  <td>ECC: compact signatures/keys</td>
+                  <td>RSA: larger sizes, more bandwidth</td>
+                </tr>
+                <tr>
+                  <td>Web3 Fit</td>
+                  <td>Wallets, signatures, key wrapping</td>
+                  <td>Avoid for large payloads</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: What property makes signatures ideal for decentralized verification?</summary>
+            <div class="answer">
+              Anyone can verify with only the signer’s public key—no shared secrets, enabling trust-minimized, global validation.
+            </div>
+          </details>
+        </section>
+
+         Slide 8 
+        <section id="slide-8" class="slide panel" aria-labelledby="slide-8-title">
+          <h2 id="slide-8-title" class="section-title">Slide 8 — Web3 Use Cases: Wallets, Smart Contracts, Signatures</h2>
+          <figure class="slide-figure">
+            <img src="./img8.png" alt="Flow of signing off-chain and verifying on-chain for efficiency" />
+            <figcaption>Sign off-chain, verify on-chain when needed—save gas, improve UX.</figcaption>
+          </figure>
+          <p>
+            Wallets manage asymmetric keys: the private key never leaves the user’s secure environment, while the public key (or its hash) becomes the address. Off-chain, applications request signatures for typed data (EIP‑712) to bind user intent; on-chain, smart contracts verify that signature or recover the signer. This separation improves UX and gas efficiency by pushing most cryptography off-chain. For confidentiality, apps typically encrypt user data off-chain with symmetric ciphers and gate access by encrypting the symmetric key (or shard) with recipients’ public keys, or by using threshold/attribute-based schemes. The combination yields consent that is verifiable, data that is private by default, and flows that remain scalable.
+          </p>
+          <pre aria-label="Conceptual Solidity signature verification (sketch)"><code>
+// <span class="com">Conceptual: ECDSA verify in Solidity (sketch)</span>
+// function verify(bytes32 digest, bytes memory sig) internal pure returns (address signer) {
+//   <span class="com">// Ensure digest reflects a domain-separated EIP-712 hash</span>
+//   // Parse {v,r,s} from sig
+//   // signer = ecrecover(digest, v, r, s);
+//   // return signer;
+// }
+          </code></pre>
+          <div class="table-wrap" role="region" aria-label="Web3 Patterns">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pattern</th>
+                  <th>Symmetric Role</th>
+                  <th>Asymmetric Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Off-chain storage</td>
+                  <td>Encrypt blobs with AES-GCM</td>
+                  <td>Wrap AES key for recipients</td>
+                </tr>
+                <tr>
+                  <td>Transactions</td>
+                  <td>N/A</td>
+                  <td>Sign with ECDSA; verify on-chain</td>
+                </tr>
+                <tr>
+                  <td>P2P chat</td>
+                  <td>Stream frames with AEAD</td>
+                  <td>Perform key exchange; rotate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why prefer EIP‑712 typed data for signatures?</summary>
+            <div class="answer">
+              Structured fields and a domain separator prevent ambiguity and replay across domains, improving both security and UX.
+            </div>
+          </details>
+        </section>
+
+         Slide 9 
+        <section id="slide-9" class="slide panel" aria-labelledby="slide-9-title">
+          <h2 id="slide-9-title" class="section-title">Slide 9 — Hands-On Exercise + Quiz</h2>
+          <figure class="slide-figure">
+            <img src="./img9.png" alt="Checklist for hybrid encryption exercise combining AES, RSA, and ECDSA" />
+            <figcaption>Practice hybrid encryption and signature verification end-to-end.</figcaption>
+          </figure>
+          <p>
+            Exercise: implement a hybrid pipeline. (1) Generate a random 32‑byte AES key and encrypt a message with AES‑GCM, including AAD for context. (2) Generate an RSA key pair and wrap (encrypt) the AES key with RSA‑OAEP (SHA‑256). (3) Generate an EC key pair (secp256k1) and sign the SHA‑256 of the ciphertext for non‑repudiation. (4) Verify the signature, unwrap the AES key with RSA, then decrypt and compare to the original plaintext. This mirrors real dApp flows: private data lives off‑chain under symmetric encryption; access is brokered via public keys; actions are traced via signatures for auditability.
+          </p>
+          <pre aria-label="Node.js exercise scaffold"><code>
+// <span class="com">Scaffold: piece the earlier functions together</span>
+// const aesKey = randomBytes(32);
+// const aad = Buffer.from("user:0xabc... | t:1730000000 | v:1");
+// const { iv, ciphertext, tag } = aesGcmEncrypt(Buffer.from("Secret"), aesKey, aad);
+//
+// // RSA wrap
+// const wrappedKey = publicEncrypt({ key: rsaPub, padding: RSA_PKCS1_OAEP_PADDING, oaepHash: "sha256" }, aesKey);
+//
+// // ECDSA sign ciphertext hash
+// const digest = createHash("sha256").update(ciphertext).digest();
+// const sign = createSign("SHA256"); sign.update(digest); sign.end();
+// const signature = sign.sign(ecPriv);
+//
+// // Verify + recover
+// const verify = createVerify("SHA256"); verify.update(digest); verify.end();
+// console.log("valid:", verify.verify(ecPub, signature));
+//
+// // Unwrap + decrypt
+// const unwrapped = privateDecrypt({ key: rsaPriv, padding: RSA_PKCS1_OAEP_PADDING, oaepHash: "sha256" }, wrappedKey);
+// const plain = aesGcmDecrypt(ciphertext, unwrapped, iv, tag, aad);
+          </code></pre>
+          <div class="table-wrap" role="region" aria-label="Exercise Checklist">
+            <table>
+              <thead>
+                <tr>
+                  <th>Step</th>
+                  <th>Action</th>
+                  <th>Success Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Key Gen</td>
+                  <td>Create AES, RSA, and EC keys</td>
+                  <td>PEM outputs for RSA/EC; 32‑byte AES</td>
+                </tr>
+                <tr>
+                  <td>Encrypt</td>
+                  <td>AES‑GCM + AAD</td>
+                  <td>Non‑empty ciphertext and 16‑byte tag</td>
+                </tr>
+                <tr>
+                  <td>Wrap</td>
+                  <td>RSA‑OAEP encrypt AES key</td>
+                  <td>Unwrap equals original AES key</td>
+                </tr>
+                <tr>
+                  <td>Sign</td>
+                  <td>ECDSA over SHA‑256(ciphertext)</td>
+                  <td>Verification returns true</td>
+                </tr>
+                <tr>
+                  <td>Recover</td>
+                  <td>Unwrap → decrypt</td>
+                  <td>Plaintext equals original</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="quiz">
+            <summary>Mini Quiz: Why sign the ciphertext hash instead of plaintext?</summary>
+            <div class="answer">
+              It binds the signature to the exact encrypted content, enabling integrity checks before key unwrapping and avoiding plaintext exposure during verification.
+            </div>
+          </details>
+        </section>
+
+         Slide 10 
+        <section id="slide-10" class="slide panel" aria-labelledby="slide-10-title">
+          <h2 id="slide-10-title" class="section-title">Slide 10 — Summary &amp; Further Reading</h2>
+          <figure class="slide-figure">
+            <img src="./img10.png" alt="Mind map summarizing hybrid cryptography design choices" />
+            <figcaption>Asymmetric for identity and exchange; symmetric for speed and confidentiality.</figcaption>
+          </figure>
+          <p>
+            You’ve built a durable mental model for cryptographic design in Web3. Symmetric ciphers such as AES‑GCM and ChaCha20‑Poly1305 provide fast, authenticated encryption for bulk data. Asymmetric primitives like RSA‑OAEP and ECDSA enable safe key distribution, public verification, and non‑repudiation. The hybrid architecture—negotiate or wrap with asymmetric, protect with symmetric—scales trust and performance simultaneously. Keep implementations disciplined: enforce nonce uniqueness, domain‑separate signatures, rotate keys, validate parameters, and capture audit trails for critical actions. With these practices, your systems remain private by default and verifiable by design.
+          </p>
+          <h3 class="sub-title">Further Reading</h3>
+          <ul>
+            <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf" target="_blank" rel="noopener">FIPS 197 — Advanced Encryption Standard (AES)</a></li>
+            <li><a href="https://datatracker.ietf.org/doc/html/rfc5116" target="_blank" rel="noopener">RFC 5116 — AEAD: A Unified Construction</a></li>
+            <li><a href="https://datatracker.ietf.org/doc/html/rfc7539" target="_blank" rel="noopener">RFC 7539 — ChaCha20 and Poly1305</a></li>
+            <li><a href="https://datatracker.ietf.org/doc/html/rfc8017" target="_blank" rel="noopener">RFC 8017 — RSA (OAEP and PSS)</a></li>
+            <li><a href="https://eips.ethereum.org/EIPS/eip-712" target="_blank" rel="noopener">EIP‑712 — Typed Structured Data</a></li>
+          </ul>
+
+          <details class="quiz">
+            <summary>Final Quiz: Choose the right tool</summary>
+            <div class="answer">
+              • Encrypting a 50 MB artifact for IPFS: AES‑256‑GCM (symmetric).<br />
+              • Sharing the decryption key with a teammate: RSA‑OAEP or ECIES (asymmetric).<br />
+              • Proving consent to a dApp action: ECDSA signature (asymmetric).<br />
+              • Live P2P chat: Symmetric AEAD with rotating nonces and sequence AAD.
+            </div>
+          </details>
+
+          <blockquote>
+            Closing Note — MOKSHA Innovators Guild: Cryptography is our language of trust. Master these primitives to build systems that are private by default, verifiable by design, and resilient at scale. Onward, innovators.
+          </blockquote>
+        </section>
       </div>
+    </main>
 
-      <blockquote>
-        In Web3, your cryptography choices determine not only confidentiality but also composability, usability, and consensus-level integrity. Treat keys as the source of identity. Treat signatures as programmable truth.
-      </blockquote>
+     Footer 
+    <footer class="site-footer" role="contentinfo">
+      © 2025 MOKSHA STUDIOS — Building the Future of Web3 Education
+    </footer>
+  </body>
+</html>
 
-      <div class="table-wrap" role="region" aria-label="Lesson Objectives">
-        <table>
-          <thead>
-            <tr>
-              <th>Objective</th>
-              <th>Details</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Distinguish symmetric vs asymmetric</td>
-              <td>Concepts, performance, and threat models</td>
-              <td>Know when to use which family</td>
-            </tr>
-            <tr>
-              <td>Implement symmetric encryption</td>
-              <td>AES-256-GCM with Node.js</td>
-              <td>Confidentiality with authenticity</td>
-            </tr>
-            <tr>
-              <td>Implement asymmetric operations</td>
-              <td>RSA-OAEP and ECDSA (secp256k1)</td>
-              <td>Key exchange, signatures, and identity</td>
-            </tr>
-            <tr>
-              <td>Apply to Web3</td>
-              <td>Wallets, smart contracts, off-chain signing</td>
-              <td>Secure end-to-end flows</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <details class="quiz" aria-label="Intro Quiz">
-        <summary>Quick Check: Which cryptographic family underpins wallet addresses and signatures on Ethereum?</summary>
-        <div class="answer">
-          Asymmetric cryptography (Elliptic Curve Digital Signature Algorithm, ECDSA on secp256k1). Public keys derive addresses; private keys produce signatures verified by anyone.
-        </div>
-      </details>
-    </section>
-
-     Slides 
-     Slide 1 
-    <section id="slide-1" class="slide panel" aria-labelledby="slide-1-title">
-      <h2 id="slide-1-title" class="section-title">Slide 1 — Symmetric vs Asymmetric: The Big Picture</h2>
-      <figure class="slide-figure">
-        <img src="./img1.png" alt="High-level diagram contrasting symmetric and asymmetric cryptography flows" />
-        <figcaption>At a glance: shared secret vs public/private key pairs.</figcaption>
-      </figure>
-      <p>
-        Symmetric and asymmetric cryptography are complementary tools. In symmetric cryptography, one key performs both encryption and decryption. This model is fast and efficient, making it ideal for bulk data encryption, streaming, and performance-sensitive workloads. The principal risk is key distribution: if you and your counterparty need to communicate securely, both must possess the same secret, and exchanging that secret safely becomes the main challenge. Modern symmetric ciphers like AES (especially AES-GCM) and ChaCha20-Poly1305 also provide integrity via authenticated encryption, ensuring ciphertext tampering is detected.
-      </p>
-      <p>
-        Asymmetric cryptography uses mathematically linked key pairs: a public key (shareable) and a private key (confidential). Common operations include encryption with the recipient&rsquo;s public key (only the holder of the private key can decrypt) and digital signatures where the private key signs and anyone with the public key verifies. Although asymmetric operations are computationally heavier than symmetric ones, they solve the distribution problem and enable decentralized identity, authorization, and key exchanges without a secure channel. In practice, modern systems combine both families: asymmetric methods establish secrets or authenticate parties, while symmetric ciphers handle high-throughput encryption once a shared key exists.
-      </p>
-      <p>
-        Web3 relies heavily on asymmetric cryptography for identity and authorization (wallets and signatures), and on symmetric cryptography for performance-critical confidentiality tasks like encrypting off-chain content-addressed data. Understanding the trade-offs helps you architect systems that are both secure and ergonomic. You&rsquo;ll see how this duality appears in wallet flows (ECDSA), message encryption (AES-GCM), and hybrid protocols where a short asymmetric step negotiates a key followed by symmetric data protection.
-      </p>
-
-      <details class="quiz">
-        <summary>Mini Quiz: Why combine both families in a single protocol?</summary>
-        <div class="answer">
-          Asymmetric crypto solves key distribution and identity via signatures, while symmetric crypto delivers high-speed, low-latency encryption for bulk data. The hybrid approach yields secure key establishment plus efficient data protection.
-        </div>
-      </details>
-    </section>
-
-     Slide 2 
-    <section id="slide-2" class="slide panel" aria-labelledby="slide-2-title">
-      <h2 id="slide-2-title" class="section-title">Slide 2 — Symmetric Encryption Theory (AES, ChaCha20, 3DES)</h2>
-      <figure class="slide-figure">
-        <img src="./img2.png" alt="Symmetric cipher blocks and stream diagram with keys and nonces" />
-        <figcaption>CTR- and GCM-mode counters and nonces drive keystream uniqueness.</figcaption>
-      </figure>
-      <p>
-        Symmetric cryptography uses the same secret key for encryption and decryption. AES (Advanced Encryption Standard) is the de-facto standard. AES operates on 128-bit blocks and supports key sizes of 128, 192, and 256 bits. Security in practice is determined by both algorithm and mode of operation. Authenticated Encryption with Associated Data (AEAD) modes, notably AES-GCM and ChaCha20-Poly1305, provide confidentiality and integrity simultaneously. GCM (Galois/Counter Mode) combines counter-mode encryption with a GHASH-based authentication tag; if the tag fails to verify, the ciphertext is rejected. ChaCha20-Poly1305 is a stream cipher suite excellent for software-only environments and mobile devices, often outperforming AES where hardware acceleration is absent.
-      </p>
-      <p>
-        Historically, 3DES (Triple DES) applied DES three times to increase security, but it is now considered legacy due to smaller blocks, lower performance, and practical limitations. For modern systems, prefer AES-GCM or ChaCha20-Poly1305. The security of symmetric schemes depends on key entropy, nonce/IV uniqueness, and correct implementation. Reusing a nonce with the same key in counter-type modes (GCM/CTR) can catastrophically reveal keystream relationships. AEAD modes protect against active tampering; without authentication, attackers can flip bits in ciphertext to produce controlled changes in plaintext.
-      </p>
-      <div class="table-wrap" role="region" aria-label="Symmetric Cipher Comparison">
-        <table>
-          <thead>
-            <tr>
-              <th>Cipher</th>
-              <th>Mode / Suite</th>
-              <th>Strengths</th>
-              <th>Caveats</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>AES-256-GCM</td>
-              <td>AEAD (counter + GHASH)</td>
-              <td>Fast with hardware AES-NI; integrated authentication</td>
-              <td>Nonce uniqueness required; GHASH implementation must be constant-time</td>
-            </tr>
-            <tr>
-              <td>ChaCha20-Poly1305</td>
-              <td>AEAD (stream + MAC)</td>
-              <td>Great on mobile/ARM; constant-time; robust without AES-NI</td>
-              <td>Key and nonce management still critical; larger per-record overhead vs raw stream</td>
-            </tr>
-            <tr>
-              <td>3DES</td>
-              <td>Legacy block cipher</td>
-              <td>Historical compatibility</td>
-              <td>Slow, small block size (64-bit); avoid in new designs</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <details class="quiz">
-        <summary>Mini Quiz: Why is nonce reuse dangerous in GCM?</summary>
-        <div class="answer">
-          Reusing a nonce with the same key in counter-based modes reveals relations between keystream blocks, enabling attackers to infer plaintext differences and sometimes fully recover messages. It also undermines authentication in GCM.
-        </div>
-      </details>
-    </section>
-
-     Slide 3 
-    <section id="slide-3" class="slide panel" aria-labelledby="slide-3-title">
-      <h2 id="slide-3-title" class="section-title">Slide 3 — Symmetric Encryption Code Example (Node.js, AES-256-GCM)</h2>
-      <figure class="slide-figure">
-        <img src="./img3.png" alt="Code visualization of AES-GCM encrypt/decrypt flow with IV and tag" />
-        <figcaption>Encrypt with a random IV; authenticate with the GCM tag; verify before decrypting.</figcaption>
-      </figure>
-      <p>
-        The Node.js <code>crypto</code> module supports AES-GCM out of the box. The following example implements safe defaults: a 32-byte key for AES-256-GCM, a 12-byte random IV (nonce), and associated data (AAD) support to authenticate context (like headers, addresses, or protocol labels) without encrypting it. The ciphertext, tag, and IV must be preserved to decrypt. Never reuse IVs with the same key; one standard approach is to generate fresh IVs per message using <code>randomBytes</code>.
-      </p>
-      <pre aria-label="AES-256-GCM Node.js example"><code>
-               Slide 4 
-    <section id="slide-4" class="slide panel" aria-labelledby="slide-4-title">
-      <h2 id="slide-4-title" class="section-title">Slide 4 — Symmetric Pros &amp; Cons</h2>
-      <figure class="slide-figure">
-        <img src="./img4.png" alt="Speed and throughput graph highlighting symmetric cipher performance" />
-        <figcaption>Symmetric ciphers dominate in throughput and energy efficiency.</figcaption>
-      </figure>
-      <p>
-        Symmetric cryptography excels at speed and simplicity. It requires minimal computation per byte, enabling secure streaming and storage even on constrained devices. With hardware acceleration (e.g., AES-NI), throughput can exceed multiple gigabytes per second per core. However, the fatal flaw is key distribution: if an attacker obtains the symmetric key, they can both decrypt and forge authenticated ciphertexts. Consequently, production systems typically pair symmetric ciphers with asymmetric key exchange protocols or public-key infrastructure to bootstrap secrets safely. Secure key rotation policies and careful nonce management reduce systemic risks.
-      </p>
-      <div class="table-wrap" role="region" aria-label="Symmetric Pros and Cons">
-        <table>
-          <thead>
-            <tr>
-              <th>Aspect</th>
-              <th>Pros</th>
-              <th>Cons</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Performance</td>
-              <td>Extremely fast, low latency, low power</td>
-              <td>None inherent; speed can mask misuse</td>
-            </tr>
-            <tr>
-              <td>Security</td>
-              <td>Strong AEAD modes provide confidentiality + integrity</td>
-              <td>Key distribution and storage are single points of failure</td>
-            </tr>
-            <tr>
-              <td>Complexity</td>
-              <td>Straightforward APIs (key, IV, tag)</td>
-              <td>Nonce reuse risks; key lifecycle management burdens</td>
-            </tr>
-            <tr>
-              <td>Web3 Fit</td>
-              <td>Perfect for encrypting off-chain blobs and P2P streams</td>
-              <td>Needs asymmetric layer for access control and sharing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <details class="quiz">
-        <summary>Mini Quiz: What is the primary operational risk in symmetric systems?</summary>
-        <div class="answer">
-          Securely distributing and storing the shared key. If compromised, an attacker can decrypt data and create valid ciphertexts (breaks confidentiality and integrity).
-        </div>
-      </details>
-    </section>
-
-     Slide 5 
-    <section id="slide-5" class="slide panel" aria-labelledby="slide-5-title">
-      <h2 id="slide-5-title" class="section-title">Slide 5 — Asymmetric Encryption Theory (RSA, ECC)</h2>
-      <figure class="slide-figure">
-        <img src="./img5.png" alt="Public/private key pair conceptual diagram with encryption and signature arrows" />
-        <figcaption>Encrypt to a public key; sign with a private key; verify with the corresponding public key.</figcaption>
-      </figure>
-      <p>
-        Asymmetric cryptography relies on a one-way mathematical relationship between a private key and its public key. With RSA, security arises from the difficulty of factoring a large composite modulus <code>n = p × q</code>. A public exponent <code>e</code> and private exponent <code>d</code> satisfy <code>(m^e)^d ≡ m (mod n)</code>. For encryption, a sender computes <code>c = m^e mod n</code> using the recipient’s public key, and the recipient recovers <code>m = c^d mod n</code> with the private key. For signatures, the direction flips: sign with <code>d</code>, verify with <code>e</code>. Modern RSA deployments pair with OAEP padding for encryption and PSS for signatures to resist adaptive attacks.
-      </p>
-      <p>
-        Elliptic Curve Cryptography (ECC) uses the discrete logarithm problem on elliptic curves. A private key is a scalar; the public key is the scalar multiple of a base point on the curve. ECDSA (used by Ethereum&rsquo;s secp256k1) provides compact signatures and strong security at smaller key sizes than RSA. In Web3, wallets hold ECC private keys; addresses derive from public keys via hashing and encoding rules. Asymmetric operations are slower than symmetric ones, but they remove the need to share secrets in advance, enabling decentralized authentication and open verification. Best practice is to use asymmetric cryptography for identity, key exchange, and signatures, while delegating bulk data encryption to symmetric ciphers.
-      </p>
-      <details class="quiz">
-        <summary>Mini Quiz: Why is ECC preferred over RSA in many modern systems?</summary>
-        <div class="answer">
-          ECC achieves comparable security with much smaller key sizes and signatures, reducing bandwidth, storage, and computation—crucial for mobile and blockchain environments.
-        </div>
-      </details>
-    </section>
-
-     Slide 6 
-    <section id="slide-6" class="slide panel" aria-labelledby="slide-6-title">
-      <h2 id="slide-6-title" class="section-title">Slide 6 — Asymmetric Code Examples (Node.js, RSA-OAEP &amp; ECDSA)</h2>
-      <figure class="slide-figure">
-        <img src="./img6.png" alt="Key pair generation and signature verification flow chart" />
-        <figcaption>Generate key pairs, encrypt with public, decrypt with private; sign with private, verify with public.</figcaption>
-      </figure>
-      <p>
-        Node.js provides robust primitives for RSA and EC keys. For confidentiality, use RSA with OAEP (SHA-256). For signatures compatible with Web3 mental models, generate an EC key pair with secp256k1 and sign payloads deterministically. Remember: on Ethereum, wallets sign messages and transactions using ECDSA; smart contracts verify signatures by recovering the signer’s public key/address. Below are concise patterns illustrating these operations in Node.js with the built-in <code>crypto</code> module.
-      </p>
-      <pre aria-label="RSA-OAEP encryption/decryption in Node.js"><code>
-                <pre aria-label="ECDSA secp256k1 signature in Node.js"><code>
-                          <p>
-        Use RSA-OAEP when you need to send a short secret (e.g., a symmetric AES key) to a specific recipient. Use ECDSA when you need non-repudiable statements tied to a public identity. In decentralized applications, a safe pattern is hybrid encryption: generate a random AES key, encrypt your payload with AES-GCM, then encrypt the AES key using the recipient&rsquo;s RSA or ECIES-style scheme; share the small encrypted key alongside the ciphertext.
-      </p>
-      <details class="quiz">
-        <summary>Mini Quiz: What makes RSA-OAEP safer than raw RSA?</summary>
-        <div class="answer">
-          OAEP is a padding scheme that randomizes inputs and binds a hash function (e.g., SHA-256), preventing deterministic ciphertexts and mitigating chosen-ciphertext attacks against raw RSA.
-        </div>
-      </details>
-    </section>
-
-     Slide 7 
-    <section id="slide-7" class="slide panel" aria-labelledby="slide-7-title">
-      <h2 id="slide-7-title" class="section-title">Slide 7 — Asymmetric Pros &amp; Cons</h2>
-      <figure class="slide-figure">
-        <img src="./img7.png" alt="Matrix comparing RSA and ECC in size, speed, and security margins" />
-        <figcaption>ECC provides smaller keys and signatures; RSA offers mature tooling and audit history.</figcaption>
-      </figure>
-      <p>
-        Asymmetric cryptography enables open, verifiable identity without prior secret exchange. Public keys can be widely distributed, and signatures can be checked by anyone, an essential property for decentralized consensus. The costs include heavier computation, larger CPU-time for key generation, and more careful implementation to avoid side channels. RSA is ubiquitous and well-studied; ECC is leaner and faster for signature verification with far smaller artifacts—ideal for bandwidth-constrained networks and on-chain verification costs. Algorithm choice should consider ecosystem compatibility, hardware, and security requirements (including post-quantum planning).
-      </p>
-      <div class="table-wrap" role="region" aria-label="Asymmetric Pros and Cons">
-        <table>
-          <thead>
-            <tr>
-              <th>Aspect</th>
-              <th>Pros</th>
-              <th>Cons</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Identity &amp; Auth</td>
-              <td>Public verifiability; no pre-shared secrets</td>
-              <td>Key management complexity; revocation challenges</td>
-            </tr>
-            <tr>
-              <td>Performance</td>
-              <td>Acceptable for key exchange and signatures</td>
-              <td>Slower than symmetric; expensive on-chain if misused</td>
-            </tr>
-            <tr>
-              <td>Artifacts</td>
-              <td>ECC: compact keys/signatures</td>
-              <td>RSA: larger keys/signatures increase bandwidth</td>
-            </tr>
-            <tr>
-              <td>Web3 Fit</td>
-              <td>Core to wallets and permissionless verification</td>
-              <td>Use sparingly for data encryption; prefer hybrid designs</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <details class="quiz">
-        <summary>Mini Quiz: What property makes signatures ideal for decentralized verification?</summary>
-        <div class="answer">
-          Anyone can verify a signature using only the public key, enabling global, trust-minimized validation without contacting the signer or sharing secrets.
-        </div>
-      </details>
-    </section>
-
-     Slide 8 
-    <section id="slide-8" class="slide panel" aria-labelledby="slide-8-title">
-      <h2 id="slide-8-title" class="section-title">Slide 8 — Web3 Use Cases: Wallets, Smart Contracts, Signatures</h2>
-      <figure class="slide-figure">
-        <img src="./img8.png" alt="Web3 signature flow: user signs, dApp verifies, contract recovers address" />
-        <figcaption>Sign off-chain, verify on-chain: security and gas efficiency at scale.</figcaption>
-      </figure>
-      <p>
-        Wallets are asymmetric key managers. The user holds a private key; the public key (or its hash) becomes the address. Off-chain messages (EIP-191/712) are signed by the wallet; the dApp verifies locally before sending the signature to a contract when needed. Smart contracts recover the signer&rsquo;s address and apply authorization rules, keeping heavy cryptography off-chain to save gas. For confidentiality, Web3 apps often encrypt data off-chain using symmetric ciphers then gate the decryption key via access control (e.g., group membership, token ownership, or threshold schemes) managed with asymmetric primitives.
-      </p>
-      <pre aria-label="Solidity-style signature verification sketch"><code>
-               Slide 9 
-    <section id="slide-9" class="slide panel" aria-labelledby="slide-9-title">
-      <h2 id="slide-9-title" class="section-title">Slide 9 — Hands-On Exercise + Quiz</h2>
-      <figure class="slide-figure">
-        <img src="./img9.png" alt="Checklist for hybrid encryption exercise" />
-        <figcaption>Practice: hybrid encryption and ECDSA verification.</figcaption>
-      </figure>
-      <p>
-        In this guided exercise, you will combine symmetric and asymmetric primitives into a practical workflow. First, generate a random AES-256 key and encrypt a message with AES-GCM including AAD set to a context string (e.g., a user ID and timestamp). Second, generate an RSA key pair and encrypt the AES key using RSA-OAEP. Third, generate an EC key pair (secp256k1) and sign the SHA-256 hash of the ciphertext to create an authenticity proof. Finally, verify the signature and decrypt the symmetric key, then decrypt the message. This mirrors real-world flows where a dApp encrypts off-chain data, brokers access via asymmetric wrapping, and logs signed attestations for auditability.
-      </p>
-      <pre aria-label="Exercise scaffolding (Node.js)"><code>
-               Slide 10 
-    <section id="slide-10" class="slide panel" aria-labelledby="slide-10-title">
-      <h2 id="slide-10-title" class="section-title">Slide 10 — Summary &amp; Further Reading</h2>
-      <figure class="slide-figure">
-        <img src="./img10.png" alt="Summary mind map for cryptography choices and hybrid flows" />
-        <figcaption>Design playbook: asymmetric for identity and exchange; symmetric for speed and bulk confidentiality.</figcaption>
-      </figure>
-      <p>
-        You now have a working mental model for symmetric and asymmetric cryptography, along with pragmatic Node.js patterns. Symmetric ciphers like AES-GCM deliver high-throughput confidentiality with built-in integrity. Asymmetric schemes like RSA and ECDSA solve identity, signatures, and secure key exchange. The hybrid pattern—negotiate with asymmetric, protect with symmetric—appears across messaging, content storage, and permissioned data access. In Web3, signatures are the user&rsquo;s authoritative consent mechanism; contracts and clients verify them without secrets. Keep security posture holistic: define key lifecycles, rotate keys, pin protocols and parameters, validate all inputs, and log verifications for auditability.
-      </p>
-      <h3 class="sub-title">Further Reading</h3>
-      <ul>
-        <li><a href="https://datatracker.ietf.org/doc/html/rfc5116" target="_blank" rel="noopener">RFC 5116 — AEAD: A Unified Construction</a></li>
-        <li><a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf" target="_blank" rel="noopener">FIPS 197 — Advanced Encryption Standard (AES)</a></li>
-        <li><a href="https://datatracker.ietf.org/doc/html/rfc8017" target="_blank" rel="noopener">RFC 8017 — RSA Cryptography Specifications (OAEP, PSS)</a></li>
-        <li><a href="https://datatracker.ietf.org/doc/html/rfc7539" target="_blank" rel="noopener">RFC 7539 — ChaCha20 and Poly1305</a></li>
-        <li><a href="https://eips.ethereum.org/EIPS/eip-712" target="_blank" rel="noopener">EIP-712 — Typed Structured Data Hashing and Signing</a></li>
-      </ul>
-
-      <details class="quiz">
-        <summary>Final Quiz: Pick the right tool</summary>
-        <div class="answer">
-          - Encrypting a 10 MB file for storage: AES-256-GCM (symmetric).<br />
-          - Sending the key to one recipient: RSA-OAEP or ECIES (asymmetric).<br />
-          - Proving user consent to a contract: ECDSA signature (asymmetric).<br />
-          - Streaming chat over P2P: Symmetric with rotating nonces and AAD per frame.
-        </div>
-      </details>
-
-      <blockquote>
-        Closing Note from MOKSHA Innovators Guild: Cryptography is our language of trust. Master these primitives and you will compose systems that are private by default, verifiable by design, and resilient under pressure. Onward, innovators.
-      </blockquote>
-    </section>
-  </div>
-</main>
-
- Footer 
-<footer class="site-footer" role="contentinfo">
-  © 2025 MOKSHA STUDIOS — Building the Future of Web3 Education
-</footer>
+ 
