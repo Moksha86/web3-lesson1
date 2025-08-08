@@ -1,4 +1,4 @@
-I'll remove the logo and its container from the header, keeping everything else exactly the same. Here's the updated code:
+I'll make the header more compact, increase the logo size by 3x, and keep all the content as is. Here's the updated code:
 
 ```html
 <!DOCTYPE html>
@@ -51,29 +51,40 @@ I'll remove the logo and its container from the header, keeping everything else 
             border-bottom: 1px solid rgba(0, 255, 255, 0.2);
             box-shadow: var(--shadow-glow);
             z-index: 1000;
-            padding: 15px 30px;
+            padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            height: 180px;
+            width: 180px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+            border-radius: 8px;
         }
 
         .header-text {
-            text-align: center;
+            text-align: right;
+            flex: 1;
+            margin-left: 20px;
         }
 
         .header-title {
             font-family: 'Roboto Slab', serif;
             font-weight: 900;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-violet));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 2px;
         }
 
         .header-subtitle {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             font-weight: 400;
         }
@@ -81,22 +92,23 @@ I'll remove the logo and its container from the header, keeping everything else 
         /* Navigation */
         .nav-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 15px;
+            gap: 5px;
+            margin-top: 8px;
+            flex-wrap: wrap;
         }
 
         .nav-btn {
             background: rgba(0, 255, 255, 0.1);
             border: 1px solid rgba(0, 255, 255, 0.3);
             color: var(--text-secondary);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.65rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             text-align: center;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
@@ -108,7 +120,7 @@ I'll remove the logo and its container from the header, keeping everything else 
         /* Main Container */
         .main-container {
             max-width: 1100px;
-            margin: 120px auto 40px;
+            margin: 100px auto 40px;
             padding: 40px;
             background: var(--secondary-bg);
             border-radius: 20px;
@@ -308,17 +320,34 @@ I'll remove the logo and its container from the header, keeping everything else 
         /* Responsive Design */
         @media (max-width: 768px) {
             .header {
-                padding: 10px 20px;
-                flex-direction: column;
-                gap: 10px;
+                padding: 8px 15px;
+                height: 70px;
+            }
+
+            .logo {
+                height: 120px;
+                width: 120px;
             }
 
             .header-title {
-                font-size: 1.4rem;
+                font-size: 1.1rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.65rem;
+            }
+
+            .nav-buttons {
+                gap: 3px;
+            }
+
+            .nav-btn {
+                padding: 3px 6px;
+                font-size: 0.6rem;
             }
 
             .main-container {
-                margin: 140px 20px 20px;
+                margin: 90px 20px 20px;
                 padding: 20px;
             }
 
@@ -341,26 +370,33 @@ I'll remove the logo and its container from the header, keeping everything else 
             th, td {
                 padding: 10px;
             }
-
-            .nav-buttons {
-                flex-direction: row;
-                overflow-x: auto;
-                padding-bottom: 10px;
-            }
-
-            .nav-btn {
-                white-space: nowrap;
-                min-width: 120px;
-            }
         }
 
         @media (max-width: 480px) {
+            .header {
+                height: 60px;
+                padding: 5px 10px;
+            }
+
+            .logo {
+                height: 90px;
+                width: 90px;
+            }
+
             .header-title {
-                font-size: 1.2rem;
+                font-size: 1rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.6rem;
+            }
+
+            .nav-buttons {
+                display: none;
             }
 
             .main-container {
-                margin: 160px 10px 10px;
+                margin: 80px 10px 10px;
                 padding: 15px;
             }
 
@@ -391,6 +427,7 @@ I'll remove the logo and its container from the header, keeping everything else 
 <body>
     <!-- Header -->
     <header class="header">
+        <img src="./logo.png" alt="MOKSHA Innovators Guild" class="logo">
         <div class="header-text">
             <div class="header-title">Web3 Odyssey</div>
             <div class="header-subtitle">Module 1: Foundations | Lesson 1.1 Symmetric vs Asymmetric Cryptography</div>
@@ -453,7 +490,7 @@ I'll remove the logo and its container from the header, keeping everything else 
         <p>In the context of Web3, these principles are applied to create secure digital wallets, verify smart contract interactions, and establish trust in decentralized networks without relying on central authorities.</p>
 
         <!-- Slide 2: Symmetric Encryption Theory -->
-        <h2> Slide 2: Symmetric Encryption - The Shared Secret</h2>
+        <h2>�� Slide 2: Symmetric Encryption - The Shared Secret</h2>
         <img src="./img2.png" alt="Symmetric Encryption" class="slide-image">
         
         <p>Symmetric encryption, also known as secret-key encryption, uses the same key for both encryption and decryption. This approach is like having a single key that both locks and unlocks a treasure chest. The key must be kept secret and shared securely between the communicating parties.</p>
@@ -1045,23 +1082,4 @@ function benchmarkAsymmetricAlgorithms() {
         const rsaTime = Date.now() - rsaStart;
         
         // Benchmark ECC
-        const eccKeys = crypto.generateECCKeyPair();
-        const eccStart = Date.now();
-        for (let i = 0; i < iterations; i++) {
-            const encrypted = crypto.encryptECC(testData, eccKeys.publicKey, eccKeys.privateKey);
-            crypto.decryptECC(encrypted, eccKeys.privateKey);
-        }
-        const eccTime = Date.now() - eccStart;
-        
-        console.log(`RSA-2048: ${rsaTime}ms for ${iterations} iterations`);
-        console.log(`ECC-secp256k1: ${eccTime}ms for ${iterations} iterations`);
-        console.log(`Performance ratio: ${(rsaTime / eccTime).toFixed(2)}x\n`);
-    });
-}
-
-// Run demonstrations
-demonstrateAsymmetricEncryption().then(() => {
-    benchmarkAsymmetricAlgorithms();
-}).catch(console.error);</code></pre>
-
-        <p>This comprehensive implementation covers RSA and ECC encryption, digital signatures, address generation, and hierarchical deterministic key deri
+        const eccKeys = crypt
